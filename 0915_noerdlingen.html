@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ネルトリンゲンとレジデンツ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
+  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html" class="cur">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="eyebrow">ドイツ旅行 2026</div>
+  <div class="hero"><div class="big">9/15<small>火曜</small></div><h1>ネルトリンゲンとレジデンツ</h1></div>
+  <p class="lead">進撃の巨人の街ネルトリンゲンへ朝イチで行き、午後にミュンヘンへ戻ってレジデンツを見る日。列車はDBの時刻表（2026/9/15）で確認した実際の便です。</p>
+
+  <div class="days">
+    <div class="day"><div class="d">流れ</div><ul>
+      <li>06:20 ホテル発 → 07:12 ICE（中央駅20番線）→ 08:38 ネルトリンゲン着</li>
+      <li>城壁一周 → 10:00 ダニエル塔 → 市街・博物館・昼食</li>
+      <li>13:21 発 → 15:05 ミュンヘン着 → 15:30 レジデンツ → ホーフガルテン → LMUの噴水</li></ul></div>
+    <div class="day"><div class="d">今日の出費</div><ul>
+      <li>列車 €19.99 + €35.99（Sparpreis、要事前購入）</li><li>ダニエル塔 €4.50 · 博物館 €5 · レジデンツ €15</li><li>MVV 1日券 約€9.20（D-Ticketなら不要）</li></ul></div>
+  </div>
+  <h2>列車と切符</h2>
+  <p class="lead">DBの時刻表（2026/9/15）で確認した実際の便です。ネルトリンゲンは10:00まで塔も博物館も開かないので、始発の05:28ではなく <b>07:12発のICE経由（08:38着）に決定</b>。城壁は終日開放なので、着いてすぐ壁を一周し、10:00ちょうどにダニエル塔へ。</p>
+
+  <div class="tblwrap">
+    <table>
+      <tr><th>便</th><th>ミュンヘン中央駅 発</th><th>乗換</th><th>ネルトリンゲン 着</th><th>料金の目安</th><th>評価</th></tr>
+      <tr><td class="mono">始発</td><td class="mono">05:28 RE80 · 17番線</td><td>Donauwörth 06:56着 → 07:10 RB89（14分）</td><td class="mono">07:41</td><td>€40.40（普通運賃）</td><td>ホテル発4:35。到着後2時間なにも開いていない</td></tr>
+      <tr><td class="mono"><b>決定</b></td><td class="mono"><b>07:12 ICE 1622 · 20番線</b></td><td>Donauwörth 08:06着 3番線 → 08:12 RB89 6番線（<b>6分</b>）</td><td class="mono"><b>08:38</b></td><td><b>€19.99〜</b>（Sparpreis、要事前購入）</td><td>最速1h26。乗換6分なので降りたらすぐ隣ホームへ</td></tr>
+      <tr><td class="mono">予備</td><td class="mono">07:36 RE80</td><td>Donauwörth → RE89</td><td class="mono">09:32</td><td>€40.40 / D-Ticket可</td><td>普通列車のみ。ICEに乗り遅れたらこれ</td></tr>
+    </table>
+  </div>
+  <div class="tblwrap">
+    <table>
+      <tr><th>帰り</th><th>ネルトリンゲン 発</th><th>乗換</th><th>ミュンヘン 着</th><th>料金の目安</th><th>評価</th></tr>
+      <tr><td class="mono"><b>本命</b></td><td class="mono"><b>13:21 RB89 · 1番線</b></td><td>Donauwörth 13:51着 → 14:15 ICE 1185（24分）</td><td class="mono"><b>15:05</b></td><td>€35.99〜</td><td>レジデンツに15:30入場、2時間半見られる</td></tr>
+      <tr><td class="mono">安い</td><td class="mono">14:21 RE89 直通</td><td>なし</td><td class="mono">16:23</td><td>バイエルンチケット €34 / D-Ticket可</td><td>レジデンツ最終入場17:00に間に合うが滞在1時間で厳しい</td></tr>
+      <tr><td class="mono">遅め</td><td class="mono">15:21 RB89</td><td>Donauwörth → Augsburg → ICE</td><td class="mono">17:16</td><td>€24.99〜</td><td>レジデンツを諦める場合</td></tr>
+    </table>
+  </div>
+  <div class="callout">
+    <b>切符の買い方</b> 行きの07:12はICE区間があるのでバイエルンチケット・D-Ticketは使えず、Sparpreis（列車指定の割引運賃）を <b>今すぐDB Navigatorで購入</b>するのが最安（€19.99は残席で上がる）。帰り13:21も同じくSparpreis €35.99〜。合計約€56。<br>
+    朝の U6（ホテル→中央駅）は9:00前なので別途 MVV の1日券（ゾーンM、約€9.20）を買っておくと、夜のレジデンツ往復もそれで乗れる。<br>
+    <b>別案：ドイツチケット（D-Ticket）€63/月</b>。全国の普通列車と市内交通が9/30まで乗り放題で、時間制限なし。これなら行きは07:36のRE（09:32着）、帰りは14:21直通が追加料金なし。さらにミュンヘンU-Bahn全日程、9/16〜20のベルリン市内、9/23ハイデルベルク→ローテンブルク、9/24ローテンブルク→ミュンヘン空港の普通列車がすべて含まれるので、旅全体で見るとかなり得。DB Navigatorから海外カードで購入でき、<b>10/10までに解約</b>すれば10月分は請求されない。
+  </div>
+  <div class="callout warn">
+    DBの運行情報（9/12時点）：Donauwörth〜Aalen間の RE89/RB89 に「天候による徐行で遅延の可能性」の注意が出ています。乗換6分の07:12便は遅延するとRB89を逃す可能性があるので、当日朝にアプリで遅延を確認し、遅れていれば07:36のREに切り替えてください。
+  </div>
+
+  <ul class="timeline blue">
+    <li><span class="t">06:20</span>ホテル発。U6 Fröttmaning → Odeonsplatz（17分）→ U4/U5 で2駅 Hauptbahnhof → 地上の大ホール20番線へ（詳細は下の「乗り換えの詳細」）</li>
+    <li><span class="t">07:12</span><b>ICE 1622</b> 発。車内で朝食。Donauwörth 08:06着、3番線</li>
+    <li><span class="t">08:12</span>6番線から <b>RB89</b>（Aalen方面）。Nördlingen 08:38着、1番線</li>
+    <li><span class="t">08:45</span>駅を出て北へ徒歩5分、<b>ライムリンガー門（Reimlinger Tor）</b>から城壁へ。ここに街の地図板がある</li>
+    <li><span class="t">08:50</span><b>城壁一周（約1時間）</b>。朝は人がいないので壁の上の回廊を独占できる。順路は下の巡礼図</li>
+    <li><span class="t">09:55</span>聖ゲオルク教会に到着。塔の入口は教会の裏手。<b>10:00開門と同時にダニエル塔へ</b>（€4.50、係員に現金で）。350段、往復と撮影で45分</li>
+    <li><span class="t">10:50</span>マルクト広場。市庁舎の外階段、タンツハウス、観光案内所（Marktplatz 2）で進撃の巨人関連の案内を尋ねる</li>
+    <li><span class="t">11:15</span><b>レプシンガー門の城壁博物館</b>（火〜日 10–13時、13:30–16:30）か、<b>リースクレーター博物館</b>（火〜日 10–16:30、€5）のどちらか一つ。両方なら昼食を短めに</li>
+    <li><span class="t">12:10</span>昼食。マルクト広場周辺。火曜定休の店があるので候補を2軒</li>
+    <li><span class="t">13:05</span>駅へ徒歩10分</li>
+    <li><span class="t">13:21</span><b>RB89</b> 発 → Donauwörth 13:51着（6番線）→ 14:15 <b>ICE 1185</b>（5番線）→ ミュンヘン中央駅 15:05着（12番線）</li>
+    <li><span class="t">15:25</span>U4/U5 で Odeonsplatz（2駅）。徒歩3分で<b>レジデンツ</b>。オンライン購入で列を回避し、15:30入場。最終入場17:00、閉館18:00</li>
+    <li><span class="t">17:45</span>出口からホーフガルテンを抜けて Odeonsplatz。U6 で1駅、<b>Universität</b> の噴水（ハガレン）。15分</li>
+    <li><span class="t">18:30</span>夕食は大学周辺（シュヴァービング、学生街で安い）か旧市街へ戻る。U6 で Fröttmaning へ。翌9/16はアリアンツ・アレーナ10:15</li>
+  </ul>
+
+  <h2>ネルトリンゲン 進撃の巨人 巡礼図</h2>
+  <p class="lead">諫山創氏は具体的な街を公式に「モデル」と明言してはいませんが、直径約1kmの円形の城壁に囲まれた街並みがウォール内の街そのもので、日本のファンの間で聖地として定着しています。作中との対応は「似ている」というファンの見立てです。</p>
+  <div class="mapbox">
+    <svg viewBox="0 0 900 640" role="img" aria-label="ネルトリンゲン巡礼図">
+      <defs>
+        <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--brick)"/></marker>
+      </defs>
+      <!-- wall -->
+      <circle cx="420" cy="300" r="210" fill="var(--panel2)" stroke="var(--ink)" stroke-width="14"/>
+      <circle cx="420" cy="300" r="210" fill="none" stroke="var(--brick)" stroke-width="4" stroke-dasharray="12 8"/>
+      <!-- route from station to Reimlinger Tor -->
+      <path d="M600 560 L570 470" fill="none" stroke="var(--brick)" stroke-width="4" marker-end="url(#arr2)"/>
+      <!-- direction arrows on the wall -->
+      <g fill="var(--brick)">
+        <path d="M630 300 l-10 -12 v24 z" transform="rotate(-90 630 300)"/>
+        <path d="M420 90 l-10 -12 v24 z" transform="rotate(180 420 90)"/>
+        <path d="M210 300 l-10 -12 v24 z" transform="rotate(90 210 300)"/>
+        <path d="M420 510 l-10 -12 v24 z"/>
+      </g>
+      <g font-family="Zen Kaku Gothic New,sans-serif">
+        <!-- gates -->
+        <g fill="var(--panel)" stroke="var(--ink)" stroke-width="3">
+          <rect x="556" y="434" width="26" height="26" rx="3"/>
+          <rect x="617" y="287" width="26" height="26" rx="3"/>
+          <rect x="556" y="140" width="26" height="26" rx="3"/>
+          <rect x="258" y="140" width="26" height="26" rx="3"/>
+          <rect x="258" y="434" width="26" height="26" rx="3"/>
+        </g>
+        <text x="596" y="470" font-size="13" font-weight="700" fill="var(--ink)">① ライムリンガー門</text>
+        <text x="596" y="486" font-size="11" fill="var(--ink2)">駅から徒歩5分 · 鷲の紋章 · 城壁の登り口</text>
+        <text x="652" y="296" font-size="13" font-weight="700" fill="var(--ink)">② ダイニンガー門</text>
+        <text x="652" y="312" font-size="11" fill="var(--ink2)">東側 · 壁の外に堀が残る</text>
+        <text x="596" y="130" font-size="13" font-weight="700" fill="var(--ink)">③ レプシンガー門</text>
+        <text x="596" y="146" font-size="11" fill="var(--brick)">一番高い門塔 = 「壁の門」の構図</text>
+        <text x="596" y="162" font-size="11" fill="var(--ink2)">城壁博物館 火〜日 10–16:30</text>
+        <text x="245" y="130" text-anchor="end" font-size="13" font-weight="700" fill="var(--ink)">④ バルディンガー門</text>
+        <text x="245" y="146" text-anchor="end" font-size="11" fill="var(--ink2)">北西 · すぐ内側にリースクレーター博物館</text>
+        <text x="245" y="470" text-anchor="end" font-size="13" font-weight="700" fill="var(--ink)">⑤ ベルガー門</text>
+        <text x="245" y="486" text-anchor="end" font-size="11" fill="var(--ink2)">南西 · 壁と門が最も絵になる区間</text>
+        <!-- station -->
+        <rect x="585" y="560" width="30" height="20" rx="3" fill="var(--panel)" stroke="var(--blue)" stroke-width="3"/>
+        <text x="625" y="576" font-size="13" font-weight="700" fill="var(--blue)">ネルトリンゲン駅</text>
+        <text x="625" y="592" font-size="11" fill="var(--ink2)">08:38 着 / 13:21 発</text>
+        <!-- Daniel -->
+        <circle cx="420" cy="300" r="22" fill="var(--brick)"/>
+        <text x="420" y="306" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">塔</text>
+        <text x="420" y="256" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">ダニエル塔（聖ゲオルク教会）</text>
+        <text x="420" y="272" text-anchor="middle" font-size="11.5" fill="var(--brick)">10:00 開 · €4.50 · 350段 · 高さ90m</text>
+        <text x="420" y="345" text-anchor="middle" font-size="11.5" fill="var(--brick)">上から見る円形の街 = 壁内の街の俯瞰</text>
+        <!-- Marktplatz -->
+        <rect x="330" y="360" width="70" height="40" rx="3" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="365" y="378" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--gold)">マルクト広場</text>
+        <text x="365" y="392" text-anchor="middle" font-size="10" fill="var(--gold)">観光案内所 · 市庁舎</text>
+        <!-- Rieskrater -->
+        <rect x="300" y="190" width="90" height="34" rx="3" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="1.5"/>
+        <text x="345" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="var(--blue)">リースクレーター博物館</text>
+        <text x="345" y="218" text-anchor="middle" font-size="10" fill="var(--blue)">火〜日 10–16:30 · €5</text>
+        <!-- wall label -->
+        <text x="420" y="545" text-anchor="middle" font-size="12" fill="var(--ink)">城壁 全長2.7km · 屋根付き回廊 · 無料 · 一周1時間</text>
+        <text x="420" y="561" text-anchor="middle" font-size="11" fill="var(--brick)">① → ② → ③ → ④ → ⑤ → ① と反時計回りに一周してから中心の塔へ</text>
+        <text x="40" y="40" font-size="12" fill="var(--ink2)">北 ↑ · 街の直径 約1km（隕石クレーターの縁に築かれた円形都市）</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="two">
+    <div class="spot">
+      <h3>作中との見立て <span class="sub">ファンの比較ポイント</span></h3>
+      <dl class="kv">
+        <dt>塔の上</dt><dd>円形の壁に囲まれたオレンジ屋根の街を見下ろす構図が、ウォール・マリア内の街の俯瞰そのもの。定番の比較写真はここ。朝10時なら混まない</dd>
+        <dt>壁の回廊</dt><dd>屋根付きの通路と銃眼。駐屯兵団が壁の上を歩く場面の雰囲気。ベルガー門〜ライムリンガー門の南側区間が一番それらしい</dd>
+        <dt>門塔</dt><dd>レプシンガー門の高い塔と門のアーチが「壁の門」の構図。門の外側から壁と塔を一緒に撮る</dd>
+        <dt>街並み</dt><dd>マルクト広場周辺の木組みの家と石畳がトロスト区の市街に近い。市庁舎の屋外石段は記念写真スポット</dd>
+        <dt>豚の伝説</dt><dd>1440年、裏切り者が門を開けようとしたのを豚が鳴いて知らせたという伝説。作中で「豚が逃げて門が開いた」ことから物語が動く点と重ねてファンが語る小ネタ</dd>
+      </dl>
+    </div>
+    <div class="spot">
+      <h3>実用メモ <span class="sub">ネルトリンゲン</span></h3>
+      <dl class="kv">
+        <dt>塔</dt><dd>3〜10月 毎日 10:00–18:00。大人€4.50、15歳以下€3.50。狭い木製螺旋階段なので歩きやすい靴。最上部は塔守が常駐しており、そこで支払う</dd>
+        <dt>城壁</dt><dd>終日開放、無料。5つの門のどこからでも上がれる。回廊は狭く、雨だと滑る</dd>
+        <dt>観光案内所</dt><dd>Marktplatz 2。街の地図と、ダニエル塔の夜間登塔（土曜21:30、€8、9/26まで）の情報。進撃の巨人のことは知っているので聞いてみる価値あり</dd>
+        <dt>火曜の注意</dt><dd>博物館は火曜営業。飲食店は火曜定休の店が一部ある</dd>
+        <dt>荷物</dt><dd>塔は階段のみでリュック可。昼食後に駅に戻る動線なので大きな荷物は持ってこない</dd>
+      </dl>
+    </div>
+  </div>
+
+  
+  <div class="callout warn"><b>時間の縛り</b><br>07:12のICEは Donauwörth 乗換6分。ダニエル塔は10:00開。帰りは13:21に乗らないとレジデンツ（最終入場17:00）が短くなる。</div>
+  
+  <h2>乗り換えの詳細</h2>
+  <p class="lead">この日は乗り換えが4回。一番タイトなのは行きのドナウヴェルト（6分）。番線は DB の時刻表（2026/9/15）の表示ですが、当日 DB Navigator で再確認してください。</p>
+<div class="tblwrap"><table><tr><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td>06:20</td><td>Fröttmaning</td><td>U6「Klinikum Großhadern 行き」に乗る。切符は前夜に買っておく（1日券 M か D-Ticket）</td><td>—</td></tr><tr><td>06:37</td><td>Odeonsplatz</td><td>U6 を降りて、<b>U4/U5（Westendstraße / Laimer Platz 行き）</b>に乗り換え。U6 ホームから U4/U5 ホームへは通路で2分。Hauptbahnhof まで2駅</td><td>4分</td></tr><tr><td>06:45</td><td>Hauptbahnhof（U-Bahn）</td><td>U4/U5 ホームから地上の大ホールへ上がる。案内「Fernverkehr / Gleis 11–26」。中央駅は改修工事中で通路が変わるので余裕10分</td><td>7分</td></tr><tr><td>06:55</td><td>München Hbf <b>20番線</b></td><td>ICE 1622 に乗車。2等は前寄りか後寄りかホームの編成表（Wagenstandsanzeiger）で確認。予約席なしなら空席に座る（座席上の表示が空欄なら自由）</td><td>—</td></tr><tr><td>08:06</td><td>Donauwörth <b>3番線</b>着</td><td>降りたらすぐ地下通路へ。<b>6番線</b>の RB89「Aalen Hbf 行き」へ。乗換6分。ICE では降車扉の近くに立って待つ</td><td>3分</td></tr><tr><td>08:12</td><td>Donauwörth 6番線</td><td>RB89 発。ワンマンの2両編成。Nördlingen は5つ目</td><td>—</td></tr><tr><td>08:38</td><td>Nördlingen 1番線着</td><td>駅舎側のホーム。駅を出て Bahnhofstraße を北へ。5分でライムリンガー門</td><td>5分</td></tr><tr><td>13:21</td><td>Nördlingen 1番線</td><td>RB89 発。同じホーム</td><td>—</td></tr><tr><td>13:51</td><td>Donauwörth <b>6番線</b>着</td><td><b>5番線</b>の ICE 1185 へ。5番線と6番線は同じ島式ホームの向かい側なので階段なし。24分余裕があるので売店で飲み物を</td><td>1分</td></tr><tr><td>14:15</td><td>Donauwörth 5番線</td><td>ICE 1185 発。München Hbf まで50分</td></tr><tr><td>15:05</td><td>München Hbf <b>12番線</b>着</td><td>大ホールを抜けて地下の U4/U5 ホームへ。「Odeonsplatz / Arabellapark 方面」へ2駅</td><td>7分</td></tr><tr><td>15:25</td><td>Odeonsplatz</td><td>出口「Residenz / Hofgarten」。地上に出ると正面がテアティーナー教会、右手がレジデンツ。入口は Max-Joseph-Platz 側（南へ3分）</td><td>3分</td></tr><tr><td>17:50</td><td>Odeonsplatz → Universität</td><td>U3 でも U6 でも可（この区間は共用）。北方向1駅</td><td>2分</td></tr><tr><td>18:30</td><td>Universität → Fröttmaning</td><td><b>U6 のみ</b>（U3 は Münchner Freiheit で別方向へ）。「Garching-Forschungszentrum 行き」</td><td>15分</td></tr></table></div>
+  <div class="callout warn"><b>別ルート（Odeonsplatz の乗り換えを避けたい場合）</b> Fröttmaning → U6 → Marienplatz（19分）→ S-Bahn 地下1階へ上がり、西行きの S-Bahn ならどれでも1駅で Hauptbahnhof（2分）→ 地下から大ホールへ。合計は同じくらい。</div>
+
+  <div class="callout">
+    <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
+  </div>
+
+  
+  <p class="src">出典：<a href="https://www.bahn.de/">DB 時刻表（2026/9/15 検索）</a> · <a href="https://www.donau-ries-aktuell.de/buergerservice/oeffnungszeiten-turm-daniel-im-advent-noerdlingen-88553">ダニエル塔料金</a> · <a href="https://www.rieskrater-museum.de/oeffnungszeiten-tickets/?lang=en">リースクレーター博物館</a> · <a href="https://www.noerdlingen.de/kultur-und-freizeit/museen/stadtmauermuseum/poi.html">城壁博物館</a> · <a href="https://comic-addict.com/editorial/jp/aot-sp/">ComicAddict 進撃の巨人×ネルトリンゲン</a> · <a href="https://www.residenz-muenchen.de/deutsch/tourist/eintritt.htm">レジデンツ公式</a> · <a href="https://www.bahn.de/angebot/regio/laender-tickets/bayern-ticket">バイエルンチケット</a> · <a href="https://www.finanztip.de/deutschlandticket/">ドイツチケット</a></p>
+</div>
+
+</body></html>

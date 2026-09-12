@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ドイツ旅行 目次</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .idx td a{color:var(--brick);font-weight:700;text-decoration:none}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px}
+  .card{background:var(--panel);border:1px solid var(--line);padding:14px 16px;text-decoration:none;color:var(--ink);display:block}
+  .card:hover{border-color:var(--brick)}
+  .card .d{font-family:"Shippori Mincho B1",serif;font-size:26px;font-weight:800;color:var(--brick)}
+  .card .c{font-size:12.5px;color:var(--ink2)}
+  .card .t{font-weight:700;margin-top:4px}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="eyebrow">ドイツ旅行 2026 · 9/12〜9/26</div>
+  <h1>ドイツ旅行 目次</h1>
+  <p class="lead">1日1ページに分けました。各ページに列車の実時刻（DB で検索済み）、入場料、営業時間、写真の可否、回り方の図を載せています。</p>
+  <div class="cards"><a class="card" href="0913_munich.html"><div class="d">9/13</div><div class="c">日曜 · ミュンヘン</div><div class="t">旧市街の夜</div></a><a class="card" href="0915_noerdlingen.html"><div class="d">9/15</div><div class="c">火曜 · ネルトリンゲン</div><div class="t">進撃の巨人の街とレジデンツ</div></a><a class="card" href="0916_arena_berlin.html"><div class="d">9/16</div><div class="c">水曜 · 移動日</div><div class="t">アレーナからベルリンへ</div></a><a class="card" href="0917_berlin.html"><div class="d">9/17</div><div class="c">木曜 · ベルリン</div><div class="t">SPY×FAMILY と中心部</div></a><a class="card" href="0918_dresden.html"><div class="d">9/18</div><div class="c">金曜 · ドレスデン</div><div class="t">日帰り</div></a><a class="card" href="0920_schwerin.html"><div class="d">9/20</div><div class="c">日曜 · シュヴェリーン</div><div class="t">城とホテル</div></a></div>
+  <h2>全日程</h2>
+  <div class="tblwrap"><table class="idx">
+    <tr><th>日付</th><th>場所</th><th>流れ</th><th>主な出費</th><th>ページ</th></tr><tr><td class="mono"><b>9/13</b> <span style="color:var(--ink2)">日</span></td><td>ミュンヘン</td><td>アザム教会 → マリエン広場 → フラウエン教会 → 新市庁舎の塔 → 歌劇場 → ホーフガルテン</td><td>塔 €7 のみ有料</td><td><a href="0913_munich.html">開く →</a></td></tr><tr><td class="mono"><b>9/14</b> <span style="color:var(--ink2)">月</span></td><td>ミュンヘン</td><td>ノイシュヴァンシュタイン城 一日ツアー（予約済み）</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/15</b> <span style="color:var(--ink2)">火</span></td><td>ネルトリンゲン → ミュンヘン</td><td>07:12 ICE → 城壁一周 → 10:00 ダニエル塔 → 13:21 発 → 15:30 レジデンツ</td><td>列車 €56 · 塔 €4.50 · レジデンツ €15</td><td><a href="0915_noerdlingen.html">開く →</a></td></tr><tr><td class="mono"><b>9/16</b> <span style="color:var(--ink2)">水</span></td><td>ミュンヘン → ベルリン</td><td>10:15 アリアンツ・アレーナ → 無料タクシーで空港 → 18:00 便 → 19:05 BER</td><td>ABC 券 €5</td><td><a href="0916_arena_berlin.html">開く →</a></td></tr><tr><td class="mono"><b>9/17</b> <span style="color:var(--ink2)">木</span></td><td>ベルリン</td><td>フリードリヒ通り駅 → 博物館島 → 赤の市庁舎 → テレビ塔 → ブランデンブルク門 → 16:00 パウル</td><td>大聖堂 €10 · 新博物館 €14 · 塔 €24.50</td><td><a href="0917_berlin.html">開く →</a></td></tr><tr><td class="mono"><b>9/18</b> <span style="color:var(--ink2)">金</span></td><td>ドレスデン</td><td>07:28 RJ → フラウエン教会 → 緑の丸天井 → ツヴィンガー → 17:35 発</td><td>列車 €60 · 丸天井 €16（要予約）</td><td><a href="0918_dresden.html">開く →</a></td></tr><tr><td class="mono"><b>9/19</b> <span style="color:var(--ink2)">土</span></td><td>ベルリン</td><td>パウルのお母さんと予定あり</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/20</b> <span style="color:var(--ink2)">日</span></td><td>シュヴェリーン</td><td>10:25 RE8 直通 → 13:07 着 → ホテル → シュヴェリーン城</td><td>列車 €30 / D-Ticket · 城 €13</td><td><a href="0920_schwerin.html">開く →</a></td></tr><tr><td class="mono"><b>9/21</b> <span style="color:var(--ink2)">月</span></td><td>シュヴェリーン → ケルン → ハイデルベルク</td><td>朝移動。ケルン大聖堂に寄って夕方ハイデルベルク</td><td>ICE（要予約）</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/22</b> <span style="color:var(--ink2)">火</span></td><td>ハイデルベルク</td><td>城・旧市街・哲学者の道</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/23</b> <span style="color:var(--ink2)">水</span></td><td>ローテンブルク</td><td>移動4h、夜景</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/24</b> <span style="color:var(--ink2)">木</span></td><td>ローテンブルク → ミュンヘン空港</td><td>14時まで観光、移動3〜4h</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/25</b> <span style="color:var(--ink2)">金</span></td><td>ミュンヘン → 関西</td><td>NH7881 9:30 発（ターミナル2）</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr>
+  </table></div>
+  <h2>切符の全体方針</h2>
+  <div class="two">
+    <div class="spot"><h3>ドイツチケット €63/月 <span class="sub">おすすめ</span></h3>
+      <p>全国の普通列車（RE/RB/S-Bahn）と市内交通（U-Bahn・トラム・バス）が乗り放題。時間制限なし。この旅で含まれるもの：</p>
+      <dl class="kv"><dt>ミュンヘン</dt><dd>U6 の全乗車、空港 S-Bahn</dd><dt>ベルリン</dt><dd>BVG・S-Bahn 全域、BER 空港往復</dd><dt>9/20</dt><dd>ベルリン → シュヴェリーン RE8 直通</dd><dt>9/23〜24</dt><dd>ハイデルベルク → ローテンブルク、ローテンブルク → ミュンヘン空港（全区間普通列車）</dd></dl>
+      <p>含まれないもの：9/15 の ICE、9/18 の RJ/IC、9/21 の ICE。DB Navigator で購入し、<b>10/10 までに解約</b>。</p></div>
+    <div class="spot"><h3>今すぐ買うもの <span class="sub">値上がりする順</span></h3>
+      <dl class="kv"><dt>9/15</dt><dd>07:12 ICE 1622（€19.99〜）と 13:21 RB89→ICE 1185（€35.99〜）</dd>
+      <dt>9/18</dt><dd>07:28 RJ 171（€39.99〜）と 17:35 IC 2172（€19.99〜）</dd>
+      <dt>9/18</dt><dd>歴史的緑の丸天井 時間指定券 €16</dd>
+      <dt>9/17</dt><dd>テレビ塔の時間枠 €24.50、ベルリン大聖堂 €10（オンラインのみ）</dd>
+      <dt>9/13</dt><dd>新市庁舎の塔 19:20 枠 €7</dd>
+      <dt>9/21</dt><dd>シュヴェリーン → ケルン → ハイデルベルクの ICE</dd></dl></div>
+  </div>
+</div>
+
+</body></html>

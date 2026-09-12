@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>アレーナからベルリンへ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
+  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html" class="cur">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="eyebrow">ドイツ旅行 2026</div>
+  <div class="hero"><div class="big">9/16<small>水曜 · 移動日</small></div><h1>アレーナからベルリンへ</h1></div>
+  <p class="lead">午前にアリアンツ・アレーナのツアー、夕方の便でベルリンへ。ホテル・アレーナ・空港の荷物の動線を中心にまとめました。</p>
+
+  <div class="days">
+    <div class="day"><div class="d">流れ</div><ul>
+      <li>ホテルをチェックアウト（12:00まで）→ 荷物を預けて徒歩でアリアンツ・アレーナ</li>
+      <li>10:15 アレーナツアー（約2〜2.5時間）→ 12:45 ホテルで荷物回収 → 空港へ</li>
+      <li>18:00 ミュンヘン発 → 19:05 ベルリン BER 着 → FEX で市内へ</li></ul></div>
+    <div class="day"><div class="d">今日の出費</div><ul>
+      <li>アレーナツアー €25（予約済み想定）· FC バイエルン博物館 +€12</li><li>空港へ：ホテルの無料タクシー / MVV約€13</li><li>BER → 市内 ABC券 €5（D-Ticketなら不要）</li></ul></div>
+  </div>
+  <h2>タイムライン</h2>
+  <ul class="timeline">
+    <li><span class="t">08:30</span>朝食後に荷造り。<b>ツアーが12:45頃まで続くので、出発前にチェックアウト</b>して荷物をフロントに預ける（ノートの「ホテル12:00まで」はこのこと）</li>
+    <li><span class="t">09:35</span>ホテル発。U6 Fröttmaning 駅からアレーナまでは<b>エスプラナーデを歩いて約25分</b>。南正面（Haupteingang Süd）の回転ゲートを抜け「FC Bayern Museum / Arena Touren」の案内に従う</li>
+    <li><span class="t">10:00</span>集合場所 <b>Paulaner Fantreff Nord</b> にツアー開始15分前までに到着（案内に明記）。予約確認のQRコードをスマホに用意</li>
+    <li><span class="t">10:15</span><b>アレーナツアー</b>。所要120〜150分。ピッチサイド、選手ベンチ、ロッカールーム、記者会見室。写真は自由</li>
+    <li><span class="t">12:30</span>終了。FC バイエルン博物館（10–18時、€12、60〜90分）に寄る場合は空港到着が16:30を過ぎるので、寄るなら短めに。買い物は Megastore</li>
+    <li><span class="t">12:50</span>ホテルへ戻り荷物を受け取る。ノートに<b>「空港へ無料タクシー」「タクシー無料送迎あり」</b>とあるので、前日までにフロントで13:30発を予約しておく。Fröttmaning から空港は高速A9で約20分</li>
+    <li><span class="t">14:00</span>空港着。国内線なので出発の90分前で十分。ターミナルは航空会社で異なる（ルフトハンザなら T2）。Eチケットで確認</li>
+    <li><span class="t">18:00</span>ミュンヘン発 → <b>19:05 BER 着</b>。到着は T1。荷物受取後、地下の駅へ（表示「Bahnhof」）</li>
+    <li><span class="t">19:40</span><b>FEX または RE</b> でベルリン中央駅へ約23〜30分（4本/時）。切符は VBB の ABC 券 €5。D-Ticket は BER を含む ABC 全域で有効。S-Bahn（S9/S45）は45分かかるので急ぐなら FEX</li>
+    <li><span class="t">20:15</span>ベルリン中央駅着。宿泊先へ。夕食は中央駅内（Rewe・各種テイクアウトが22時以降も営業）で済ませてもよい</li>
+  </ul>
+  <div class="callout warn"><b>荷物の動線が今日の肝</b>。ホテル → アレーナ → ホテル → 空港の順になるので、チェックアウト時に「13:30にタクシーで空港へ、それまで荷物を預けたい」と伝えておく。ノートの無料タクシーが「空港→ホテル」の片道だけの場合は、Fröttmaning → 空港のタクシーは約€70〜90。</div>
+  <div class="two">
+    <div class="spot"><h3>アリアンツ・アレーナ <span class="sub">Allianz Arena · Werner-Heisenberg-Allee 25</span></h3>
+      <dl class="kv"><dt>ツアー</dt><dd>大人 €25。所要120〜150分。集合は Paulaner Fantreff Nord、開始15分前</dd>
+      <dt>博物館</dt><dd>毎日 10:00–18:00、最終入場17:15。€12。ツアーとの共通券あり</dd>
+      <dt>行き方</dt><dd>U6 Fröttmaning から徒歩約25分（エスプラナーデ経由）。ホテルからも同程度</dd>
+      <dt>注意</dt><dd>試合日はツアー中止・時間変更あり。9/16（水）はブンデスリーガの試合日ではないが、CL 週の可能性があるので前日に予約確認メールを再読</dd></dl></div>
+    <div class="spot"><h3>ベルリン BER → 市内 <span class="sub">Flughafen BER Terminal 1-2 駅</span></h3>
+      <dl class="kv"><dt>FEX</dt><dd>中央駅まで約23分。停車は Südkreuz、Potsdamer Platz、Hauptbahnhof のみ。2026年12月まで RE20 と合わせて4本/時</dd>
+      <dt>切符</dt><dd>VBB ABC 券 €5（券売機・BVG アプリ）。刻印を忘れずに。D-Ticket 保有なら追加なし</dd>
+      <dt>S-Bahn</dt><dd>S9（Ostkreuz・Alexanderplatz方面）・S45。市内東側に泊まるなら S9 が便利</dd>
+      <dt>タクシー</dt><dd>市中心まで約€60〜70、40分</dd></dl></div>
+  </div>
+  
+  <h2>乗り換えの詳細</h2>
+<div class="tblwrap"><table><tr><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td>ホテル → アレーナ集合場所</td><td>徒歩</td><td>約25分</td><td>U6 Fröttmaning 駅の東側からエスプラナーデ（広い歩道橋）をアレーナへ。南正面の回転ゲートを抜け「FC Bayern Museum / Arena Touren」の表示に従って北側へ回る。集合場所は <b>Paulaner Fantreff Nord</b></td></tr><tr><td>アレーナ → ホテル</td><td>徒歩</td><td>25分</td><td>来た道を戻る。荷物を受け取る</td></tr><tr><td>ホテル → 空港（本命）</td><td>ホテルの無料タクシー</td><td>約20分</td><td>高速 A9 で北へ。前日にフロントで「13:30、Flughafen Terminal ○」と予約。ターミナルは航空券で確認（ルフトハンザ・ANA 系は T2）</td></tr><tr><td>ホテル → 空港（公共交通）</td><td>U6 → S8</td><td>約1時間15分</td><td>Fröttmaning → U6 → Marienplatz（19分）→ 地下1階の S-Bahn へ上がる → <b>S8「Flughafen München 行き」</b>（東回り、38分）。S1 も空港行きだが西回りで遅い。空港駅は T1 と T2 の間の地下、T2 へは MAC（中央エリア）経由で徒歩5分</td></tr><tr><td>BER 到着 → 駅</td><td>徒歩</td><td>5〜8分</td><td>T1 到着ホール（Level E0）で荷物を受け取り、案内「Bahn / Train」に従って地下2階の駅「Flughafen BER – Terminal 1-2」へ</td></tr><tr><td>BER → ベルリン中央駅</td><td>FEX または RE</td><td>23〜30分</td><td>番線は駅の電光掲示板で確認（FEX/RE と S-Bahn は別ホーム）。FEX は Südkreuz → Potsdamer Platz → Hauptbahnhof のみ停車。S9 は45分かかるが Ostkreuz・Alexanderplatz 方面に泊まるなら乗り換えなしで便利</td></tr><tr><td>ベルリン中央駅 → 宿</td><td>S-Bahn / U5</td><td>—</td><td>中央駅は地下（Gl. 1–8）と高架（Gl. 11–16）。FEX は地下に着く。S-Bahn（S3/S5/S7/S9）は高架 Gl. 15/16、U5 は地下。宿の最寄り駅が決まったら追記</td></tr></table></div>
+  <div class="callout"><b>切符</b> BER〜市内は VBB の ABC 券 €5（券売機・BVG アプリ）。券売機の紙券は乗る前に刻印。以後ベルリン市内は AB 券で足りる。D-Ticket なら空港含めて全部有効。</div>
+
+  <div class="callout">
+    <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
+  </div>
+
+  
+  <p class="src">出典：<a href="https://allianz-arena.com/en/tours-museum">アリアンツ・アレーナ ツアー</a> · <a href="https://fcbayern.com/museum/de/tickets/museum-tour">FC バイエルン博物館</a> · <a href="https://ber.berlin-airport.de/de/news/reisehinweise-oeffentlicher-nahverkehr.html">BER 公共交通</a> · <a href="https://www.bvg.de/en/tourists/transportation-tariff-zones">BVG 料金ゾーン</a> · <a href="https://sbahn.berlin/en/tickets/all-tickets/weekly-monthly-annual-tickets/deutschlandticket-germany-ticket/">S-Bahn Berlin D-Ticket</a></p>
+</div>
+
+</body></html>

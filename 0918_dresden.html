@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ドレスデン日帰り</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
+  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html" class="cur">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="eyebrow">ドイツ旅行 2026</div>
+  <div class="hero"><div class="big">9/18<small>金曜</small></div><h1>ドレスデン日帰り</h1></div>
+  <p class="lead">ベルリンから列車で1時間40分。旧市街は徒歩で回れる範囲に集まっているので、朝イチで行けば夕方の便で余裕をもって戻れます。</p>
+
+  <div class="days">
+    <div class="day"><div class="d">流れ</div><ul>
+      <li>07:28 RJ でドレスデンへ（09:07着）。旧市街まで徒歩20分 / トラム</li>
+      <li>フラウエン教会 → 君主の行列 → レジデンツ宮殿（緑の丸天井）→ ツヴィンガー → ブリュールのテラス</li>
+      <li>17:35 IC+FEX（19:39着）または 18:53 RJ（20:29着）でベルリンへ</li></ul></div>
+    <div class="day"><div class="d">今日の出費</div><ul>
+      <li>列車 €39.99 + €19.99〜（Sparpreis）</li><li>歴史的緑の丸天井 €16（時間指定、要予約）· フラウエン教会ドーム €8 · ツヴィンガー €16</li><li>D-Ticket は使えない（長距離列車のみの区間）</li></ul></div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>行き</th><th>ベルリン中央駅 発</th><th>乗換</th><th>ドレスデン中央駅 着</th><th>料金</th></tr>
+    <tr><td class="mono"><b>本命</b></td><td class="mono"><b>07:28 RJ 171 · 3番線</b></td><td>直通 1h39</td><td class="mono"><b>09:07</b></td><td>€39.99〜</td></tr>
+    <tr><td class="mono">安い</td><td class="mono">08:22 FEX · 1番線</td><td>BER 08:45着 → 08:55 IC 2173（10分）</td><td class="mono">10:28</td><td>€19.99〜</td></tr>
+    <tr><td class="mono">遅め</td><td class="mono">09:28 RJ 173</td><td>直通</td><td class="mono">11:07</td><td>€53.99〜 · 混雑予想</td></tr>
+  </table></div>
+  <div class="tblwrap"><table>
+    <tr><th>帰り</th><th>ドレスデン中央駅 発</th><th>乗換</th><th>ベルリン中央駅 着</th><th>料金</th></tr>
+    <tr><td class="mono"><b>本命</b></td><td class="mono"><b>17:35 IC 2172</b></td><td>BER で FEX に乗換</td><td class="mono"><b>19:39</b></td><td>€19.99〜</td></tr>
+    <tr><td class="mono">直通</td><td class="mono">18:53 RJ 172</td><td>直通 1h36</td><td class="mono">20:29</td><td>€39.99〜</td></tr>
+    <tr><td class="mono">最安</td><td class="mono">20:33 RJ 250</td><td>直通</td><td class="mono">22:47</td><td>€14.99〜</td></tr>
+  </table></div>
+  <div class="callout">RJ はオーストリア鉄道の Railjet（DB のサイトで買える）。Sparpreis は列車指定なので早めに購入。ドレスデン中央駅は2026年11月末まで1/2・3/4番ホームのエレベーターが工事で停止中（DB 運行情報）。</div>
+  <h2>タイムライン</h2>
+  <ul class="timeline">
+    <li><span class="t">09:07</span>ドレスデン中央駅着。旧市街へは<b>プラーガー通りを北へ徒歩20分</b>、またはトラム 8/9/11 で Postplatz（€3.30）</li>
+    <li><span class="t">09:40</span><b>ノイマルクト → フラウエン教会</b>。内部は無料（月〜土 10–12時、13–18時が目安、行事で閉まる）。<b>ドーム登頂 €8</b>、月〜土 10–18時。爆撃後に再建された黒い旧石材と新しい石の違いを見る。60分</li>
+    <li><span class="t">10:45</span>徒歩3分、<b>君主の行列（Fürstenzug）</b>。マイセン磁器タイル2万5千枚の壁画、無料。ここから宮殿へ</li>
+    <li><span class="t">11:00</span><b>レジデンツ宮殿</b>。<b>歴史的緑の丸天井（€16）は時間指定チケット</b>で人数制限があるため、<b>事前にオンライン予約</b>（skd.museum）。宮殿の他の展示（新緑の丸天井、武器庫、トルコの間）は宮殿券 €18。金曜 10–17時（火曜休）。90分</li>
+    <li><span class="t">12:45</span>昼食。ノイマルクト〜ミュンツガッセ周辺。ザクセン料理か、ゼンパーオーパー前のカフェ</li>
+    <li><span class="t">13:45</span><b>ツヴィンガー宮殿</b>。中庭と回廊は無料。アルテ・マイスター絵画館（ラファエロの「システィーナの聖母」）は €16、10–17時。60〜90分</li>
+    <li><span class="t">15:30</span><b>ゼンパーオーパー</b>外観 → 劇場広場 → <b>ブリュールのテラス</b>（エルベ川沿い、無料）を東へ歩く。対岸のノイシュタットの眺め</li>
+    <li><span class="t">16:30</span>アウグストゥス橋を渡って対岸から旧市街のシルエットを撮る（定番アングル）。時間があればノイシュタットの Kunsthofpassage</li>
+    <li><span class="t">17:05</span>中央駅へ（トラムまたは徒歩20分）。<b>17:35 IC 2172</b> 発。乗り遅れたら 18:53 RJ</li>
+  </ul>
+  <div class="two">
+    <div class="spot"><h3>予約が必要なもの <span class="sub">当日だと入れない可能性</span></h3>
+      <dl class="kv"><dt>歴史的緑の丸天井</dt><dd>€16、時間指定。オンライン（shop.skd.museum）か電話。金曜は混む</dd>
+      <dt>列車</dt><dd>RJ・IC の Sparpreis は当日高くなる</dd>
+      <dt>フラウエン教会ドーム</dt><dd>当日券可。天候で閉鎖あり</dd></dl></div>
+    <div class="spot"><h3>回り方のコツ <span class="sub">Dresden Altstadt</span></h3>
+      <dl class="kv"><dt>距離感</dt><dd>フラウエン教会・宮殿・ツヴィンガー・オペラは全部徒歩5分圏。1日で十分</dd>
+      <dt>写真</dt><dd>各館内はフラッシュなしで可。緑の丸天井は<b>撮影禁止</b>、荷物はロッカーへ</dd>
+      <dt>交通</dt><dd>市内トラム1回券 €3.30。旧市街内は歩きで足りる</dd></dl></div>
+  </div>
+  
+  <h2>乗り換えの詳細</h2>
+  <p class="lead">ベルリン中央駅は<b>地下（Gl. 1–8）と高架（Gl. 11–16）の二層</b>。RJ・FEX・IC は地下から出ます。S-Bahn で来ると高架に着くので、地下まで下りるのに8〜10分見てください。</p>
+<div class="tblwrap"><table><tr><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td>07:10</td><td>Berlin Hbf</td><td>地下 <b>3番線</b> へ。RJ 171 は ÖBB の赤い車両。2等は指定席が多いので、席上の表示が空欄の席か、予約時に座席指定しておく（+€5前後）</td><td>—</td></tr><tr><td>07:28</td><td>Berlin Hbf 3番線</td><td>RJ 171 発。Dresden-Neustadt を経由して Dresden Hbf へ</td><td>1h39</td></tr><tr><td>09:07</td><td>Dresden Hbf <b>1番線</b>着</td><td>駅ビル正面（Wiener Platz）へ。2026年11月末までホーム1/2・3/4 のエレベーターが工事停止中なので階段・エスカレーターで</td><td>5分</td></tr><tr><td>09:15</td><td>Wiener Platz</td><td><b>徒歩</b>：Prager Straße（歩行者天国）を北へ直進 → Altmarkt → ノイマルクト、20分。<b>トラム</b>：停留所「Hauptbahnhof」から 8・9・11 で Postplatz（3駅、6分）、DVB アプリで1回券 €3.30</td><td>20分</td></tr><tr><td>17:05</td><td>ノイマルクト → 中央駅</td><td>来た道を戻る。トラムなら Postplatz か Altmarkt から 8・9・11「Hauptbahnhof 方面」</td><td>20分</td></tr><tr><td>17:35</td><td>Dresden Hbf</td><td>IC 2172 発（番線は当日表示）。BER 空港駅まで直通</td><td>—</td></tr><tr><td>19:1x</td><td>Flughafen BER</td><td>IC を降りて<b>同じ駅内で FEX に乗り換え</b>（番線は電光掲示板。DB の案内では乗換10分程度）。FEX は Hauptbahnhof 行き</td><td>10分</td></tr><tr><td>19:39</td><td>Berlin Hbf 地下</td><td>FEX 着。宿へ</td><td>—</td></tr></table></div>
+  <div class="callout warn">帰りに乗り換えを避けたいなら <b>18:53 RJ 172（直通、20:29 着、€39.99〜）</b>。IC+FEX より€20高いが、ドレスデンに1時間余分にいられる。</div>
+
+  <div class="callout">
+    <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
+  </div>
+
+  
+  <p class="src">出典：<a href="https://www.bahn.de/">DB 時刻表（2026/9/18 検索）</a> · <a href="https://shop.skd.museum/zeitticket-historisches-gruenes-gewoelbe.html">歴史的緑の丸天井 時間指定券</a> · <a href="https://www.schloesserland-sachsen.de/de/schloesser-burgen-gaerten/residenzschloss-dresden/oeffnungszeiten-und-eintrittspreise/">レジデンツ宮殿 料金</a> · <a href="https://shop.skd.museum/hausticket-zwinger.html">ツヴィンガー館券</a> · <a href="https://www.stadtrundfahrt.com/dresden/kuppelaufstieg-frauenkirche/">フラウエン教会ドーム</a></p>
+</div>
+
+</body></html>

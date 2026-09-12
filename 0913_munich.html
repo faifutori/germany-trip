@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ミュンヘン旧市街の夜</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
+  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html" class="cur">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="eyebrow">ドイツ旅行 2026</div>
+  <div class="hero"><div class="big">9/13<small>日曜 · 到着日</small></div><h1>ミュンヘン旧市街の夜</h1></div>
+  <p class="lead">関西からミュンヘン16:40着。ホテルに荷物を置いて旧市街へ出る夜のルートです。入場料・営業時間・写真の可否をまとめました。</p>
+
+  <div class="days">
+    <div class="day"><div class="d">流れ</div><ul>
+      <li>16:40 ミュンヘン空港着 → ホテル（Fröttmaning）→ U6 で旧市街へ 18:40</li>
+      <li>アザム教会（19:00閉）→ マリエン広場 → フラウエン教会 → 新市庁舎の塔で夕日</li>
+      <li>州立歌劇場（SPY×FAMILY）→ ホーフガルテン → 夕食 → 21:00 仕掛け時計の夜版 → U6 で帰る</li></ul></div>
+    <div class="day"><div class="d">今日の出費</div><ul>
+      <li>新市庁舎の塔 €7（要オンライン予約）</li><li>MVV 1日券（ゾーンM）約€9.20、または D-Ticket</li><li>それ以外は全部無料</li></ul></div>
+  </div>
+  <h2>ホテルから旧市街へ</h2>
+  <p class="lead">ホテルはアリアンツ・アレーナ最寄りの <b>U6 Fröttmaning（フレットマニング）駅</b>周辺。U6 は旧市街の主要駅を全部通るので、この旅で使う駅は下の4つだけ覚えれば足ります。</p>
+  <div class="mapbox">
+    <svg viewBox="0 0 900 300" role="img" aria-label="U6路線図">
+      <line x1="60" y1="150" x2="840" y2="150" stroke="var(--blue)" stroke-width="10" stroke-linecap="round"/>
+      <g font-family="Zen Kaku Gothic New,sans-serif">
+        <!-- Fröttmaning -->
+        <circle cx="80" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
+        <text x="80" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Fröttmaning</text>
+        <text x="80" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">ホテル · アリアンツ・アレーナ</text>
+        <text x="80" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">9/16 10:15 アレーナ見学</text>
+        <!-- dots for skipped stations -->
+        <g fill="var(--panel)" stroke="var(--blue)" stroke-width="3">
+          <circle cx="170" cy="150" r="5"/><circle cx="230" cy="150" r="5"/><circle cx="290" cy="150" r="5"/><circle cx="350" cy="150" r="5"/>
+        </g>
+        <text x="260" y="128" text-anchor="middle" font-size="11.5" fill="var(--ink2)">途中6駅（Kieferngarten〜Giselastraße）</text>
+        <!-- Universität -->
+        <circle cx="450" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
+        <text x="450" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Universität</text>
+        <text x="450" y="92" text-anchor="middle" font-size="12" fill="var(--brick)">LMUの噴水（ハガレン）</text>
+        <text x="450" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約15分</text>
+        <!-- Odeonsplatz -->
+        <circle cx="580" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
+        <text x="580" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Odeonsplatz</text>
+        <text x="580" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">ホーフガルテン · レジデンツ</text>
+        <text x="580" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約17分</text>
+        <!-- Marienplatz -->
+        <circle cx="710" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
+        <text x="710" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Marienplatz</text>
+        <text x="710" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">新市庁舎 · フラウエン教会 · 歌劇場</text>
+        <text x="710" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約19分</text>
+        <text x="710" y="208" text-anchor="middle" font-size="11.5" fill="var(--ink2)">S-Bahn乗換で中央駅へ1駅</text>
+        <!-- Sendlinger Tor -->
+        <circle cx="830" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
+        <text x="830" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Sendlinger Tor</text>
+        <text x="830" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">アザム教会</text>
+        <text x="830" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約21分</text>
+        <text x="60" y="255" font-size="12.5" fill="var(--ink2)">U6 は「Klinikum Großhadern 行き」に乗る（帰りは「Garching-Forschungszentrum 行き」）。10分間隔、夜は20分間隔。1日券（Tageskarte 市内ゾーンM）はホテル〜市内の往復で元が取れる。</text>
+        <text x="60" y="278" font-size="12.5" fill="var(--ink2)">9/15 朝は6:20にホテルを出て U6 → Marienplatz → S-Bahn 1駅で中央駅（07:12 のICEに乗る）。</text>
+      </g>
+    </svg>
+  </div>
+
+  <h2>旧市街 歩く順番</h2>
+  <p class="lead">道は単純化して直角に描いています。縦の通りが U6 の真上（Ludwigstraße → Theatinerstraße → Sendlinger Straße）、横の通りが歩行者天国のカウフィンガー通りとマクシミリアン通りです。</p>
+  <div class="mapbox">
+    <svg viewBox="0 0 900 620" role="img" aria-label="旧市街の模式地図">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--brick)"/></marker>
+      </defs>
+      <!-- streets -->
+      <g stroke="var(--line)" stroke-width="22" stroke-linecap="round" fill="none">
+        <path d="M450 60 V560"/>
+        <path d="M200 400 H800"/>
+        <path d="M330 330 H450"/>
+        <path d="M660 400 V330"/>
+      </g>
+      <g font-family="Zen Kaku Gothic New,sans-serif" font-size="11.5" fill="var(--ink2)">
+        <text x="462" y="150">Ludwigstraße</text>
+        <text x="462" y="300">Theatinerstraße</text>
+        <text x="462" y="505">Sendlinger Straße</text>
+        <text x="215" y="424">Kaufingerstraße（歩行者天国）</text>
+        <text x="690" y="424">Maximilianstraße</text>
+      </g>
+      <!-- park & palace -->
+      <rect x="500" y="170" width="220" height="90" rx="6" fill="var(--green-soft)" stroke="var(--green)" stroke-width="2"/>
+      <rect x="500" y="270" width="150" height="90" rx="4" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+      <!-- U6 stations -->
+      <g fill="var(--panel)" stroke="var(--blue)" stroke-width="4">
+        <circle cx="450" cy="90" r="9"/><circle cx="450" cy="240" r="9"/><circle cx="450" cy="400" r="9"/><circle cx="450" cy="560" r="9"/>
+      </g>
+      <g font-family="Zen Kaku Gothic New,sans-serif" font-size="12" fill="var(--blue)" font-weight="700">
+        <text x="430" y="94" text-anchor="end">U Universität</text>
+        <text x="430" y="244" text-anchor="end">U Odeonsplatz</text>
+        <text x="430" y="392" text-anchor="end">U Marienplatz</text>
+        <text x="430" y="564" text-anchor="end">U Sendlinger Tor</text>
+      </g>
+      <!-- 9/13 walking route -->
+      <path d="M450 520 V400 L330 400 V340 L330 400 H450 V400 L660 400 V330 L600 330 V270" fill="none" stroke="var(--brick)" stroke-width="4" marker-end="url(#arr)" opacity=".9"/>
+      <!-- 9/15 morning route -->
+      <path d="M600 270 V240 L450 240 V90" fill="none" stroke="var(--blue)" stroke-width="4" stroke-dasharray="8 7" marker-end="url(#arr)"/>
+      <!-- numbered spots -->
+      <g font-family="Zen Kaku Gothic New,sans-serif">
+        <!-- 1 Asamkirche -->
+        <circle cx="450" cy="520" r="16" fill="var(--brick)"/><text x="450" y="526" text-anchor="middle" font-size="15" fill="#fff" font-weight="700">1</text>
+        <text x="475" y="516" font-size="15" font-weight="700" fill="var(--ink)">アザム教会</text>
+        <text x="475" y="534" font-size="12" fill="var(--ink2)">日曜 9–19時 · 無料 · 駅から徒歩3分</text>
+        <!-- 2 Marienplatz -->
+        <circle cx="450" cy="400" r="16" fill="var(--brick)"/><text x="450" y="406" text-anchor="middle" font-size="15" fill="#fff" font-weight="700">2</text>
+        <text x="475" y="380" font-size="15" font-weight="700" fill="var(--ink)">マリエン広場 · 新市庁舎</text>
+        <text x="475" y="398" font-size="12" fill="var(--ink2)">塔 €7 予約制 最終19:40 · 仕掛け時計 21:00</text>
+        <!-- 3 Frauenkirche -->
+        <circle cx="330" cy="340" r="16" fill="var(--brick)"/><text x="330" y="346" text-anchor="middle" font-size="15" fill="#fff" font-weight="700">3</text>
+        <text x="330" y="312" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">フラウエン教会</text>
+        <text x="330" y="296" text-anchor="middle" font-size="12" fill="var(--ink2)">8–20時 · 無料 · 広場から徒歩3分</text>
+        <!-- 4 Staatsoper -->
+        <circle cx="660" cy="330" r="16" fill="var(--brick)"/><text x="660" y="336" text-anchor="middle" font-size="15" fill="#fff" font-weight="700">4</text>
+        <text x="685" y="326" font-size="15" font-weight="700" fill="var(--ink)">州立歌劇場</text>
+        <text x="685" y="344" font-size="12" fill="var(--brick)">SPY×FAMILY 3話 · 外観のみ</text>
+        <text x="685" y="360" font-size="12" fill="var(--ink2)">広場から徒歩5分</text>
+        <!-- Residenz label -->
+        <text x="575" y="305" text-anchor="middle" font-size="14" font-weight="700" fill="var(--gold)">レジデンツ</text>
+        <text x="575" y="323" text-anchor="middle" font-size="11.5" fill="var(--gold)">9/15 午後 · 9–18時 €15</text>
+        <text x="575" y="340" text-anchor="middle" font-size="11.5" fill="var(--gold)">最終入場 17:00</text>
+        <!-- 5 Hofgarten -->
+        <circle cx="600" cy="230" r="16" fill="var(--brick)"/><text x="600" y="236" text-anchor="middle" font-size="15" fill="#fff" font-weight="700">5</text>
+        <text x="625" y="205" font-size="15" font-weight="700" fill="var(--green)">ホーフガルテン</text>
+        <text x="625" y="223" font-size="12" fill="var(--green)">24時間 · 無料 · 夜も可</text>
+        <!-- Vier Jahreszeiten -->
+        <circle cx="780" cy="400" r="9" fill="var(--panel)" stroke="var(--brick)" stroke-width="3"/>
+        <text x="780" y="440" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">ホテル・フィア・ヤーレスツァイテン</text>
+        <text x="780" y="456" text-anchor="middle" font-size="11.5" fill="var(--brick)">ハガレン · 外観 · 歌劇場から徒歩2分</text>
+        <!-- LMU fountain -->
+        <circle cx="450" cy="90" r="16" fill="var(--blue)"/><text x="450" y="96" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">噴</text>
+        <text x="475" y="86" font-size="15" font-weight="700" fill="var(--ink)">LMU 大学前の噴水</text>
+        <text x="475" y="104" font-size="12" fill="var(--brick)">ハガレン「シャンバラ」 · 駅の真上</text>
+        <!-- Hbf -->
+        <circle cx="200" cy="400" r="9" fill="var(--panel)" stroke="var(--ink2)" stroke-width="3"/>
+        <text x="200" y="440" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">中央駅 Hbf</text>
+        <text x="200" y="456" text-anchor="middle" font-size="11.5" fill="var(--ink2)">徒歩15分 / S-Bahn 1駅</text>
+        <text x="200" y="472" text-anchor="middle" font-size="11.5" fill="var(--ink2)">9/15 07:12 発 / 15:05 着</text>
+        <text x="60" y="40" font-size="12" fill="var(--ink2)">北 ↑ · 徒歩の目安：2→3 3分、2→4 5分、4→5 5分、1→2 5分</text>
+      </g>
+    </svg>
+    <div class="legend"><span class="l1">9/13 夜：1 → 2 → 3 → 2 → 4 → 5（21:00 に 2 へ戻る）</span><span class="l2">9/15 午後：中央駅 → レジデンツ → ホーフガルテン → Odeonsplatz から U6 で1駅 → 噴水</span></div>
+  </div>
+
+  <div class="tblwrap">
+    <table>
+      <tr><th>順</th><th>スポット</th><th>次への移動</th><th>時間帯の縛り</th></tr>
+      <tr><td class="mono">1</td><td>アザム教会</td><td>北へ徒歩5分</td><td>日曜19:00閉。間に合わなければ9/15朝へ</td></tr>
+      <tr><td class="mono">2</td><td>マリエン広場・新市庁舎</td><td>北西へ徒歩3分</td><td>塔は予約枠、最終19:40</td></tr>
+      <tr><td class="mono">3</td><td>フラウエン教会</td><td>広場へ戻り東へ徒歩5分</td><td>20:00閉、ミサ中は不可</td></tr>
+      <tr><td class="mono">4</td><td>州立歌劇場（外観）</td><td>レジデンツ沿いに北へ徒歩5分</td><td>なし</td></tr>
+      <tr><td class="mono">5</td><td>ホーフガルテン</td><td>夕食後、Odeonsplatz から U6 で帰宅 or 広場へ</td><td>なし。21:00 の仕掛け時計は 2 へ</td></tr>
+    </table>
+  </div>
+
+  <h2>9/13（日）夜のタイムライン</h2>
+  <p class="lead">空港からホテル（Fröttmaning）まではタクシーで約25分。ホテルから U6 で Sendlinger Tor まで約21分です。18:15にホテルを出られればアザム教会に間に合います。無理なら 2 番から始め、アザム教会は9/15朝に。</p>
+  <ul class="timeline">
+    <li><span class="t">16:40</span>ミュンヘン空港着。入国・荷物で約45分。ホテルの無料タクシー送迎を使い、空港→Fröttmaning は高速A9で約25分</li>
+    <li><span class="t">17:50</span>ホテル着、チェックイン。荷物を置いて18:15までに出発。U6「Klinikum Großhadern 行き」</li>
+    <li><span class="t">18:40</span>U-Bahn「Sendlinger Tor」下車。ゼンドリンガー通りを北へ徒歩3分で<b>アザム教会</b>。日曜は19:00閉なので最初に。滞在15分</li>
+    <li><span class="t">18:55</span>そのまま北へ徒歩5分で<b>マリエン広場</b>。新市庁舎の正面を眺める</li>
+    <li><span class="t">19:05</span>徒歩3分で<b>フラウエン教会</b>。内部見学は20:00まで。日曜夜はミサの時間帯があり、その間は見学不可なので入口の掲示を確認</li>
+    <li><span class="t">19:20</span>マリエン広場に戻り<b>新市庁舎の塔</b>（要オンライン予約、€7、20分枠）。最終エレベーターは19:40。日没19:35前後を上から見られる</li>
+    <li><span class="t">19:50</span>徒歩5分で<b>マックス・ヨーゼフ広場</b>。バイエルン州立歌劇場のライトアップされた正面を撮影（SPY×FAMILY）。東隣のマクシミリアン通りを2分歩くとホテル・フィア・ヤーレスツァイテン（ハガレン）</li>
+    <li><span class="t">20:10</span>レジデンツの外周を北へ徒歩5分、<b>ホーフガルテン</b>。中央のディアナ神殿は夜も入れる</li>
+    <li><span class="t">20:25</span>夕食。オデオン広場〜マリエン広場の間に店が多い。ホーフブロイハウスは徒歩7分</li>
+    <li><span class="t">21:00</span>マリエン広場で仕掛け時計の<b>夜の短縮版</b>（ミュンヘン小僧が寝かしつけられる約1分の演出）。無料</li>
+    <li><span class="t">21:10</span>Marienplatz から U6「Garching-Forschungszentrum 行き」で Fröttmaning へ約19分。夜は20分間隔なので発車時刻をアプリで確認</li>
+  </ul>
+
+  <h2>各スポットの実用情報</h2>
+  <div class="spots">
+    <div class="spot">
+      <h3>アザム教会 <span class="sub">Asamkirche · Sendlinger Str. 32</span></h3>
+      <div><span class="tag free">入場無料</span> <span class="tag note">写真OK · フラッシュ不可</span></div>
+      <dl class="kv">
+        <dt>営業時間</dt><dd>4〜10月：月〜日 9:00–19:00、ただし<b>金曜のみ 13:00–19:00</b>。9/13（日）は9–19時</dd>
+        <dt>所要</dt><dd>15分。間口が狭く奥行きのある小さな教会で、内部は撮影自由だが礼拝中は控える</dd>
+        <dt>注意</dt><dd>ミサや結婚式で一時的に閉じることがある。入口が小さいので通りで見落としやすい</dd>
+      </dl>
+    </div>
+    <div class="spot">
+      <h3>フラウエン教会 <span class="sub">Frauenkirche · 大聖堂</span></h3>
+      <div><span class="tag free">内部無料</span> <span class="tag paid">南塔 €7.50</span> <span class="tag note">写真OK · フラッシュ不可</span></div>
+      <dl class="kv">
+        <dt>内部</dt><dd>毎日 8:00–20:00。ミサ中は観光での立ち入り不可</dd>
+        <dt>南塔</dt><dd>月〜土 10:00–17:00、日祝 11:30–17:00。最終登塔16:30。大人€7.50、学生€5.50。エレベーターあり。売店またはミュンヘン観光局サイトで購入</dd>
+        <dt>見どころ</dt><dd>入口近くの「悪魔の足跡」、2本の玉ねぎ型ドーム塔（高さ約99m）</dd>
+        <dt>備考</dt><dd>9/13夜は塔は閉まっているので内部のみ。塔に登るなら9/15午前に組み込む（レジデンツから徒歩8分）</dd>
+      </dl>
+    </div>
+    <div class="spot">
+      <h3>マリエン広場・新市庁舎 <span class="sub">Marienplatz · Neues Rathaus</span></h3>
+      <div><span class="tag free">広場・仕掛け時計 無料</span> <span class="tag paid">塔 €7</span></div>
+      <dl class="kv">
+        <dt>仕掛け時計</dt><dd>毎日 11:00 と 12:00、3〜10月は 17:00 も。約12〜15分。<b>21:00</b> に夜の短縮版</dd>
+        <dt>塔</dt><dd>毎日 10:00–20:00、最終19:40。オンラインで20分の時間枠を予約（€7）。館内の観光案内所でも購入可。展望台は高さ85m、エレベーター2基で階段なし</dd>
+        <dt>注意</dt><dd>リュックや大きな鞄は持ち込み不可（係員に預ける）。夕日狙いなら19:20枠を早めに予約</dd>
+        <dt>ハガレン</dt><dd>「シャンバラを征く者」の背景に新市庁舎が登場するとファンの間で語られる建物</dd>
+      </dl>
+    </div>
+    <div class="spot">
+      <h3>ミュンヘン・レジデンツ <span class="sub">Residenz München · 宮殿博物館</span></h3>
+      <div><span class="tag paid">博物館+宝物館 €15</span> <span class="tag note">写真OK · フラッシュ・三脚不可</span></div>
+      <dl class="kv">
+        <dt>営業時間</dt><dd>4/1〜10/15：毎日 9:00–18:00、<b>最終入場17:00</b>（それ以降は10–17時）</dd>
+        <dt>料金</dt><dd>レジデンツ博物館 €10 / 宝物館 €10 / キュヴィリエ劇場 €5。2館セット€15、3館セット€20。18歳以下無料</dd>
+        <dt>所要</dt><dd>博物館だけで1.5〜2時間（130室以上、順路が長い）。宝物館+30〜45分。日本語オーディオガイド無料</dd>
+        <dt>チケット</dt><dd>予約不要。オンライン購入なら窓口の列を飛ばせる。現金・カード可。ロッカーあり</dd>
+        <dt>見どころ</dt><dd>アンティクヴァリウム（長さ66mのルネサンス大広間）、祖先画廊、宝物館のバイエルン王冠</dd>
+        <dt>SPY×FAMILY</dt><dd>3話のオペラ座のモデルとされる州立歌劇場は正面入口と同じマックス・ヨーゼフ広場に面している</dd>
+      </dl>
+    </div>
+    <div class="spot">
+      <h3>ホーフガルテン <span class="sub">Hofgarten · 宮廷庭園</span></h3>
+      <div><span class="tag free">無料 · 24時間</span></div>
+      <dl class="kv">
+        <dt>営業時間</dt><dd>公園なので終日開放。夜間も入れる</dd>
+        <dt>見どころ</dt><dd>中央の12角形の東屋「ディアナ神殿」（1615年）。東端の州首相官邸（ガラスドーム）。北側アーケードの壁画</dd>
+        <dt>所要</dt><dd>15〜20分。レジデンツ見学の出口からそのまま抜けられる</dd>
+      </dl>
+    </div>
+    <div class="spot">
+      <h3>バイエルン州立歌劇場 <span class="sub">Nationaltheater · Max-Joseph-Platz</span></h3>
+      <div><span class="tag anime">SPY×FAMILY</span> <span class="tag free">外観無料</span></div>
+      <dl class="kv">
+        <dt>作中</dt><dd>アニメ第3話でフォージャー家がオペラを観た劇場。彫像の細部以外は外観がほぼそのまま描かれている</dd>
+        <dt>撮影</dt><dd>正面の柱廊とペディメントが正解のアングル。広場の中央、マックス・ヨーゼフ1世像の前から</dd>
+        <dt>内部</dt><dd>公演チケットまたはガイドツアー（不定期）でのみ。外観だけなら夜のライトアップが綺麗</dd>
+      </dl>
+    </div>
+  </div>
+
+  <h2>アニメ聖地のまとめ</h2>
+  <div class="two">
+    <div class="spot">
+      <h3>鋼の錬金術師 <span class="sub">劇場版「シャンバラを征く者」（2005）</span></h3>
+      <p>舞台は1923年のミュンヘン。制作側が正式にロケハンをしたわけではなく、監督が旅行中に撮った写真を参考にしたとされるため、「ここが確定」という公式情報はありません。ファンの間で「作中の背景に出てくる」と語られる実在の場所は次の3つです。</p>
+      <dl class="kv">
+        <dt>新市庁舎</dt><dd>マリエン広場。9/13夜の順路2</dd>
+        <dt>LMUの噴水</dt><dd>ルートヴィヒ・マクシミリアン大学正面の Geschwister-Scholl-Platz。U3/U6「Universität」駅の真上。9/15 レジデンツの後に</dd>
+        <dt>ホテル・フィア・ヤーレスツァイテン</dt><dd>Maximilianstraße 17。高級ホテルなので外観のみ。歌劇場から徒歩2分</dd>
+      </dl>
+      <p>作中の「ビアホール」は1923年のミュンヘン一揆の舞台ビュルガーブロイケラーがモデルですが、建物は現存しません。</p>
+    </div>
+    <div class="spot">
+      <h3>SPY×FAMILY <span class="sub">バーリント市のモデル</span></h3>
+      <p>公式にモデル都市は明言されていませんが、東国オスタニアの首都バーリントは<b>ベルリン</b>を下敷きにした描写が中心です。ミュンヘンで確実に「一致」しているのは第3話のオペラ座＝州立歌劇場の外観。</p>
+      <dl class="kv">
+        <dt>ミュンヘン</dt><dd>バイエルン州立歌劇場（マックス・ヨーゼフ広場）</dd>
+        <dt>ベルリン滞在中</dt><dd>9/16〜19のベルリンで、ブランデンブルク門周辺・旧東側の街並み・路面電車など作中の空気に近い場所が多い。ベルリン編は別途まとめます</dd>
+      </dl>
+    </div>
+  </div>
+
+  
+  
+  <h2>乗り換えの詳細</h2>
+  <p class="lead">ミュンヘンの駅は「U-Bahn は地下2階、S-Bahn は地下1階」が基本。同じ駅名でも階が違うので、案内板の <b>U</b>（青）と <b>S</b>（緑）のマークで階を確かめてください。</p>
+<div class="tblwrap"><table><tr><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td>空港 → ホテル</td><td>ホテルの無料タクシー</td><td>約25分</td><td>到着ロビーで運転手と合流（前日までにホテルへ便名を連絡）。公共交通なら S8 → Marienplatz（40分）→ U6 → Fröttmaning（19分）で計1時間10分、空港区間は別料金</td></tr><tr><td>ホテル → Fröttmaning 駅</td><td>徒歩</td><td>5分前後</td><td>ホテルの場所次第。駅は高架、改札はない。紙の切符は乗る前に<b>青い刻印機</b>に通す（アプリ購入なら不要）</td></tr><tr><td>Fröttmaning → Sendlinger Tor</td><td>U6「Klinikum Großhadern 行き」</td><td>21分</td><td>直通。10分間隔。Marienplatz の2つ先。Sendlinger Tor では「Sendlinger Straße」方面の出口へ</td></tr><tr><td>Sendlinger Tor → アザム教会</td><td>徒歩</td><td>3分</td><td>地上に出て Sendlinger Straße を北（マリエン広場方向）へ。左側、間口の狭い教会。番地32</td></tr><tr><td>アザム教会 → マリエン広場</td><td>徒歩</td><td>5分</td><td>そのまま Sendlinger Straße を北へ。Rindermarkt を過ぎると広場</td></tr><tr><td>マリエン広場 → フラウエン教会</td><td>徒歩</td><td>3分</td><td>広場の北西角から Kaufingerstraße に入り、すぐ右手（北）の Frauenplatz へ</td></tr><tr><td>歌劇場 → ホーフガルテン</td><td>徒歩</td><td>5分</td><td>レジデンツの東側（Residenzstraße ではなく Marstallplatz 側）を北へ。Hofgartenstraße から庭園へ入る</td></tr><tr><td>ホーフガルテン → ホテル</td><td>U6「Garching-Forschungszentrum 行き」</td><td>17分</td><td>Odeonsplatz 駅（庭園の西端）から。<b>同じホームに U3「Moosach 行き」も来るので行先表示を確認</b>。U3 に乗ると Münchner Freiheit で分かれてしまう。夜は20分間隔</td></tr><tr><td>マリエン広場 → ホテル</td><td>U6</td><td>19分</td><td>21:00 の仕掛け時計の後ならこちら。地下2階、Fröttmaning/Garching 方面ホーム</td></tr></table></div>
+  <div class="callout"><b>切符</b> MVV の1日券「Tageskarte M（ゾーンM）」は Fröttmaning・旧市街・大学・中央駅を全部含む。券売機か MVV/DB アプリで購入。空港はゾーン外なので、空港との往復だけ別途「Flughafen München」まで買う。D-Ticket を買った場合はミュンヘン市内全部が含まれる。</div>
+
+  <div class="callout">
+    <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
+  </div>
+
+  
+  <p class="src">出典：<a href="https://www.residenz-muenchen.de/deutsch/tourist/eintritt.htm">レジデンツ公式</a> · <a href="https://www.muenchner-dom.de/">ミュンヘン大聖堂公式</a> · <a href="https://www.muenchen.de/en/sights/attractions/new-town-hall">muenchen.de 新市庁舎</a> · <a href="https://www.muenchen.travel/pois/stadt-viertel/asamkirche">einfach München アザム教会</a> · <a href="https://www.schloesser.bayern.de/deutsch/garten/objekte/mu_hofg.htm">ホーフガルテン</a> · <a href="https://www.veltra.com/jp/yokka/article/anime-spyfamily-seichi-junrei-spot/">VELTRA SPY×FAMILY</a> · <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14320594539">ハガレン聖地（知恵袋）</a></p>
+</div>
+
+</body></html>
