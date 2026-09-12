@@ -84,50 +84,78 @@
   @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
 </style>
 <style>
-  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
-  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
-  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
   .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
   .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
   .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
 </style>
 </head><body>
 <div class="wrap">
-  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html" class="cur">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0914_neuschwanstein.html">← 9/14 ノイシュヴァンシュタイン城</a><span class="sp"></span><a href="0916_arena_berlin.html">9/16 アレーナからベルリンへ →</a></div>
   <div class="eyebrow">ドイツ旅行 2026</div>
   <div class="hero"><div class="big">9/15<small>火曜</small></div><h1>ネルトリンゲンとレジデンツ</h1></div>
-  <p class="lead">進撃の巨人の街ネルトリンゲンへ朝イチで行き、午後にミュンヘンへ戻ってレジデンツを見る日。列車はDBの時刻表（2026/9/15）で確認した実際の便です。</p>
-
+  <p class="lead">進撃の巨人の街ネルトリンゲンへ朝イチで行き、午後にミュンヘンへ戻ってレジデンツを見る日。列車は DB の時刻表（2026/9/15）で確認した実際の便です。</p>
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li><b>07:12 ICE 1622</b>（中央駅 20番線）→ Donauwörth 乗換 → 08:38 ネルトリンゲン着に決定。Sparpreis €19.99〜 を DB Navigator で購入</li><li>帰り 13:21 RB89 → Donauwörth → ICE 1185 → 15:05 中央駅（€35.99〜）</li><li>宿泊：AWA Hotel（中央駅前）</li></ul></div>
   <div class="days">
     <div class="day"><div class="d">流れ</div><ul>
-      <li>06:20 ホテル発 → 07:12 ICE（中央駅20番線）→ 08:38 ネルトリンゲン着</li>
+      <li>06:50 ホテル発（徒歩5分）→ 07:12 ICE 20番線 → 08:38 ネルトリンゲン着</li>
       <li>城壁一周 → 10:00 ダニエル塔 → 市街・博物館・昼食</li>
       <li>13:21 発 → 15:05 ミュンヘン着 → 15:30 レジデンツ → ホーフガルテン → LMUの噴水</li></ul></div>
     <div class="day"><div class="d">今日の出費</div><ul>
-      <li>列車 €19.99 + €35.99（Sparpreis、要事前購入）</li><li>ダニエル塔 €4.50 · 博物館 €5 · レジデンツ €15</li><li>MVV 1日券 約€9.20（D-Ticketなら不要）</li></ul></div>
+      <li>列車 €19.99 + €35.99（Sparpreis、要事前購入）</li><li>ダニエル塔 €4.50 · 博物館 €5 · レジデンツ €15</li><li>午後の U-Bahn 単券 2〜3回分（D-Ticket なら不要）</li></ul></div>
   </div>
-  <h2>列車と切符</h2>
+<h2>列車と切符</h2>
   <p class="lead">DBの時刻表（2026/9/15）で確認した実際の便です。ネルトリンゲンは10:00まで塔も博物館も開かないので、始発の05:28ではなく <b>07:12発のICE経由（08:38着）に決定</b>。城壁は終日開放なので、着いてすぐ壁を一周し、10:00ちょうどにダニエル塔へ。</p>
 
   <div class="tblwrap">
     <table>
-      <tr><th>便</th><th>ミュンヘン中央駅 発</th><th>乗換</th><th>ネルトリンゲン 着</th><th>料金の目安</th><th>評価</th></tr>
-      <tr><td class="mono">始発</td><td class="mono">05:28 RE80 · 17番線</td><td>Donauwörth 06:56着 → 07:10 RB89（14分）</td><td class="mono">07:41</td><td>€40.40（普通運賃）</td><td>ホテル発4:35。到着後2時間なにも開いていない</td></tr>
-      <tr><td class="mono"><b>決定</b></td><td class="mono"><b>07:12 ICE 1622 · 20番線</b></td><td>Donauwörth 08:06着 3番線 → 08:12 RB89 6番線（<b>6分</b>）</td><td class="mono"><b>08:38</b></td><td><b>€19.99〜</b>（Sparpreis、要事前購入）</td><td>最速1h26。乗換6分なので降りたらすぐ隣ホームへ</td></tr>
-      <tr><td class="mono">予備</td><td class="mono">07:36 RE80</td><td>Donauwörth → RE89</td><td class="mono">09:32</td><td>€40.40 / D-Ticket可</td><td>普通列車のみ。ICEに乗り遅れたらこれ</td></tr>
+      <tr class="hd"><th>便</th><th>ミュンヘン中央駅 発</th><th>乗換</th><th>ネルトリンゲン 着</th><th>料金の目安</th><th>評価</th></tr>
+      <tr><td class="mono" data-label="便">始発</td><td class="mono" data-label="ミュンヘン中央駅 発">05:28 RE80 · 17番線</td><td data-label="乗換">Donauwörth 06:56着 → 07:10 RB89（14分）</td><td class="mono" data-label="ネルトリンゲン 着">07:41</td><td data-label="料金の目安">€40.40（普通運賃）</td><td data-label="評価">ホテル発4:35。到着後2時間なにも開いていない</td></tr>
+      <tr><td class="mono" data-label="便"><b>決定</b></td><td class="mono" data-label="ミュンヘン中央駅 発"><b>07:12 ICE 1622 · 20番線</b></td><td data-label="乗換">Donauwörth 08:06着 3番線 → 08:12 RB89 6番線（<b>6分</b>）</td><td class="mono" data-label="ネルトリンゲン 着"><b>08:38</b></td><td data-label="料金の目安"><b>€19.99〜</b>（Sparpreis、要事前購入）</td><td data-label="評価">最速1h26。乗換6分なので降りたらすぐ隣ホームへ</td></tr>
+      <tr><td class="mono" data-label="便">予備</td><td class="mono" data-label="ミュンヘン中央駅 発">07:36 RE80</td><td data-label="乗換">Donauwörth → RE89</td><td class="mono" data-label="ネルトリンゲン 着">09:32</td><td data-label="料金の目安">€40.40 / D-Ticket可</td><td data-label="評価">普通列車のみ。ICEに乗り遅れたらこれ</td></tr>
     </table>
   </div>
   <div class="tblwrap">
     <table>
-      <tr><th>帰り</th><th>ネルトリンゲン 発</th><th>乗換</th><th>ミュンヘン 着</th><th>料金の目安</th><th>評価</th></tr>
-      <tr><td class="mono"><b>本命</b></td><td class="mono"><b>13:21 RB89 · 1番線</b></td><td>Donauwörth 13:51着 → 14:15 ICE 1185（24分）</td><td class="mono"><b>15:05</b></td><td>€35.99〜</td><td>レジデンツに15:30入場、2時間半見られる</td></tr>
-      <tr><td class="mono">安い</td><td class="mono">14:21 RE89 直通</td><td>なし</td><td class="mono">16:23</td><td>バイエルンチケット €34 / D-Ticket可</td><td>レジデンツ最終入場17:00に間に合うが滞在1時間で厳しい</td></tr>
-      <tr><td class="mono">遅め</td><td class="mono">15:21 RB89</td><td>Donauwörth → Augsburg → ICE</td><td class="mono">17:16</td><td>€24.99〜</td><td>レジデンツを諦める場合</td></tr>
+      <tr class="hd"><th>帰り</th><th>ネルトリンゲン 発</th><th>乗換</th><th>ミュンヘン 着</th><th>料金の目安</th><th>評価</th></tr>
+      <tr><td class="mono" data-label="帰り"><b>本命</b></td><td class="mono" data-label="ネルトリンゲン 発"><b>13:21 RB89 · 1番線</b></td><td data-label="乗換">Donauwörth 13:51着 → 14:15 ICE 1185（24分）</td><td class="mono" data-label="ミュンヘン 着"><b>15:05</b></td><td data-label="料金の目安">€35.99〜</td><td data-label="評価">レジデンツに15:30入場、2時間半見られる</td></tr>
+      <tr><td class="mono" data-label="帰り">安い</td><td class="mono" data-label="ネルトリンゲン 発">14:21 RE89 直通</td><td data-label="乗換">なし</td><td class="mono" data-label="ミュンヘン 着">16:23</td><td data-label="料金の目安">バイエルンチケット €34 / D-Ticket可</td><td data-label="評価">レジデンツ最終入場17:00に間に合うが滞在1時間で厳しい</td></tr>
+      <tr><td class="mono" data-label="帰り">遅め</td><td class="mono" data-label="ネルトリンゲン 発">15:21 RB89</td><td data-label="乗換">Donauwörth → Augsburg → ICE</td><td class="mono" data-label="ミュンヘン 着">17:16</td><td data-label="料金の目安">€24.99〜</td><td data-label="評価">レジデンツを諦める場合</td></tr>
     </table>
   </div>
   <div class="callout">
     <b>切符の買い方</b> 行きの07:12はICE区間があるのでバイエルンチケット・D-Ticketは使えず、Sparpreis（列車指定の割引運賃）を <b>今すぐDB Navigatorで購入</b>するのが最安（€19.99は残席で上がる）。帰り13:21も同じくSparpreis €35.99〜。合計約€56。<br>
-    朝の U6（ホテル→中央駅）は9:00前なので別途 MVV の1日券（ゾーンM、約€9.20）を買っておくと、夜のレジデンツ往復もそれで乗れる。<br>
+    ホテルは中央駅前なので朝の移動は徒歩5分、切符不要。午後の U-Bahn（中央駅 ⇄ オデオン広場 ⇄ 大学）用に MVV の単券か1日券（ゾーンM、約€9.20）。<br>
     <b>別案：ドイツチケット（D-Ticket）€63/月</b>。全国の普通列車と市内交通が9/30まで乗り放題で、時間制限なし。これなら行きは07:36のRE（09:32着）、帰りは14:21直通が追加料金なし。さらにミュンヘンU-Bahn全日程、9/16〜20のベルリン市内、9/23ハイデルベルク→ローテンブルク、9/24ローテンブルク→ミュンヘン空港の普通列車がすべて含まれるので、旅全体で見るとかなり得。DB Navigatorから海外カードで購入でき、<b>10/10までに解約</b>すれば10月分は請求されない。
   </div>
   <div class="callout warn">
@@ -135,7 +163,7 @@
   </div>
 
   <ul class="timeline blue">
-    <li><span class="t">06:20</span>ホテル発。U6 Fröttmaning → Odeonsplatz（17分）→ U4/U5 で2駅 Hauptbahnhof → 地上の大ホール20番線へ（詳細は下の「乗り換えの詳細」）</li>
+    <li><span class="t">06:50</span>ホテル発。中央駅南口から大ホールへ入り、<b>20番線</b>へ徒歩5分。駅の売店で朝食を買う</li>
     <li><span class="t">07:12</span><b>ICE 1622</b> 発。車内で朝食。Donauwörth 08:06着、3番線</li>
     <li><span class="t">08:12</span>6番線から <b>RB89</b>（Aalen方面）。Nördlingen 08:38着、1番線</li>
     <li><span class="t">08:45</span>駅を出て北へ徒歩5分、<b>ライムリンガー門（Reimlinger Tor）</b>から城壁へ。ここに街の地図板がある</li>
@@ -148,7 +176,7 @@
     <li><span class="t">13:21</span><b>RB89</b> 発 → Donauwörth 13:51着（6番線）→ 14:15 <b>ICE 1185</b>（5番線）→ ミュンヘン中央駅 15:05着（12番線）</li>
     <li><span class="t">15:25</span>U4/U5 で Odeonsplatz（2駅）。徒歩3分で<b>レジデンツ</b>。オンライン購入で列を回避し、15:30入場。最終入場17:00、閉館18:00</li>
     <li><span class="t">17:45</span>出口からホーフガルテンを抜けて Odeonsplatz。U6 で1駅、<b>Universität</b> の噴水（ハガレン）。15分</li>
-    <li><span class="t">18:30</span>夕食は大学周辺（シュヴァービング、学生街で安い）か旧市街へ戻る。U6 で Fröttmaning へ。翌9/16はアリアンツ・アレーナ10:15</li>
+    <li><span class="t">18:30</span>夕食は大学周辺（シュヴァービング、学生街で安い）か旧市街へ戻る。ホテルへは U3/U6 で Odeonsplatz → U4/U5 で中央駅（合計10分）、または徒歩25分。翌9/16はアリアンツ・アレーナ10:15</li>
   </ul>
 
   <h2>ネルトリンゲン 進撃の巨人 巡礼図</h2>
@@ -214,7 +242,7 @@
         <text x="40" y="40" font-size="12" fill="var(--ink2)">北 ↑ · 街の直径 約1km（隕石クレーターの縁に築かれた円形都市）</text>
       </g>
     </svg>
-  </div>
+  </div><div class="mobile-map"><b>ネルトリンゲン 巡礼の順路</b><div class="m">街の直径 約1km。隕石クレーターの縁に築かれた円形都市。</div><ol><li>駅を出て北へ徒歩5分 → <b>① ライムリンガー門</b>（鷲の紋章、街の地図板あり）から城壁に上がる</li><li>城壁の回廊を反時計回りに → <b>② ダイニンガー門</b>（東、堀が残る）</li><li>→ <b>③ レプシンガー門</b>（一番高い門塔＝「壁の門」の構図。城壁博物館 火〜日 10–16:30）</li><li>→ <b>④ バルディンガー門</b>（北西。内側にリースクレーター博物館 火〜日 10–16:30 €5）</li><li>→ <b>⑤ ベルガー門</b>（南西。壁と門が一番絵になる区間）→ ①へ戻る。全長2.7km、約1時間、無料</li><li>中心へ徒歩5分 → <b>ダニエル塔</b>（10:00開、€4.50、350段）。上から円形の街を俯瞰</li><li><b>マルクト広場</b>（観光案内所 Marktplatz 2、市庁舎の外階段）→ 昼食 → 駅へ徒歩10分</li></ol></div>
 
   <div class="two">
     <div class="spot">
@@ -241,18 +269,15 @@
 
   
   <div class="callout warn"><b>時間の縛り</b><br>07:12のICEは Donauwörth 乗換6分。ダニエル塔は10:00開。帰りは13:21に乗らないとレジデンツ（最終入場17:00）が短くなる。</div>
-  
   <h2>乗り換えの詳細</h2>
-  <p class="lead">この日は乗り換えが4回。一番タイトなのは行きのドナウヴェルト（6分）。番線は DB の時刻表（2026/9/15）の表示ですが、当日 DB Navigator で再確認してください。</p>
-<div class="tblwrap"><table><tr><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td>06:20</td><td>Fröttmaning</td><td>U6「Klinikum Großhadern 行き」に乗る。切符は前夜に買っておく（1日券 M か D-Ticket）</td><td>—</td></tr><tr><td>06:37</td><td>Odeonsplatz</td><td>U6 を降りて、<b>U4/U5（Westendstraße / Laimer Platz 行き）</b>に乗り換え。U6 ホームから U4/U5 ホームへは通路で2分。Hauptbahnhof まで2駅</td><td>4分</td></tr><tr><td>06:45</td><td>Hauptbahnhof（U-Bahn）</td><td>U4/U5 ホームから地上の大ホールへ上がる。案内「Fernverkehr / Gleis 11–26」。中央駅は改修工事中で通路が変わるので余裕10分</td><td>7分</td></tr><tr><td>06:55</td><td>München Hbf <b>20番線</b></td><td>ICE 1622 に乗車。2等は前寄りか後寄りかホームの編成表（Wagenstandsanzeiger）で確認。予約席なしなら空席に座る（座席上の表示が空欄なら自由）</td><td>—</td></tr><tr><td>08:06</td><td>Donauwörth <b>3番線</b>着</td><td>降りたらすぐ地下通路へ。<b>6番線</b>の RB89「Aalen Hbf 行き」へ。乗換6分。ICE では降車扉の近くに立って待つ</td><td>3分</td></tr><tr><td>08:12</td><td>Donauwörth 6番線</td><td>RB89 発。ワンマンの2両編成。Nördlingen は5つ目</td><td>—</td></tr><tr><td>08:38</td><td>Nördlingen 1番線着</td><td>駅舎側のホーム。駅を出て Bahnhofstraße を北へ。5分でライムリンガー門</td><td>5分</td></tr><tr><td>13:21</td><td>Nördlingen 1番線</td><td>RB89 発。同じホーム</td><td>—</td></tr><tr><td>13:51</td><td>Donauwörth <b>6番線</b>着</td><td><b>5番線</b>の ICE 1185 へ。5番線と6番線は同じ島式ホームの向かい側なので階段なし。24分余裕があるので売店で飲み物を</td><td>1分</td></tr><tr><td>14:15</td><td>Donauwörth 5番線</td><td>ICE 1185 発。München Hbf まで50分</td></tr><tr><td>15:05</td><td>München Hbf <b>12番線</b>着</td><td>大ホールを抜けて地下の U4/U5 ホームへ。「Odeonsplatz / Arabellapark 方面」へ2駅</td><td>7分</td></tr><tr><td>15:25</td><td>Odeonsplatz</td><td>出口「Residenz / Hofgarten」。地上に出ると正面がテアティーナー教会、右手がレジデンツ。入口は Max-Joseph-Platz 側（南へ3分）</td><td>3分</td></tr><tr><td>17:50</td><td>Odeonsplatz → Universität</td><td>U3 でも U6 でも可（この区間は共用）。北方向1駅</td><td>2分</td></tr><tr><td>18:30</td><td>Universität → Fröttmaning</td><td><b>U6 のみ</b>（U3 は Münchner Freiheit で別方向へ）。「Garching-Forschungszentrum 行き」</td><td>15分</td></tr></table></div>
-  <div class="callout warn"><b>別ルート（Odeonsplatz の乗り換えを避けたい場合）</b> Fröttmaning → U6 → Marienplatz（19分）→ S-Bahn 地下1階へ上がり、西行きの S-Bahn ならどれでも1駅で Hauptbahnhof（2分）→ 地下から大ホールへ。合計は同じくらい。</div>
-
+  <p class="lead">この日は乗り換えが3回。一番タイトなのは行きのドナウヴェルト（6分）。番線は DB の時刻表（2026/9/15）の表示ですが、当日 DB Navigator で再確認してください。</p>
+<div class="tblwrap"><table class=""><tr class="hd"><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td data-label="時刻" data-label="時刻">06:50</td><td data-label="駅" data-label="駅">AWA Hotel</td><td data-label="何をするか" data-label="何をするか">南口から中央駅の大ホールへ。案内「Gleis 11–26」。中央駅は改修工事中で通路が変わるので余裕を</td><td data-label="所要" data-label="所要">5分</td></tr><tr><td data-label="時刻" data-label="時刻">06:57</td><td data-label="駅" data-label="駅">München Hbf <b>20番線</b></td><td data-label="何をするか" data-label="何をするか">ICE 1622 に乗車。2等の号車位置はホームの編成表（Wagenstandsanzeiger）で確認。座席上の表示が空欄なら自由</td><td data-label="所要" data-label="所要">—</td></tr><tr><td data-label="時刻" data-label="時刻">08:06</td><td data-label="駅" data-label="駅">Donauwörth <b>3番線</b>着</td><td data-label="何をするか" data-label="何をするか">降りたらすぐ地下通路へ。<b>6番線</b>の RB89「Aalen Hbf 行き」へ。乗換6分。ICE では降車扉の近くに立って待つ</td><td data-label="所要" data-label="所要">3分</td></tr><tr><td data-label="時刻" data-label="時刻">08:12</td><td data-label="駅" data-label="駅">Donauwörth 6番線</td><td data-label="何をするか" data-label="何をするか">RB89 発。2両編成。Nördlingen は5つ目</td><td data-label="所要" data-label="所要">—</td></tr><tr><td data-label="時刻" data-label="時刻">08:38</td><td data-label="駅" data-label="駅">Nördlingen 1番線着</td><td data-label="何をするか" data-label="何をするか">駅舎側のホーム。駅を出て Bahnhofstraße を北へ5分でライムリンガー門</td><td data-label="所要" data-label="所要">5分</td></tr><tr><td data-label="時刻" data-label="時刻">13:21</td><td data-label="駅" data-label="駅">Nördlingen 1番線</td><td data-label="何をするか" data-label="何をするか">RB89 発。同じホーム</td><td data-label="所要" data-label="所要">—</td></tr><tr><td data-label="時刻" data-label="時刻">13:51</td><td data-label="駅" data-label="駅">Donauwörth <b>6番線</b>着</td><td data-label="何をするか" data-label="何をするか"><b>5番線</b>の ICE 1185 へ。5番線と6番線は同じ島式ホームの向かい側、階段なし。24分余裕</td><td data-label="所要" data-label="所要">1分</td></tr><tr><td data-label="時刻" data-label="時刻">14:15</td><td data-label="駅" data-label="駅">Donauwörth 5番線</td><td data-label="何をするか" data-label="何をするか">ICE 1185 発。München Hbf まで50分</td><td data-label="所要" data-label="所要">—</td></tr><tr><td data-label="時刻" data-label="時刻">15:05</td><td data-label="駅" data-label="駅">München Hbf <b>12番線</b>着</td><td data-label="何をするか" data-label="何をするか">地下の U4/U5 ホームへ。「Odeonsplatz / Arabellapark 方面」へ2駅。徒歩なら大ホールから20分</td><td data-label="所要" data-label="所要">7分</td></tr><tr><td data-label="時刻" data-label="時刻">15:25</td><td data-label="駅" data-label="駅">Odeonsplatz</td><td data-label="何をするか" data-label="何をするか">出口「Residenz / Hofgarten」。地上に出ると正面がテアティーナー教会、右手がレジデンツ。入口は Max-Joseph-Platz 側（南へ3分）</td><td data-label="所要" data-label="所要">3分</td></tr><tr><td data-label="時刻" data-label="時刻">17:50</td><td data-label="駅" data-label="駅">Odeonsplatz → Universität</td><td data-label="何をするか" data-label="何をするか">U3 でも U6 でも可（この区間は共用）。北方向1駅</td><td data-label="所要" data-label="所要">2分</td></tr><tr><td data-label="時刻" data-label="時刻">18:30〜</td><td data-label="駅" data-label="駅">Universität → 中央駅</td><td data-label="何をするか" data-label="何をするか">U3/U6 で Odeonsplatz に戻り、U4/U5「Westendstraße / Laimer Platz 行き」で2駅。または徒歩25分</td><td data-label="所要" data-label="所要">10分</td></tr></table></div>
   <div class="callout">
     <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
   </div>
 
   
-  <p class="src">出典：<a href="https://www.bahn.de/">DB 時刻表（2026/9/15 検索）</a> · <a href="https://www.donau-ries-aktuell.de/buergerservice/oeffnungszeiten-turm-daniel-im-advent-noerdlingen-88553">ダニエル塔料金</a> · <a href="https://www.rieskrater-museum.de/oeffnungszeiten-tickets/?lang=en">リースクレーター博物館</a> · <a href="https://www.noerdlingen.de/kultur-und-freizeit/museen/stadtmauermuseum/poi.html">城壁博物館</a> · <a href="https://comic-addict.com/editorial/jp/aot-sp/">ComicAddict 進撃の巨人×ネルトリンゲン</a> · <a href="https://www.residenz-muenchen.de/deutsch/tourist/eintritt.htm">レジデンツ公式</a> · <a href="https://www.bahn.de/angebot/regio/laender-tickets/bayern-ticket">バイエルンチケット</a> · <a href="https://www.finanztip.de/deutschlandticket/">ドイツチケット</a></p>
+  <p class="src">出典：<a href="https://www.bahn.de/">DB 時刻表（2026/9/15 検索）</a> · <a href="https://www.donau-ries-aktuell.de/buergerservice/oeffnungszeiten-turm-daniel-im-advent-noerdlingen-88553">ダニエル塔料金</a> · <a href="https://www.rieskrater-museum.de/oeffnungszeiten-tickets/?lang=en">リースクレーター博物館</a> · <a href="https://www.noerdlingen.de/kultur-und-freizeit/museen/stadtmauermuseum/poi.html">城壁博物館</a> · <a href="https://comic-addict.com/editorial/jp/aot-sp/">ComicAddict 進撃の巨人×ネルトリンゲン</a> · <a href="https://www.residenz-muenchen.de/deutsch/tourist/eintritt.htm">レジデンツ公式</a> · <a href="https://www.finanztip.de/deutschlandticket/">ドイツチケット</a></p>
 </div>
 
 </body></html>

@@ -84,21 +84,48 @@
   @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
 </style>
 <style>
-  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
-  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
-  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
   .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
   .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
   .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
 </style>
 </head><body>
 <div class="wrap">
-  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html" class="cur">9/20 シュヴェリーン</a></div>
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0919_berlin_paul.html">← 9/19 パウルのお母さんと</a><span class="sp"></span><a href="0921_koeln_heidelberg.html">9/21 ケルン経由でハイデルベルクへ →</a></div>
   <div class="eyebrow">ドイツ旅行 2026</div>
   <div class="hero"><div class="big">9/20<small>日曜</small></div><h1>シュヴェリーン城</h1></div>
   <p class="lead">ベルリンから直通の普通列車で2時間40分。ホテルのチェックイン予定（13:00〜14:00）に合わせた便と、城の回り方です。</p>
-
-  <div class="days">
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>ホテル・ニーダーレンディッシャーホフ（済、Booking.com）：トリプル €194（¥38,326）、現地払い・セゾンカードのみ、9/20 14:00 までキャンセル無料、到着予定 13:00〜14:00 とメッセージ済み</li><li>10:25 RE8 直通（ベルリン中央駅 8番線）→ 13:07 着。D-Ticket 可</li><li>翌 9/21 06:59 ICE 1521 でケルンへ（別ページ）</li></ul></div><div class="days">
     <div class="day"><div class="d">流れ</div><ul>
       <li>10:25 RE8 直通（8番線）でシュヴェリーンへ 13:07着</li>
       <li>ホテル・ニーダーレンディッシャーホフにチェックイン（13:00〜14:00 到着予定と伝えてある）</li>
@@ -107,11 +134,11 @@
       <li>列車 €30（普通運賃）· D-Ticket なら追加なし</li><li>シュヴェリーン城博物館 €13（音声ガイド無料）</li><li>ホテル €194（現地払い・セゾンカードのみ）</li></ul></div>
   </div>
   <div class="tblwrap"><table>
-    <tr><th>便</th><th>ベルリン中央駅 発</th><th>乗換</th><th>シュヴェリーン中央駅 着</th><th>料金</th><th>評価</th></tr>
-    <tr><td class="mono"><b>本命</b></td><td class="mono"><b>10:25 RE8 · 8番線</b></td><td>直通 2h42</td><td class="mono"><b>13:07</b></td><td>€30 / <b>D-Ticket可</b></td><td>ホテル到着予定13:00〜14:00にぴったり</td></tr>
-    <tr><td class="mono">速い</td><td class="mono">10:09 ICE 804 · 8番線</td><td>Ludwigslust 11:16着 → 11:29 RE8（同一ホーム）</td><td class="mono">12:00</td><td>€49.99〜</td><td>1時間早く着く</td></tr>
-    <tr><td class="mono">早朝</td><td class="mono">08:46 RE5</td><td>Güstrow → Bützow → ICE（乗換2回）</td><td class="mono">11:54</td><td>€40.99〜</td><td>乗換が多い。おすすめしない</td></tr>
-    <tr><td class="mono">遅め</td><td class="mono">12:08 ICE 802</td><td>Ludwigslust → RE8</td><td class="mono">14:00</td><td>€53.99〜</td><td>チェックイン予定を過ぎる</td></tr>
+    <tr class="hd"><th>便</th><th>ベルリン中央駅 発</th><th>乗換</th><th>シュヴェリーン中央駅 着</th><th>料金</th><th>評価</th></tr>
+    <tr><td class="mono" data-label="便"><b>本命</b></td><td class="mono" data-label="ベルリン中央駅 発"><b>10:25 RE8 · 8番線</b></td><td data-label="乗換">直通 2h42</td><td class="mono" data-label="シュヴェリーン中央駅 着"><b>13:07</b></td><td data-label="料金">€30 / <b>D-Ticket可</b></td><td data-label="評価">ホテル到着予定13:00〜14:00にぴったり</td></tr>
+    <tr><td class="mono" data-label="便">速い</td><td class="mono" data-label="ベルリン中央駅 発">10:09 ICE 804 · 8番線</td><td data-label="乗換">Ludwigslust 11:16着 → 11:29 RE8（同一ホーム）</td><td class="mono" data-label="シュヴェリーン中央駅 着">12:00</td><td data-label="料金">€49.99〜</td><td data-label="評価">1時間早く着く</td></tr>
+    <tr><td class="mono" data-label="便">早朝</td><td class="mono" data-label="ベルリン中央駅 発">08:46 RE5</td><td data-label="乗換">Güstrow → Bützow → ICE（乗換2回）</td><td class="mono" data-label="シュヴェリーン中央駅 着">11:54</td><td data-label="料金">€40.99〜</td><td data-label="評価">乗換が多い。おすすめしない</td></tr>
+    <tr><td class="mono" data-label="便">遅め</td><td class="mono" data-label="ベルリン中央駅 発">12:08 ICE 802</td><td data-label="乗換">Ludwigslust → RE8</td><td class="mono" data-label="シュヴェリーン中央駅 着">14:00</td><td data-label="料金">€53.99〜</td><td data-label="評価">チェックイン予定を過ぎる</td></tr>
   </table></div>
   <div class="callout">日曜なので D-Ticket・普通列車の時間制限はなし。RE8 は Wismar 行き、Nauen・Wittenberge・Ludwigslust 経由。ノートの翌 9/21 は「シュヴェリーン → ケルン 5h → ハイデルベルク 2h」なので、この日のうちにケルン行きの座席（ICE、Sparpreis）を押さえておく。</div>
   <h2>タイムライン</h2>
@@ -138,9 +165,10 @@
   </div>
   
   <h2>乗り換えの詳細</h2>
-<div class="tblwrap"><table><tr><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td>10:05</td><td>Berlin Hbf</td><td>地下 <b>8番線</b>へ。RE8「Wismar 行き」は2階建ての普通列車、全席自由。日曜午前は空いているが荷物があるので早めに</td><td>—</td></tr><tr><td>10:25</td><td>Berlin Hbf 8番線</td><td>RE8 発。Nauen → Wittenberge → Ludwigslust → Schwerin。21駅停車、2時間42分。車内販売なし、飲み物は駅で</td><td>—</td></tr><tr><td>13:07</td><td>Schwerin Hbf <b>2番線</b>着</td><td>地下道で駅舎へ。駅前広場（Grunthalplatz）に出る</td><td>3分</td></tr><tr><td>13:10</td><td>駅前 → ホテル</td><td>駅前広場から北東へ。Wismarsche Straße を渡って Alexandrinenstraße へ。<b>Hotel Niederländischer Hof（12–13番地）</b>はプファッフェン池（Pfaffenteich）の北西角</td><td>3分</td></tr><tr><td>13:45</td><td>ホテル → 城</td><td>Alexandrinenstraße を南へ → プファッフェン池の西岸（Arsenalstraße）→ 池の南端で Mecklenburgstraße へ → 南へ直進 → Schlossstraße → 橋を渡って城</td><td>17分</td></tr><tr><td>18:00</td><td>城 → 旧市街（夕食）</td><td>Schlossstraße を戻って Markt（マルクト広場）。大聖堂の塔が目印</td><td>10分</td></tr><tr><td>翌 9/21 朝</td><td>Schwerin Hbf</td><td>ノートは「シュヴェリーン → ケルン 5h → ハイデルベルク 2h」。Hamburg Hbf 乗換の ICE が基本（Schwerin → Hamburg RE/IC 1時間、Hamburg → Köln ICE 4時間、Köln → Heidelberg ICE 2時間）。<b>この日のうちに DB Navigator で予約</b>。ホテルから駅3分なので朝食後でも間に合う</td><td>—</td></tr></table></div>
+<div class="tblwrap"><table><tr class="hd"><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td data-label="時刻">10:05</td><td data-label="駅">Berlin Hbf</td><td data-label="何をするか">地下 <b>8番線</b>へ。RE8「Wismar 行き」は2階建ての普通列車、全席自由。日曜午前は空いているが荷物があるので早めに</td><td data-label="所要">—</td></tr><tr><td data-label="時刻">10:25</td><td data-label="駅">Berlin Hbf 8番線</td><td data-label="何をするか">RE8 発。Nauen → Wittenberge → Ludwigslust → Schwerin。21駅停車、2時間42分。車内販売なし、飲み物は駅で</td><td data-label="所要">—</td></tr><tr><td data-label="時刻">13:07</td><td data-label="駅">Schwerin Hbf <b>2番線</b>着</td><td data-label="何をするか">地下道で駅舎へ。駅前広場（Grunthalplatz）に出る</td><td data-label="所要">3分</td></tr><tr><td data-label="時刻">13:10</td><td data-label="駅">駅前 → ホテル</td><td data-label="何をするか">駅前広場から北東へ。Wismarsche Straße を渡って Alexandrinenstraße へ。<b>Hotel Niederländischer Hof（12–13番地）</b>はプファッフェン池（Pfaffenteich）の北西角</td><td data-label="所要">3分</td></tr><tr><td data-label="時刻">13:45</td><td data-label="駅">ホテル → 城</td><td data-label="何をするか">Alexandrinenstraße を南へ → プファッフェン池の西岸（Arsenalstraße）→ 池の南端で Mecklenburgstraße へ → 南へ直進 → Schlossstraße → 橋を渡って城</td><td data-label="所要">17分</td></tr><tr><td data-label="時刻">18:00</td><td data-label="駅">城 → 旧市街（夕食）</td><td data-label="何をするか">Schlossstraße を戻って Markt（マルクト広場）。大聖堂の塔が目印</td><td data-label="所要">10分</td></tr><tr><td data-label="時刻">翌 9/21 朝</td><td data-label="駅">Schwerin Hbf</td><td data-label="何をするか">ノートは「シュヴェリーン → ケルン 5h → ハイデルベルク 2h」。Hamburg Hbf 乗換の ICE が基本（Schwerin → Hamburg RE/IC 1時間、Hamburg → Köln ICE 4時間、Köln → Heidelberg ICE 2時間）。<b>この日のうちに DB Navigator で予約</b>。ホテルから駅3分なので朝食後でも間に合う</td><td data-label="所要">—</td></tr></table></div>
   <div class="callout">シュヴェリーンは旧市街が小さく、駅・ホテル・城・大聖堂が徒歩20分圏に収まる。市内交通は使わなくてよい。</div>
 
+  
   <div class="callout">
     <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
   </div>

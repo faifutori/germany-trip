@@ -84,65 +84,82 @@
   @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
 </style>
 <style>
-  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
-  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
-  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
   .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
   .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
   .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
 </style>
 </head><body>
 <div class="wrap">
-  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html" class="cur">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0915_noerdlingen.html">← 9/15 ネルトリンゲンとレジデンツ</a><span class="sp"></span><a href="0917_berlin.html">9/17 ベルリン中心部 →</a></div>
   <div class="eyebrow">ドイツ旅行 2026</div>
   <div class="hero"><div class="big">9/16<small>水曜 · 移動日</small></div><h1>アレーナからベルリンへ</h1></div>
-  <p class="lead">午前にアリアンツ・アレーナのツアー、夕方の便でベルリンへ。ホテル・アレーナ・空港の荷物の動線を中心にまとめました。</p>
-
+  <p class="lead">午前にアリアンツ・アレーナのツアー、夕方の便でベルリンへ。ホテル（中央駅前）・アレーナ・空港の荷物の動線を中心にまとめました。</p>
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>アリアンツ・アレーナ ツアー 10:15（済、残席あり）。集合は Paulaner Fantreff Nord、15分前</li><li>飛行機（済）ミュンヘン 18:00 → ベルリン 19:05（7/20 チェック済み）。12:00 からオンラインチェックイン可</li><li>AWA Hotel チェックアウト 12:00 まで。ノート：空港へ無料タクシー送迎あり（要確認）</li></ul></div>
   <div class="days">
     <div class="day"><div class="d">流れ</div><ul>
-      <li>ホテルをチェックアウト（12:00まで）→ 荷物を預けて徒歩でアリアンツ・アレーナ</li>
-      <li>10:15 アレーナツアー（約2〜2.5時間）→ 12:45 ホテルで荷物回収 → 空港へ</li>
+      <li>チェックアウトして荷物を預ける → U-Bahn で Fröttmaning → 徒歩でアレーナ</li>
+      <li>10:15 アレーナツアー（約2〜2.5時間）→ 13:30 ホテルで荷物回収 → 空港へ</li>
       <li>18:00 ミュンヘン発 → 19:05 ベルリン BER 着 → FEX で市内へ</li></ul></div>
     <div class="day"><div class="d">今日の出費</div><ul>
-      <li>アレーナツアー €25（予約済み想定）· FC バイエルン博物館 +€12</li><li>空港へ：ホテルの無料タクシー / MVV約€13</li><li>BER → 市内 ABC券 €5（D-Ticketなら不要）</li></ul></div>
+      <li>アレーナツアー €25（予約済み）· FC バイエルン博物館 +€12</li><li>U-Bahn 往復 + 空港 S-Bahn：MVV Airport-City-Day-Ticket 約€16 が便利（D-Ticket なら不要）</li><li>BER → 市内 ABC 券 €5</li></ul></div>
   </div>
   <h2>タイムライン</h2>
   <ul class="timeline">
-    <li><span class="t">08:30</span>朝食後に荷造り。<b>ツアーが12:45頃まで続くので、出発前にチェックアウト</b>して荷物をフロントに預ける（ノートの「ホテル12:00まで」はこのこと）</li>
-    <li><span class="t">09:35</span>ホテル発。U6 Fröttmaning 駅からアレーナまでは<b>エスプラナーデを歩いて約25分</b>。南正面（Haupteingang Süd）の回転ゲートを抜け「FC Bayern Museum / Arena Touren」の案内に従う</li>
-    <li><span class="t">10:00</span>集合場所 <b>Paulaner Fantreff Nord</b> にツアー開始15分前までに到着（案内に明記）。予約確認のQRコードをスマホに用意</li>
-    <li><span class="t">10:15</span><b>アレーナツアー</b>。所要120〜150分。ピッチサイド、選手ベンチ、ロッカールーム、記者会見室。写真は自由</li>
-    <li><span class="t">12:30</span>終了。FC バイエルン博物館（10–18時、€12、60〜90分）に寄る場合は空港到着が16:30を過ぎるので、寄るなら短めに。買い物は Megastore</li>
-    <li><span class="t">12:50</span>ホテルへ戻り荷物を受け取る。ノートに<b>「空港へ無料タクシー」「タクシー無料送迎あり」</b>とあるので、前日までにフロントで13:30発を予約しておく。Fröttmaning から空港は高速A9で約20分</li>
-    <li><span class="t">14:00</span>空港着。国内線なので出発の90分前で十分。ターミナルは航空会社で異なる（ルフトハンザなら T2）。Eチケットで確認</li>
-    <li><span class="t">18:00</span>ミュンヘン発 → <b>19:05 BER 着</b>。到着は T1。荷物受取後、地下の駅へ（表示「Bahnhof」）</li>
-    <li><span class="t">19:40</span><b>FEX または RE</b> でベルリン中央駅へ約23〜30分（4本/時）。切符は VBB の ABC 券 €5。D-Ticket は BER を含む ABC 全域で有効。S-Bahn（S9/S45）は45分かかるので急ぐなら FEX</li>
-    <li><span class="t">20:15</span>ベルリン中央駅着。宿泊先へ。夕食は中央駅内（Rewe・各種テイクアウトが22時以降も営業）で済ませてもよい</li>
+    <li><span class="t">08:30</span>朝食後に荷造り。<b>ツアーが12:45頃まで続くので、出発前にチェックアウト</b>して荷物をフロントに預ける</li>
+    <li><span class="t">09:05</span>ホテル発。中央駅の地下から <b>U4/U5</b> で Odeonsplatz（2駅）→ <b>U6「Garching-Forschungszentrum 行き」</b>で Fröttmaning（約18分）。合計約30分</li>
+    <li><span class="t">09:35</span>Fröttmaning 着。エスプラナーデ（広い歩道橋）を歩いてアレーナ南正面へ、回転ゲートを抜けて「FC Bayern Museum / Arena Touren」の案内で北側へ。<b>約25分</b></li>
+    <li><span class="t">10:00</span>集合場所 <b>Paulaner Fantreff Nord</b>。予約のQRコードを用意</li>
+    <li><span class="t">10:15</span><b>アレーナツアー</b>。120〜150分。ピッチサイド、ベンチ、ロッカールーム、記者会見室。写真自由</li>
+    <li><span class="t">12:30</span>終了。FC バイエルン博物館（€12、60〜90分）に寄ると空港到着が16時を過ぎるので、寄るなら30分だけ。買い物は Megastore</li>
+    <li><span class="t">12:50</span>Fröttmaning から U6 → Odeonsplatz → U4/U5 → 中央駅。ホテルで荷物を受け取る</li>
+    <li><span class="t">13:45</span>ホテル → 空港。<b>ノートの無料タクシー</b>が使えるなら前日にフロントで 13:45 発を予約（約35分）。なければ中央駅地下から <b>S8「Flughafen München 行き」</b>で40分（S1 も可）</li>
+    <li><span class="t">14:30</span>空港着。国内線は90分前で十分。ターミナルは航空会社で異なる（ルフトハンザなら T2）。Eチケットで確認</li>
+    <li><span class="t">18:00</span>ミュンヘン発 → <b>19:05 BER 着</b>。到着は T1。荷物受取後、案内「Bahn / Train」で地下2階の駅へ</li>
+    <li><span class="t">19:40</span><b>FEX または RE</b> でベルリン中央駅へ23〜30分（4本/時）。切符は VBB の ABC 券 €5（D-Ticket は BER を含む ABC 全域で有効）</li>
+    <li><span class="t">20:15</span>ベルリン中央駅着。宿へ。夕食は中央駅内でも済ませられる（22時以降も営業）</li>
   </ul>
-  <div class="callout warn"><b>荷物の動線が今日の肝</b>。ホテル → アレーナ → ホテル → 空港の順になるので、チェックアウト時に「13:30にタクシーで空港へ、それまで荷物を預けたい」と伝えておく。ノートの無料タクシーが「空港→ホテル」の片道だけの場合は、Fröttmaning → 空港のタクシーは約€70〜90。</div>
-  <div class="two">
-    <div class="spot"><h3>アリアンツ・アレーナ <span class="sub">Allianz Arena · Werner-Heisenberg-Allee 25</span></h3>
-      <dl class="kv"><dt>ツアー</dt><dd>大人 €25。所要120〜150分。集合は Paulaner Fantreff Nord、開始15分前</dd>
-      <dt>博物館</dt><dd>毎日 10:00–18:00、最終入場17:15。€12。ツアーとの共通券あり</dd>
-      <dt>行き方</dt><dd>U6 Fröttmaning から徒歩約25分（エスプラナーデ経由）。ホテルからも同程度</dd>
-      <dt>注意</dt><dd>試合日はツアー中止・時間変更あり。9/16（水）はブンデスリーガの試合日ではないが、CL 週の可能性があるので前日に予約確認メールを再読</dd></dl></div>
-    <div class="spot"><h3>ベルリン BER → 市内 <span class="sub">Flughafen BER Terminal 1-2 駅</span></h3>
-      <dl class="kv"><dt>FEX</dt><dd>中央駅まで約23分。停車は Südkreuz、Potsdamer Platz、Hauptbahnhof のみ。2026年12月まで RE20 と合わせて4本/時</dd>
-      <dt>切符</dt><dd>VBB ABC 券 €5（券売機・BVG アプリ）。刻印を忘れずに。D-Ticket 保有なら追加なし</dd>
-      <dt>S-Bahn</dt><dd>S9（Ostkreuz・Alexanderplatz方面）・S45。市内東側に泊まるなら S9 が便利</dd>
-      <dt>タクシー</dt><dd>市中心まで約€60〜70、40分</dd></dl></div>
-  </div>
-  
+  <div class="callout warn"><b>荷物の動線が今日の肝</b>。ホテル → アレーナ → ホテル → 空港の順なので、チェックアウト時に「13:45 に空港へ出発、それまで荷物を預けたい」と伝える。ノートの無料タクシーが「空港→ホテル」の片道だけなら、中央駅から S8 が最も確実（40分、10分ごと）。</div>
   <h2>乗り換えの詳細</h2>
-<div class="tblwrap"><table><tr><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td>ホテル → アレーナ集合場所</td><td>徒歩</td><td>約25分</td><td>U6 Fröttmaning 駅の東側からエスプラナーデ（広い歩道橋）をアレーナへ。南正面の回転ゲートを抜け「FC Bayern Museum / Arena Touren」の表示に従って北側へ回る。集合場所は <b>Paulaner Fantreff Nord</b></td></tr><tr><td>アレーナ → ホテル</td><td>徒歩</td><td>25分</td><td>来た道を戻る。荷物を受け取る</td></tr><tr><td>ホテル → 空港（本命）</td><td>ホテルの無料タクシー</td><td>約20分</td><td>高速 A9 で北へ。前日にフロントで「13:30、Flughafen Terminal ○」と予約。ターミナルは航空券で確認（ルフトハンザ・ANA 系は T2）</td></tr><tr><td>ホテル → 空港（公共交通）</td><td>U6 → S8</td><td>約1時間15分</td><td>Fröttmaning → U6 → Marienplatz（19分）→ 地下1階の S-Bahn へ上がる → <b>S8「Flughafen München 行き」</b>（東回り、38分）。S1 も空港行きだが西回りで遅い。空港駅は T1 と T2 の間の地下、T2 へは MAC（中央エリア）経由で徒歩5分</td></tr><tr><td>BER 到着 → 駅</td><td>徒歩</td><td>5〜8分</td><td>T1 到着ホール（Level E0）で荷物を受け取り、案内「Bahn / Train」に従って地下2階の駅「Flughafen BER – Terminal 1-2」へ</td></tr><tr><td>BER → ベルリン中央駅</td><td>FEX または RE</td><td>23〜30分</td><td>番線は駅の電光掲示板で確認（FEX/RE と S-Bahn は別ホーム）。FEX は Südkreuz → Potsdamer Platz → Hauptbahnhof のみ停車。S9 は45分かかるが Ostkreuz・Alexanderplatz 方面に泊まるなら乗り換えなしで便利</td></tr><tr><td>ベルリン中央駅 → 宿</td><td>S-Bahn / U5</td><td>—</td><td>中央駅は地下（Gl. 1–8）と高架（Gl. 11–16）。FEX は地下に着く。S-Bahn（S3/S5/S7/S9）は高架 Gl. 15/16、U5 は地下。宿の最寄り駅が決まったら追記</td></tr></table></div>
-  <div class="callout"><b>切符</b> BER〜市内は VBB の ABC 券 €5（券売機・BVG アプリ）。券売機の紙券は乗る前に刻印。以後ベルリン市内は AB 券で足りる。D-Ticket なら空港含めて全部有効。</div>
+<div class="tblwrap"><table class=""><tr class="hd"><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td data-label="区間" data-label="区間">ホテル → 中央駅 U-Bahn</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">3分</td><td data-label="詳細" data-label="詳細">南口から地下へ。U4/U5 のホームは駅の東寄り（案内「U4 U5」）</td></tr><tr><td data-label="区間" data-label="区間">中央駅 → Odeonsplatz</td><td data-label="乗り物" data-label="乗り物">U4/U5</td><td data-label="所要" data-label="所要">4分</td><td data-label="詳細" data-label="詳細">Odeonsplatz で降りて U3/U6 ホームへ通路2分。<b>U6「Garching-Forschungszentrum 行き」</b>に乗る（同じホームに来る U3「Moosach 行き」ではない）</td></tr><tr><td data-label="区間" data-label="区間">Odeonsplatz → Fröttmaning</td><td data-label="乗り物" data-label="乗り物">U6</td><td data-label="所要" data-label="所要">約18分</td><td data-label="詳細" data-label="詳細">途中 Universität、Münchner Freiheit、Kieferngarten。Fröttmaning は高架駅</td></tr><tr><td data-label="区間" data-label="区間">Fröttmaning → 集合場所</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">25分</td><td data-label="詳細" data-label="詳細">駅の東側からエスプラナーデをアレーナへ。南正面の回転ゲート → 北側の Paulaner Fantreff Nord</td></tr><tr><td data-label="区間" data-label="区間">ホテル → 空港（S-Bahn）</td><td data-label="乗り物" data-label="乗り物">S8 / S1</td><td data-label="所要" data-label="所要">40分</td><td data-label="詳細" data-label="詳細">中央駅の地下ホーム。S8 は東回りで Ostbahnhof 経由、S1 は西回り。空港駅は T1 と T2 の間の地下。T2 へは MAC（中央エリア）経由で徒歩5分</td></tr><tr><td data-label="区間" data-label="区間">ホテル → 空港（タクシー）</td><td data-label="乗り物" data-label="乗り物">ホテル手配</td><td data-label="所要" data-label="所要">約35分</td><td data-label="詳細" data-label="詳細">前日にフロントで予約。ターミナルを伝える</td></tr><tr><td data-label="区間" data-label="区間">BER 到着 → 駅</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">5〜8分</td><td data-label="詳細" data-label="詳細">T1 到着ホール（Level E0）→ 案内「Bahn / Train」→ 地下2階「Flughafen BER – Terminal 1-2」</td></tr><tr><td data-label="区間" data-label="区間">BER → ベルリン中央駅</td><td data-label="乗り物" data-label="乗り物">FEX / RE</td><td data-label="所要" data-label="所要">23〜30分</td><td data-label="詳細" data-label="詳細">番線は電光掲示板で確認（FEX/RE と S-Bahn は別ホーム）。FEX は Südkreuz → Potsdamer Platz → Hauptbahnhof のみ停車</td></tr><tr><td data-label="区間" data-label="区間">ベルリン中央駅 → 宿</td><td data-label="乗り物" data-label="乗り物">S-Bahn / U5</td><td data-label="所要" data-label="所要">—</td><td data-label="詳細" data-label="詳細">中央駅は地下（Gl. 1–8）と高架（Gl. 11–16）。FEX は地下に着く。S-Bahn（S3/S5/S7/S9）は高架、U5 は地下。宿の最寄り駅が決まったら追記</td></tr></table></div>
+  <div class="callout"><b>切符</b> ミュンヘン側は Airport-City-Day-Ticket（1日券、空港と市内全域、約€16）を朝に買えば U-Bahn 往復と空港 S-Bahn がこれ1枚。BER〜市内は VBB の ABC 券 €5。D-Ticket ならどちらも不要。</div>
 
   <div class="callout">
     <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
   </div>
 
   
-  <p class="src">出典：<a href="https://allianz-arena.com/en/tours-museum">アリアンツ・アレーナ ツアー</a> · <a href="https://fcbayern.com/museum/de/tickets/museum-tour">FC バイエルン博物館</a> · <a href="https://ber.berlin-airport.de/de/news/reisehinweise-oeffentlicher-nahverkehr.html">BER 公共交通</a> · <a href="https://www.bvg.de/en/tourists/transportation-tariff-zones">BVG 料金ゾーン</a> · <a href="https://sbahn.berlin/en/tickets/all-tickets/weekly-monthly-annual-tickets/deutschlandticket-germany-ticket/">S-Bahn Berlin D-Ticket</a></p>
+  <p class="src">出典：<a href="https://allianz-arena.com/en/tours-museum">アリアンツ・アレーナ ツアー</a> · <a href="https://fcbayern.com/museum/de/tickets/museum-tour">FC バイエルン博物館</a> · <a href="https://www.awa-hotel.com/location/">AWA Hotel アクセス</a> · <a href="https://ber.berlin-airport.de/de/news/reisehinweise-oeffentlicher-nahverkehr.html">BER 公共交通</a> · <a href="https://www.bvg.de/en/tourists/transportation-tariff-zones">BVG 料金ゾーン</a></p>
 </div>
 
 </body></html>

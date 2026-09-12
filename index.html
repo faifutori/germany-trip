@@ -84,37 +84,86 @@
   @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
 </style>
 <style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
+</style>
+<style>
   .idx td a{color:var(--brick);font-weight:700;text-decoration:none}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:18px}
   .card{background:var(--panel);border:1px solid var(--line);padding:14px 16px;text-decoration:none;color:var(--ink);display:block}
   .card:hover{border-color:var(--brick)}
   .card .d{font-family:"Shippori Mincho B1",serif;font-size:26px;font-weight:800;color:var(--brick)}
   .card .c{font-size:12.5px;color:var(--ink2)}
   .card .t{font-weight:700;margin-top:4px}
+  @media (max-width:700px){.cards{grid-template-columns:1fr 1fr}}
 </style>
 </head><body>
 <div class="wrap">
   <div class="eyebrow">ドイツ旅行 2026 · 9/12〜9/26</div>
   <h1>ドイツ旅行 目次</h1>
-  <p class="lead">1日1ページに分けました。各ページに列車の実時刻（DB で検索済み）、入場料、営業時間、写真の可否、回り方の図を載せています。</p>
-  <div class="cards"><a class="card" href="0913_munich.html"><div class="d">9/13</div><div class="c">日曜 · ミュンヘン</div><div class="t">旧市街の夜</div></a><a class="card" href="0915_noerdlingen.html"><div class="d">9/15</div><div class="c">火曜 · ネルトリンゲン</div><div class="t">進撃の巨人の街とレジデンツ</div></a><a class="card" href="0916_arena_berlin.html"><div class="d">9/16</div><div class="c">水曜 · 移動日</div><div class="t">アレーナからベルリンへ</div></a><a class="card" href="0917_berlin.html"><div class="d">9/17</div><div class="c">木曜 · ベルリン</div><div class="t">SPY×FAMILY と中心部</div></a><a class="card" href="0918_dresden.html"><div class="d">9/18</div><div class="c">金曜 · ドレスデン</div><div class="t">日帰り</div></a><a class="card" href="0920_schwerin.html"><div class="d">9/20</div><div class="c">日曜 · シュヴェリーン</div><div class="t">城とホテル</div></a></div>
+  <p class="lead">1日1ページ。各ページに予約済みの予定、列車の実時刻（DB で検索済み）、入場料、営業時間、乗り換えの詳細を載せています。ミュンヘンの宿は <b>AWA Hotel（中央駅前）</b>。</p>
+  <div class="cards"><a class="card" href="0912_kix.html"><div class="d">9/12</div><div class="c">土曜 · 前泊</div><div class="t">関西空港前泊</div></a><a class="card" href="0913_munich.html"><div class="d">9/13</div><div class="c">日曜 · 到着日</div><div class="t">ミュンヘン旧市街の夜</div></a><a class="card" href="0914_neuschwanstein.html"><div class="d">9/14</div><div class="c">月曜 · ツアー</div><div class="t">ノイシュヴァンシュタイン城</div></a><a class="card" href="0915_noerdlingen.html"><div class="d">9/15</div><div class="c">火曜</div><div class="t">ネルトリンゲンとレジデンツ</div></a><a class="card" href="0916_arena_berlin.html"><div class="d">9/16</div><div class="c">水曜 · 移動日</div><div class="t">アレーナからベルリンへ</div></a><a class="card" href="0917_berlin.html"><div class="d">9/17</div><div class="c">木曜</div><div class="t">ベルリン中心部</div></a><a class="card" href="0918_dresden.html"><div class="d">9/18</div><div class="c">金曜</div><div class="t">ドレスデン日帰り</div></a><a class="card" href="0919_berlin_paul.html"><div class="d">9/19</div><div class="c">土曜</div><div class="t">パウルのお母さんと</div></a><a class="card" href="0920_schwerin.html"><div class="d">9/20</div><div class="c">日曜</div><div class="t">シュヴェリーン城</div></a><a class="card" href="0921_koeln_heidelberg.html"><div class="d">9/21</div><div class="c">月曜 · 移動日</div><div class="t">ケルン経由でハイデルベルクへ</div></a><a class="card" href="0922_heidelberg.html"><div class="d">9/22</div><div class="c">火曜</div><div class="t">ハイデルベルク</div></a><a class="card" href="0923_rothenburg.html"><div class="d">9/23</div><div class="c">水曜 · 移動日</div><div class="t">ローテンブルクへ</div></a><a class="card" href="0924_rothenburg_muc.html"><div class="d">9/24</div><div class="c">木曜 · 移動日</div><div class="t">ローテンブルクから空港へ</div></a><a class="card" href="0925_flight_home.html"><div class="d">9/25</div><div class="c">金曜〜土曜 · 帰国</div><div class="t">ミュンヘンから関西へ</div></a></div>
   <h2>全日程</h2>
-  <div class="tblwrap"><table class="idx">
-    <tr><th>日付</th><th>場所</th><th>流れ</th><th>主な出費</th><th>ページ</th></tr><tr><td class="mono"><b>9/13</b> <span style="color:var(--ink2)">日</span></td><td>ミュンヘン</td><td>アザム教会 → マリエン広場 → フラウエン教会 → 新市庁舎の塔 → 歌劇場 → ホーフガルテン</td><td>塔 €7 のみ有料</td><td><a href="0913_munich.html">開く →</a></td></tr><tr><td class="mono"><b>9/14</b> <span style="color:var(--ink2)">月</span></td><td>ミュンヘン</td><td>ノイシュヴァンシュタイン城 一日ツアー（予約済み）</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/15</b> <span style="color:var(--ink2)">火</span></td><td>ネルトリンゲン → ミュンヘン</td><td>07:12 ICE → 城壁一周 → 10:00 ダニエル塔 → 13:21 発 → 15:30 レジデンツ</td><td>列車 €56 · 塔 €4.50 · レジデンツ €15</td><td><a href="0915_noerdlingen.html">開く →</a></td></tr><tr><td class="mono"><b>9/16</b> <span style="color:var(--ink2)">水</span></td><td>ミュンヘン → ベルリン</td><td>10:15 アリアンツ・アレーナ → 無料タクシーで空港 → 18:00 便 → 19:05 BER</td><td>ABC 券 €5</td><td><a href="0916_arena_berlin.html">開く →</a></td></tr><tr><td class="mono"><b>9/17</b> <span style="color:var(--ink2)">木</span></td><td>ベルリン</td><td>フリードリヒ通り駅 → 博物館島 → 赤の市庁舎 → テレビ塔 → ブランデンブルク門 → 16:00 パウル</td><td>大聖堂 €10 · 新博物館 €14 · 塔 €24.50</td><td><a href="0917_berlin.html">開く →</a></td></tr><tr><td class="mono"><b>9/18</b> <span style="color:var(--ink2)">金</span></td><td>ドレスデン</td><td>07:28 RJ → フラウエン教会 → 緑の丸天井 → ツヴィンガー → 17:35 発</td><td>列車 €60 · 丸天井 €16（要予約）</td><td><a href="0918_dresden.html">開く →</a></td></tr><tr><td class="mono"><b>9/19</b> <span style="color:var(--ink2)">土</span></td><td>ベルリン</td><td>パウルのお母さんと予定あり</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/20</b> <span style="color:var(--ink2)">日</span></td><td>シュヴェリーン</td><td>10:25 RE8 直通 → 13:07 着 → ホテル → シュヴェリーン城</td><td>列車 €30 / D-Ticket · 城 €13</td><td><a href="0920_schwerin.html">開く →</a></td></tr><tr><td class="mono"><b>9/21</b> <span style="color:var(--ink2)">月</span></td><td>シュヴェリーン → ケルン → ハイデルベルク</td><td>朝移動。ケルン大聖堂に寄って夕方ハイデルベルク</td><td>ICE（要予約）</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/22</b> <span style="color:var(--ink2)">火</span></td><td>ハイデルベルク</td><td>城・旧市街・哲学者の道</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/23</b> <span style="color:var(--ink2)">水</span></td><td>ローテンブルク</td><td>移動4h、夜景</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/24</b> <span style="color:var(--ink2)">木</span></td><td>ローテンブルク → ミュンヘン空港</td><td>14時まで観光、移動3〜4h</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr><tr><td class="mono"><b>9/25</b> <span style="color:var(--ink2)">金</span></td><td>ミュンヘン → 関西</td><td>NH7881 9:30 発（ターミナル2）</td><td>—</td><td><span style="color:var(--ink2)">未作成</span></td></tr>
+  <div class="tblwrap"><table class="idx"><tr class="hd"><th>日付</th><th>場所</th><th>流れ</th><th>ページ</th></tr><tr><td data-label="日付" class="mono"><b>9/12</b> <span style="color:var(--ink2)">土</span></td><td data-label="場所">関西空港</td><td data-label="流れ">ホテル日航関西空港に前泊</td><td data-label="ページ"><a href="0912_kix.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/13</b> <span style="color:var(--ink2)">日</span></td><td data-label="場所">ミュンヘン</td><td data-label="流れ">09:30 発 → 16:40 着 → AWA Hotel → 旧市街の夜</td><td data-label="ページ"><a href="0913_munich.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/14</b> <span style="color:var(--ink2)">月</span></td><td data-label="場所">ミュンヘン</td><td data-label="流れ">ノイシュヴァンシュタイン城 一日ツアー（予約済み）</td><td data-label="ページ"><a href="0914_neuschwanstein.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/15</b> <span style="color:var(--ink2)">火</span></td><td data-label="場所">ネルトリンゲン → ミュンヘン</td><td data-label="流れ">07:12 ICE → 城壁一周 → 10:00 ダニエル塔 → 13:21 発 → 15:30 レジデンツ</td><td data-label="ページ"><a href="0915_noerdlingen.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/16</b> <span style="color:var(--ink2)">水</span></td><td data-label="場所">ミュンヘン → ベルリン</td><td data-label="流れ">10:15 アリアンツ・アレーナ → 18:00 便 → 19:05 BER</td><td data-label="ページ"><a href="0916_arena_berlin.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/17</b> <span style="color:var(--ink2)">木</span></td><td data-label="場所">ベルリン</td><td data-label="流れ">フリードリヒ通り駅 → 博物館島 → 赤の市庁舎 → テレビ塔 → ブランデンブルク門 → 16:00 パウル</td><td data-label="ページ"><a href="0917_berlin.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/18</b> <span style="color:var(--ink2)">金</span></td><td data-label="場所">ドレスデン</td><td data-label="流れ">07:28 RJ → フラウエン教会 → 緑の丸天井 → ツヴィンガー → 17:35 発</td><td data-label="ページ"><a href="0918_dresden.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/19</b> <span style="color:var(--ink2)">土</span></td><td data-label="場所">ベルリン</td><td data-label="流れ">パウルのお母さんと予定</td><td data-label="ページ"><a href="0919_berlin_paul.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/20</b> <span style="color:var(--ink2)">日</span></td><td data-label="場所">シュヴェリーン</td><td data-label="流れ">10:25 RE8 直通 → 13:07 着 → ホテル → シュヴェリーン城</td><td data-label="ページ"><a href="0920_schwerin.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/21</b> <span style="color:var(--ink2)">月</span></td><td data-label="場所">ケルン → ハイデルベルク</td><td data-label="流れ">06:59 ICE 1521 → 11:45 ケルン大聖堂 → 14:53 IC 2046 → 17:34 ハイデルベルク</td><td data-label="ページ"><a href="0921_koeln_heidelberg.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/22</b> <span style="color:var(--ink2)">火</span></td><td data-label="場所">ハイデルベルク</td><td data-label="流れ">10:00 城 → 旧市街 → 哲学者の道</td><td data-label="ページ"><a href="0922_heidelberg.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/23</b> <span style="color:var(--ink2)">水</span></td><td data-label="場所">ローテンブルク</td><td data-label="流れ">09:55 発（普通列車、D-Ticket 可）→ 13:51 着 → 20:00 夜警ツアー</td><td data-label="ページ"><a href="0923_rothenburg.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/24</b> <span style="color:var(--ink2)">木</span></td><td data-label="場所">ローテンブルク → ミュンヘン空港</td><td data-label="流れ">城壁・塔 → 14:00 までに出発 → 空港ホテル</td><td data-label="ページ"><a href="0924_rothenburg_muc.html">開く →</a></td></tr><tr><td data-label="日付" class="mono"><b>9/25</b> <span style="color:var(--ink2)">金</span></td><td data-label="場所">ミュンヘン → 関西</td><td data-label="流れ">LH742 / NH7881 12:30 発 → 翌 07:15 関西着</td><td data-label="ページ"><a href="0925_flight_home.html">開く →</a></td></tr></table></div>
+  <h2>予約済み・決定済みの一覧</h2>
+  <div class="tblwrap"><table><tr class="hd"><th>日付</th><th>内容</th><th>状態</th></tr>
+    <tr><td data-label="日付">9/12</td><td data-label="内容">ホテル日航関西空港 ¥21,600 現地決済</td><td data-label="状態">済</td></tr>
+    <tr><td data-label="日付">9/13</td><td data-label="内容">関西 09:30 → ミュンヘン 16:40（T1）。AWA Hotel 3泊 €727.65</td><td data-label="状態">済</td></tr>
+    <tr><td data-label="日付">9/14</td><td data-label="内容">ノイシュヴァンシュタイン城 バンツアー</td><td data-label="状態">済</td></tr>
+    <tr><td data-label="日付">9/15</td><td data-label="内容">07:12 ICE 1622 → ネルトリンゲン、13:21 発で戻る</td><td data-label="状態">決定 · 切符は未購入</td></tr>
+    <tr><td data-label="日付">9/16</td><td data-label="内容">アリアンツ・アレーナ 10:15。飛行機 18:00 → 19:05 BER</td><td data-label="状態">済</td></tr>
+    <tr><td data-label="日付">9/17</td><td data-label="内容">パウルと 16:00 / 18:00</td><td data-label="状態">予定</td></tr>
+    <tr><td data-label="日付">9/18</td><td data-label="内容">ドレスデン日帰り</td><td data-label="状態">決定 · 切符は未購入</td></tr>
+    <tr><td data-label="日付">9/19</td><td data-label="内容">パウルのお母さんと</td><td data-label="状態">予定</td></tr>
+    <tr><td data-label="日付">9/20</td><td data-label="内容">Hotel Niederländischer Hof（シュヴェリーン）€194 現地払い</td><td data-label="状態">済</td></tr>
+    <tr><td data-label="日付">9/21</td><td data-label="内容">06:59 ICE 1521 → ケルン、14:53 IC 2046 → ハイデルベルク</td><td data-label="状態">切符は未購入</td></tr>
+    <tr><td data-label="日付">9/24</td><td data-label="内容">ミュンヘン空港ホテル（ノート「2泊」は要確認）</td><td data-label="状態">済</td></tr>
+    <tr><td data-label="日付">9/25</td><td data-label="内容">LH742 / NH7881 12:30 → 関西 翌 07:15（T2）</td><td data-label="状態">済</td></tr>
   </table></div>
   <h2>切符の全体方針</h2>
   <div class="two">
     <div class="spot"><h3>ドイツチケット €63/月 <span class="sub">おすすめ</span></h3>
-      <p>全国の普通列車（RE/RB/S-Bahn）と市内交通（U-Bahn・トラム・バス）が乗り放題。時間制限なし。この旅で含まれるもの：</p>
-      <dl class="kv"><dt>ミュンヘン</dt><dd>U6 の全乗車、空港 S-Bahn</dd><dt>ベルリン</dt><dd>BVG・S-Bahn 全域、BER 空港往復</dd><dt>9/20</dt><dd>ベルリン → シュヴェリーン RE8 直通</dd><dt>9/23〜24</dt><dd>ハイデルベルク → ローテンブルク、ローテンブルク → ミュンヘン空港（全区間普通列車）</dd></dl>
-      <p>含まれないもの：9/15 の ICE、9/18 の RJ/IC、9/21 の ICE。DB Navigator で購入し、<b>10/10 までに解約</b>。</p></div>
+      <p>全国の普通列車（RE/RB/S-Bahn）と市内交通が乗り放題、時間制限なし。この旅で含まれるもの：</p>
+      <dl class="kv"><dt>ミュンヘン</dt><dd>空港 S-Bahn（9/13・9/16・9/24）、U-Bahn 全部</dd><dt>ベルリン</dt><dd>BVG・S-Bahn 全域、BER 往復</dd><dt>9/20</dt><dd>ベルリン → シュヴェリーン RE8</dd><dt>9/23</dt><dd>ハイデルベルク → ローテンブルク（全区間普通列車）</dd><dt>9/24</dt><dd>ローテンブルク → ミュンヘン空港（普通列車ルート）</dd></dl>
+      <p>含まれないもの：9/15 の ICE、9/18 の RJ/IC、9/21 の ICE/IC。DB Navigator で購入し、<b>10/10 までに解約</b>。</p></div>
     <div class="spot"><h3>今すぐ買うもの <span class="sub">値上がりする順</span></h3>
-      <dl class="kv"><dt>9/15</dt><dd>07:12 ICE 1622（€19.99〜）と 13:21 RB89→ICE 1185（€35.99〜）</dd>
-      <dt>9/18</dt><dd>07:28 RJ 171（€39.99〜）と 17:35 IC 2172（€19.99〜）</dd>
-      <dt>9/18</dt><dd>歴史的緑の丸天井 時間指定券 €16</dd>
-      <dt>9/17</dt><dd>テレビ塔の時間枠 €24.50、ベルリン大聖堂 €10（オンラインのみ）</dd>
-      <dt>9/13</dt><dd>新市庁舎の塔 19:20 枠 €7</dd>
-      <dt>9/21</dt><dd>シュヴェリーン → ケルン → ハイデルベルクの ICE</dd></dl></div>
+      <dl class="kv"><dt>9/21</dt><dd>06:59 ICE 1521（€54.99〜）と 14:53 IC 2046（€31.99〜）</dd>
+      <dt>9/15</dt><dd>07:12 ICE 1622（€19.99〜）と 13:21 → ICE 1185（€35.99〜）</dd>
+      <dt>9/18</dt><dd>07:28 RJ 171（€39.99〜）と 17:35 IC 2172（€19.99〜）、歴史的緑の丸天井 €16</dd>
+      <dt>9/17</dt><dd>テレビ塔 €24.50、ベルリン大聖堂 €10（オンラインのみ）</dd>
+      <dt>9/13</dt><dd>新市庁舎の塔 19:20 枠 €7</dd></dl></div>
   </div>
 </div>
 

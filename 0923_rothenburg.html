@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ローテンブルクへ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
+</style>
+</head><body>
+<div class="wrap">
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0922_heidelberg.html">← 9/22 ハイデルベルク</a><span class="sp"></span><a href="0924_rothenburg_muc.html">9/24 ローテンブルクから空港へ →</a></div>
+  <div class="eyebrow">ドイツ旅行 2026</div>
+  <div class="hero"><div class="big">9/23<small>水曜 · 移動日</small></div><h1>ローテンブルクへ</h1></div>
+  <p class="lead">ハイデルベルクからローテンブルクへ。全部普通列車で行ける便（D-Ticket 可）と、少し速い ICE 経由があります。夕方着でも 20:00 の夜警ツアーと夜景には間に合います。</p>
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>移動 約4時間（ノート）。ホテルチェックイン後、夜景を見る（〜20:00、ノート赤字）</li><li>宿泊：ローテンブルク（ホテル名はノートに記載なし）</li></ul></div><div class="tblwrap"><table class=""><tr class="hd"><th>便</th><th>Heidelberg 発</th><th>乗換</th><th>Rothenburg 着</th><th>料金</th><th>メモ</th></tr><tr><td data-label="便" data-label="便"><b>本命</b> 全部普通列車</td><td data-label="Heidelberg 発" data-label="Heidelberg 発"><span class="mono">09:55</span> S1 · 7番線</td><td data-label="乗換" data-label="乗換">Osterburken 4分 → Würzburg 22分（同一ホーム）→ Steinach 11分（同一ホーム）</td><td data-label="Rothenburg 着" data-label="Rothenburg 着"><span class="mono">13:51</span> 1番線</td><td data-label="料金" data-label="料金">€51 / <b>D-Ticket 可</b></td><td data-label="メモ" data-label="メモ">乗換3回だが2回は同じホーム</td></tr><tr><td data-label="便" data-label="便">速い</td><td data-label="Heidelberg 発" data-label="Heidelberg 発"><span class="mono">11:13</span> ICE 1093 · 7番線</td><td data-label="乗換" data-label="乗換">Stuttgart 15分 → Ansbach 22分 → Steinach 4分</td><td data-label="Rothenburg 着" data-label="Rothenburg 着"><span class="mono">14:51</span> 1番線</td><td data-label="料金" data-label="料金">€37.99〜</td><td data-label="メモ" data-label="メモ">朝ゆっくりできる。Steinach の乗換4分が短い</td></tr><tr><td data-label="便" data-label="便">最安</td><td data-label="Heidelberg 発" data-label="Heidelberg 発"><span class="mono">09:36</span> IC 2348</td><td data-label="乗換" data-label="乗換">Stuttgart → RE90 → Schnelldorf からバス 817</td><td data-label="Rothenburg 着" data-label="Rothenburg 着"><span class="mono">13:21</span> バス停</td><td data-label="料金" data-label="料金">€17.99〜</td><td data-label="メモ" data-label="メモ">最後がバス。荷物があるなら避ける</td></tr><tr><td data-label="便" data-label="便">遅め</td><td data-label="Heidelberg 発" data-label="Heidelberg 発"><span class="mono">13:13</span> ICE 211</td><td data-label="乗換" data-label="乗換">Stuttgart → Ansbach → Steinach</td><td data-label="Rothenburg 着" data-label="Rothenburg 着"><span class="mono">16:51</span></td><td data-label="料金" data-label="料金">€44.99〜</td><td data-label="メモ" data-label="メモ">ハイデルベルクで昼食を取ってから</td></tr></table></div>
+  <div class="callout">9/25〜10/10 に Stuttgart〜Heilbronn〜Osterburken 間で工事があるが、9/23 は対象外。当日 DB Navigator で運行を確認。</div>
+  <h2>タイムライン（本命 09:55 の場合）</h2>
+  <ul class="timeline">
+    <li><span class="t">09:30</span>Heidelberg Hbf。駅のパン屋で昼食を買っておく（乗換駅は小さく、店が少ない）</li>
+    <li><span class="t">09:55</span><b>S1</b>（7番線）Osterburken 行き。ネッカー川沿いを25駅、1時間28分。ここが一番長い</li>
+    <li><span class="t">11:23</span>Osterburken 1番線着 → <b>4番線</b>の RE（Würzburg 行き）へ。乗換4分、地下通路。降りたら急ぐ</li>
+    <li><span class="t">12:20</span>Würzburg Hbf 2番線着。<b>同じホームの向かい 3番線</b>から 12:42 RE80（Nürnberg 方面）。22分あるので売店へ</li>
+    <li><span class="t">13:25</span>Steinach (bei Rothenburg) 4番線着。<b>同じホームの 5番線</b>から 13:36 RB82 Rothenburg 行き（1両、15分）</li>
+    <li><span class="t">13:51</span><b>Rothenburg ob der Tauber 着</b>。終点、1番線。駅から旧市街の門（Rödertor）まで徒歩約15分、石畳なので荷物はキャスターより持ち上げやすいものが楽</li>
+    <li><span class="t">14:15</span>ホテルにチェックイン。旧市街内は車両規制があるので、タクシーは門の外まで</li>
+    <li><span class="t">15:00</span>マルクト広場 → <b>プレーンライン（Plönlein）</b>（一番有名な風景）→ 城壁の南側を少し歩く → ブルク公園（Burggarten）からタウバー渓谷を見下ろす</li>
+    <li><span class="t">17:30</span>早めの夕食（店は20時頃に閉まるところが多い）。名物は Schneeball（揚げ菓子）とフランケンワイン</li>
+    <li><span class="t">19:30</span>マルクト広場へ。日没19:15頃、ライトアップされた市庁舎と広場</li>
+    <li><span class="t">20:00</span><b>夜警ツアー（英語）</b>。集合はマルクト広場の市庁舎前、約1時間、€9、予約不要（現金）。ランタンを持った夜警が中世の話をしながら旧市街を歩く。ノートの「夜景 〜20:00」はこれに合わせる</li>
+    <li><span class="t">21:00</span>解散後、人のいないプレーンラインで夜景を撮って戻る</li>
+  </ul>
+  <div class="two">
+    <div class="spot"><h3>ローテンブルク 基本情報 <span class="sub">Rothenburg ob der Tauber</span></h3>
+      <dl class="kv"><dt>夜警ツアー</dt><dd>英語 20:00（4〜12月、毎日）、ドイツ語 21:30。大人 €9（英語）、集合は市庁舎前。予約不要</dd>
+      <dt>城壁</dt><dd>終日開放、無料。屋根付きの回廊 約2.5km</dd>
+      <dt>市庁舎の塔</dt><dd>4〜10月 毎日 9:30–12:30、13:00–17:00、€4。220段、上は狭い。翌日に</dd>
+      <dt>駅 ⇄ 旧市街</dt><dd>徒歩15分。Bahnhofstraße → Ansbacher Straße → Rödertor（東の門）</dd></dl></div>
+    <div class="spot"><h3>乗り換えの詳細 <span class="sub">3回</span></h3>
+      <dl class="kv"><dt>Osterburken</dt><dd>小さな駅。1番線 → 4番線は地下通路。4分なので S1 では最前部に乗っておく</dd>
+      <dt>Würzburg</dt><dd>2番線 → 3番線は同じ島式ホーム。22分。ホーム上に売店</dd>
+      <dt>Steinach</dt><dd>4番線 → 5番線、同じホーム。RB82 は1両で Rothenburg 行きの表示。11分</dd>
+      <dt>荷物</dt><dd>RE/RB は荷物棚が小さい。座席の間に置く</dd></dl></div>
+  </div>
+  <div class="callout">
+    <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
+  </div>
+
+  
+  <p class="src">出典：<a href="https://www.bahn.de/">DB 時刻表（2026/9/23 検索）</a> · <a href="https://www.rothenburg.de/entdecken/fuehrungen/nachtwaechter-rothenburg">ローテンブルク 夜警ツアー</a> · <a href="https://www.rothenburg.de/entdecken/sehenswuerdigkeiten/begehbare-tuerme">市庁舎の塔</a> · <a href="https://www.rothenburg.de/besuchen/planen/anreise">ローテンブルク アクセス</a></p>
+</div>
+
+</body></html>

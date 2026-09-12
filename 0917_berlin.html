@@ -84,21 +84,48 @@
   @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
 </style>
 <style>
-  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
-  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
-  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
   .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
   .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
   .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
 </style>
 </head><body>
 <div class="wrap">
-  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html" class="cur">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0916_arena_berlin.html">← 9/16 アレーナからベルリンへ</a><span class="sp"></span><a href="0918_dresden.html">9/18 ドレスデン日帰り →</a></div>
   <div class="eyebrow">ドイツ旅行 2026</div>
   <div class="hero"><div class="big">9/17<small>木曜</small></div><h1>ベルリン中心部</h1></div>
   <p class="lead">16:00 のパウルとの約束までに、SPY×FAMILY ゆかりの場所と定番を回る半日ルート。国会議事堂のドームは閉鎖中です。</p>
-
-  <div class="days">
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>16:00 / 18:00 パウルと（ノート）</li><li>宿泊：ベルリン</li></ul></div><div class="days">
     <div class="day"><div class="d">流れ</div><ul>
       <li>朝：フリードリヒ通り駅（SPY×FAMILY）→ 涙の宮殿 → ウンター・デン・リンデン → フンボルト大学</li>
       <li>昼：博物館島（ベルリン大聖堂・新博物館）→ 赤の市庁舎 → テレビ塔</li>
@@ -137,9 +164,10 @@
   
   <h2>乗り換えの詳細</h2>
   <p class="lead">この日の移動は徒歩と S/U-Bahn 3回だけ。ベルリンは同じ駅でも S-Bahn（緑の S）と U-Bahn（青の U）の入口が離れていることがあるので、行先の路線名で入口を選びます。</p>
-<div class="tblwrap"><table><tr><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td>宿 → Friedrichstraße</td><td>S-Bahn または U6</td><td>—</td><td>S1/S2/S25（南北線）は地下ホーム、S3/S5/S7/S9（東西線）は高架ホーム、U6 は地下。降りたら出口「Reichstagufer / Tränenpalast」へ。涙の宮殿は駅の北側、川沿い</td></tr><tr><td>Friedrichstraße → フンボルト大学</td><td>徒歩</td><td>10分</td><td>Friedrichstraße を南へ2ブロック、Unter den Linden に出て左（東）へ。大学は左手、向かいがベーベル広場</td></tr><tr><td>フンボルト大学 → 博物館島</td><td>徒歩</td><td>8分</td><td>Unter den Linden をそのまま東へ、宮殿橋を渡ると左が大聖堂（Lustgarten）。新博物館は大聖堂の裏、Bodestraße から</td></tr><tr><td>博物館島 → 赤の市庁舎</td><td>徒歩</td><td>8分</td><td>Liebknechtbrücke を渡って Karl-Liebknecht-Straße を東へ。右手の赤い塔</td></tr><tr><td>赤の市庁舎 → テレビ塔</td><td>徒歩</td><td>5分</td><td>広場を挟んで目の前。入口は塔の足元、予約時間の15分前に</td></tr><tr><td>Alexanderplatz → Brandenburger Tor</td><td><b>U5「Hauptbahnhof 行き」</b></td><td>6分</td><td>Alexanderplatz → Rotes Rathaus → Museumsinsel → Unter den Linden → <b>Brandenburger Tor</b>（4駅）。S-Bahn の東西線は Brandenburger Tor に止まらないので U5 を使う。出口を上がると門の東側（パリ広場）</td></tr><tr><td>ブランデンブルク門 → ホロコースト記念碑</td><td>徒歩</td><td>5分</td><td>門を背にして南（Ebertstraße）へ。左手に石碑群</td></tr><tr><td>記念碑 → パウルとの待ち合わせ</td><td>—</td><td>—</td><td>最寄りは S/U Brandenburger Tor（S1/S2/S25・U5）か S/U Potsdamer Platz（S1/S2/S25・U2、徒歩7分）。行先に応じて</td></tr></table></div>
+<div class="tblwrap"><table><tr class="hd"><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td data-label="区間">宿 → Friedrichstraße</td><td data-label="乗り物">S-Bahn または U6</td><td data-label="所要">—</td><td data-label="詳細">S1/S2/S25（南北線）は地下ホーム、S3/S5/S7/S9（東西線）は高架ホーム、U6 は地下。降りたら出口「Reichstagufer / Tränenpalast」へ。涙の宮殿は駅の北側、川沿い</td></tr><tr><td data-label="区間">Friedrichstraße → フンボルト大学</td><td data-label="乗り物">徒歩</td><td data-label="所要">10分</td><td data-label="詳細">Friedrichstraße を南へ2ブロック、Unter den Linden に出て左（東）へ。大学は左手、向かいがベーベル広場</td></tr><tr><td data-label="区間">フンボルト大学 → 博物館島</td><td data-label="乗り物">徒歩</td><td data-label="所要">8分</td><td data-label="詳細">Unter den Linden をそのまま東へ、宮殿橋を渡ると左が大聖堂（Lustgarten）。新博物館は大聖堂の裏、Bodestraße から</td></tr><tr><td data-label="区間">博物館島 → 赤の市庁舎</td><td data-label="乗り物">徒歩</td><td data-label="所要">8分</td><td data-label="詳細">Liebknechtbrücke を渡って Karl-Liebknecht-Straße を東へ。右手の赤い塔</td></tr><tr><td data-label="区間">赤の市庁舎 → テレビ塔</td><td data-label="乗り物">徒歩</td><td data-label="所要">5分</td><td data-label="詳細">広場を挟んで目の前。入口は塔の足元、予約時間の15分前に</td></tr><tr><td data-label="区間">Alexanderplatz → Brandenburger Tor</td><td data-label="乗り物"><b>U5「Hauptbahnhof 行き」</b></td><td data-label="所要">6分</td><td data-label="詳細">Alexanderplatz → Rotes Rathaus → Museumsinsel → Unter den Linden → <b>Brandenburger Tor</b>（4駅）。S-Bahn の東西線は Brandenburger Tor に止まらないので U5 を使う。出口を上がると門の東側（パリ広場）</td></tr><tr><td data-label="区間">ブランデンブルク門 → ホロコースト記念碑</td><td data-label="乗り物">徒歩</td><td data-label="所要">5分</td><td data-label="詳細">門を背にして南（Ebertstraße）へ。左手に石碑群</td></tr><tr><td data-label="区間">記念碑 → パウルとの待ち合わせ</td><td data-label="乗り物">—</td><td data-label="所要">—</td><td data-label="詳細">最寄りは S/U Brandenburger Tor（S1/S2/S25・U5）か S/U Potsdamer Platz（S1/S2/S25・U2、徒歩7分）。行先に応じて</td></tr></table></div>
   <div class="callout"><b>切符</b> BVG 1日券 AB（24時間ではなく翌3時まで）か、D-Ticket。BVG アプリ「BVG Fahrinfo」で経路検索と購入が同時にできる。</div>
 
+  
   <div class="callout">
     <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
   </div>

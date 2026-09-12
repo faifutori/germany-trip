@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>関西空港前泊</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
+</style>
+</head><body>
+<div class="wrap">
+  <div class="topnav"><a class="idx" href="index.html">目次</a><span class="sp"></span><a href="0913_munich.html">9/13 ミュンヘン旧市街の夜 →</a></div>
+  <div class="eyebrow">ドイツ旅行 2026</div>
+  <div class="hero"><div class="big">9/12<small>土曜 · 前泊</small></div><h1>関西空港前泊</h1></div>
+  <p class="lead">関西空港直結のホテルに前泊。翌朝 9:30 の便に備える日です。</p>
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>ホテル日航関西空港（済）：¥21,600、現地決済。9/4 までキャンセル可（済）。公式サイト予約、one ハーモニー会員</li><li>朝食：2F「ザ・ブラッスリー」5:45〜10:00（最終入店 9:30）</li><li>翌 9/13 関西 09:30 発 → ミュンヘン 16:40 着、第1ターミナル（ノートの便名 MH7880/NH7880 はコードシェア。運航はルフトハンザ LH743 と思われる。Eチケットで確認）</li></ul></div>
+  <h2>タイムライン</h2>
+  <ul class="timeline">
+    <li><span class="t">15:00〜</span>チェックイン。ホテルは第1ターミナルと関西空港駅に屋根付きの連絡通路で直結、徒歩3分</li>
+    <li><span class="t">夕方</span>翌朝の準備：ルフトハンザ/ANA のオンラインチェックインは出発の<b>23時間前（9/12 10:30）</b>から。座席を確認して搭乗券をスマホに保存</li>
+    <li><span class="t">夜</span>ユーロ現金の用意（空港の両替は割高。ドイツはカード決済が広く使えるが、ダニエル塔や小さな店は現金）。SIM/eSIM の有効化。DB Navigator と MVV アプリをインストール</li>
+    <li><span class="t">翌 05:45</span>朝食開始と同時に入る（ノート通り）。06:30 にはターミナルへ</li>
+  </ul>
+  <div class="two">
+    <div class="spot"><h3>翌朝の動き <span class="sub">9/13 09:30 発</span></h3>
+      <dl class="kv"><dt>チェックイン</dt><dd>国際線は第1ターミナル4階。ルフトハンザ/ANA のカウンターは案内板で確認。出発3時間前の 06:30 から</dd>
+      <dt>荷物</dt><dd>預け荷物は 23kg × 1（エコノミー標準）。ドイツ国内の移動が多いので機内持込サイズにまとめられると楽</dd>
+      <dt>保安検査</dt><dd>朝は混む。搭乗開始（09:00 頃）の45分前には通過</dd></dl></div>
+    <div class="spot"><h3>ホテル日航関西空港 <span class="sub">Hotel Nikko Kansai Airport</span></h3>
+      <dl class="kv"><dt>チェックアウト</dt><dd>11:00（翌朝は早朝なので関係なし）</dd>
+      <dt>朝食</dt><dd>5:45〜。早朝便向けに早い</dd>
+      <dt>支払い</dt><dd>現地決済</dd></dl></div>
+  </div>
+  <div class="callout">
+    <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
+  </div>
+
+  
+  <p class="src">出典：<a href="https://www.nikkokix.com/news/31157">ホテル日航関西空港 レストラン営業案内</a> · <a href="https://www.jalan.net/yad324560/">じゃらん ホテル日航関西空港</a></p>
+</div>
+
+</body></html>

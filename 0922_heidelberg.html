@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ハイデルベルク</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ground:#F4F5F1; --panel:#FFFFFF; --panel2:#EAECE6;
+    --ink:#1F2422; --ink2:#586059; --line:#D5D9D1;
+    --brick:#A9422E; --brick-soft:#F3E2DD;
+    --blue:#2F5C9E; --blue-soft:#DFE7F4;
+    --green:#3E6B4A; --green-soft:#DFEAE0;
+    --gold:#B07A1E; --gold-soft:#F5EAD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+      --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+      --brick:#E27A62; --brick-soft:#3B2620;
+      --blue:#86A9E4; --blue-soft:#1F2C42;
+      --green:#8DBF98; --green-soft:#1E2F23;
+      --gold:#E0B25C; --gold-soft:#3A2F17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161917; --panel:#20241F; --panel2:#2A2F29;
+    --ink:#E9E8E1; --ink2:#A7ADA4; --line:#3A403A;
+    --brick:#E27A62; --brick-soft:#3B2620;
+    --blue:#86A9E4; --blue-soft:#1F2C42;
+    --green:#8DBF98; --green-soft:#1E2F23;
+    --gold:#E0B25C; --gold-soft:#3A2F17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+  h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;text-wrap:balance;margin:0}
+  h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+  h2{font-size:22px;font-weight:800;margin-top:56px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  h3{font-size:17px;font-weight:700}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:15px;max-width:60ch}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:700}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .day{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+  .day .d{font-family:"Shippori Mincho B1",serif;font-size:20px;font-weight:800}
+  .day .w{color:var(--ink2);font-size:13px;margin-left:6px}
+  .day ul{margin:8px 0 0;padding-left:18px}
+  .day li{margin:2px 0}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;vertical-align:middle}
+  .tag.free{background:var(--green-soft);color:var(--green)}
+  .tag.paid{background:var(--gold-soft);color:var(--gold)}
+  .tag.anime{background:var(--brick-soft);color:var(--brick)}
+  .tag.note{background:var(--blue-soft);color:var(--blue)}
+  .mapbox{background:var(--panel);border:1px solid var(--line);padding:12px;margin-top:20px;overflow-x:auto}
+  .mapbox svg{display:block;width:100%;height:auto;min-width:640px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--ink2);padding:8px 4px 0}
+  .legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid;margin-right:6px;vertical-align:middle}
+  .legend .l1::before{border-color:var(--brick)}
+  .legend .l2::before{border-color:var(--blue);border-top-style:dashed}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);font-size:14px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink2);font-weight:700;background:var(--panel2)}
+  tr:last-child td{border-bottom:0}
+  .tblwrap{overflow-x:auto;margin-top:16px}
+  .timeline{list-style:none;margin:16px 0 0;padding:0;border-left:3px solid var(--brick)}
+  .timeline li{position:relative;padding:6px 0 10px 22px}
+  .timeline li::before{content:"";position:absolute;left:-8px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--brick);border:2px solid var(--ground)}
+  .timeline .t{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--brick);margin-right:8px;font-variant-numeric:tabular-nums}
+  .timeline.blue{border-color:var(--blue)}
+  .timeline.blue li::before{background:var(--blue)}
+  .timeline.blue .t{color:var(--blue)}
+  .spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .spot{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .spot h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .spot .sub{color:var(--ink2);font-size:12.5px;font-weight:400;font-family:"Zen Kaku Gothic New",sans-serif}
+  .kv{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:13.5px;margin:0}
+  .kv dt{color:var(--ink2);font-weight:700}
+  .kv dd{margin:0}
+  .callout{background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;margin-top:16px;font-size:14px}
+  .callout.warn{background:var(--brick-soft);border-left-color:var(--brick)}
+  .src{font-size:12.5px;color:var(--ink2);margin-top:40px;line-height:1.9}
+  .src a{color:var(--blue)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+  @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
+</style>
+<style>
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
+  .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
+  .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
+</style>
+</head><body>
+<div class="wrap">
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0921_koeln_heidelberg.html">← 9/21 ケルン経由でハイデルベルクへ</a><span class="sp"></span><a href="0923_rothenburg.html">9/23 ローテンブルクへ →</a></div>
+  <div class="eyebrow">ドイツ旅行 2026</div>
+  <div class="hero"><div class="big">9/22<small>火曜</small></div><h1>ハイデルベルク</h1></div>
+  <p class="lead">ノートの「ハイデルベルク 10:00、1日あり」の日。城、旧市街、哲学者の道を一日で回ります。</p>
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>ハイデルベルク 10:00 から丸一日（ノート）</li><li>宿泊：ハイデルベルク（2泊目）</li><li>翌 9/23 は 09:55 発でローテンブルクへ（別ページ）</li></ul></div>
+  <div class="days">
+    <div class="day"><div class="d">流れ</div><ul>
+      <li>10:00 コルンマルクトからケーブルカーで城 → 城庭・大樽・薬事博物館（〜12:30）</li>
+      <li>昼食 → 聖霊教会 → アルテ・ブリュッケ → 蛇の小道を登って哲学者の道（〜16:30）</li>
+      <li>Hauptstraße で買い物 → 学生牢（時間があれば）→ 夕食</li></ul></div>
+    <div class="day"><div class="d">今日の出費</div><ul>
+      <li>シュロスチケット €11（ケーブルカー往復＋城庭＋大樽＋薬事博物館）</li><li>城内ガイドツアー +€6（任意）· 学生牢 約€4</li><li>バス 33 片道 約€3（旧市街のホテルなら不要）</li></ul></div>
+  </div>
+  <h2>タイムライン</h2>
+  <ul class="timeline">
+    <li><span class="t">09:40</span>コルンマルクト（Kornmarkt）のケーブルカー下駅へ。駅前のホテルならバス 33「Rathaus/Bergbahn」下車。窓口で<b>シュロスチケット €11</b></li>
+    <li><span class="t">10:00</span>ケーブルカー下部区間（2分）で城駅へ。<b>ハイデルベルク城</b>：城庭からの旧市街とネッカー川の眺め、崩れたファサード、<b>大樽（Großes Fass、22万リットル）</b>、<b>ドイツ薬事博物館</b>。城内部（部屋）は+€6 の1時間ガイドツアーのみ。2時間半</li>
+    <li><span class="t">12:30</span>ケーブルカーで下りる（または城の下の「短い階段」Kurzer Buckel を徒歩10分で旧市街へ）。昼食は Marktplatz 周辺</li>
+    <li><span class="t">13:45</span><b>聖霊教会</b>（Marktplatz、月〜土 11–17時、無料。塔は有料）。向かいの騎士の館（Haus zum Ritter、1592年）の外観</li>
+    <li><span class="t">14:15</span>Steingasse を北へ、<b>橋門をくぐってアルテ・ブリュッケ</b>。橋の猿の像（触ると幸運）。対岸へ渡る</li>
+    <li><span class="t">14:35</span>対岸で右へ、すぐ左の急な石畳<b>「蛇の小道（Schlangenweg）」</b>を15分登ると<b>哲学者の道（Philosophenweg）</b>。城と旧市街を正面に見る定番の展望台は登り切って左（西）へ数分</li>
+    <li><span class="t">15:30</span>哲学者の道を西へ歩き、テオドール・ホイス橋で戻る（合計1.5時間）。または来た道を戻る</li>
+    <li><span class="t">16:30</span><b>Hauptstraße</b>（1.6km の歩行者天国）で買い物。学生の街らしい古書店とカフェ。<b>学生牢（Studentenkarzer）</b>は大学広場、火〜土 10–16時、約€4（要確認）</li>
+    <li><span class="t">18:30</span>夕食。Hauptstraße の学生酒場（Zum Roten Ochsen、Schnookeloch など）。ノートの「1日あり」なので夜はゆっくり</li>
+    <li><span class="t">夜</span>翌朝 09:55 発。荷造り。ローテンブルクのホテルの住所と、旧市街内の車両規制を確認</li>
+  </ul>
+  <div class="two">
+    <div class="spot"><h3>ハイデルベルク城 <span class="sub">Schloss Heidelberg</span></h3>
+      <dl class="kv"><dt>シュロスチケット</dt><dd>大人 €11、割引 €5.50。ケーブルカー往復（Kornmarkt ⇄ Schloss）、城庭、大樽、薬事博物館を含む</dd>
+      <dt>城内ツアー</dt><dd>+€6（1時間、独語/英語）。城の部屋の内部を見たい場合のみ</dd>
+      <dt>ケーブルカー</dt><dd>3〜10月 9:00–20:00、下部区間は10分ごと。上のケーニヒシュトゥール（標高568m）まで行く上部区間は別料金</dd>
+      <dt>写真</dt><dd>自由。薬事博物館内はフラッシュ不可</dd>
+      <dt>注意</dt><dd>9/20 のトレイルマラソンは前々日なので影響なし</dd></dl></div>
+    <div class="spot"><h3>市内の動き方 <span class="sub">Heidelberg</span></h3>
+      <dl class="kv"><dt>駅 ⇄ 旧市街</dt><dd>2km。バス 33（Rathaus/Bergbahn 行き、20分間隔）か 20。徒歩なら25分</dd>
+      <dt>旧市街内</dt><dd>全部徒歩。Hauptstraße が背骨で、城・橋・教会はその周辺</dd>
+      <dt>切符</dt><dd>VRN の単券 約€3。D-Ticket 可</dd></dl></div>
+  </div>
+  <div class="callout">
+    <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
+  </div>
+
+  
+  <p class="src">出典：<a href="https://www.schloss-heidelberg.de/besuchsinformation/preise">ハイデルベルク城 料金</a> · <a href="https://www.bergbahn-heidelberg.de/de/Tickets/Tarife/Schlossticket/Schlossticket.html">ベルクバーン シュロスチケット</a> · <a href="https://heiliggeist-heidelberg.de/besuch/besichtigung/">聖霊教会</a> · <a href="https://www.bergbahn-heidelberg.de/de/Anfahrt/Anfahrt.html">ベルクバーン アクセス</a></p>
+</div>
+
+</body></html>

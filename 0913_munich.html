@@ -84,72 +84,59 @@
   @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
 </style>
 <style>
-  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
-  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
-  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
   .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
   .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
   .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
 </style>
 </head><body>
 <div class="wrap">
-  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html" class="cur">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0912_kix.html">← 9/12 関西空港前泊</a><span class="sp"></span><a href="0914_neuschwanstein.html">9/14 ノイシュヴァンシュタイン城 →</a></div>
   <div class="eyebrow">ドイツ旅行 2026</div>
   <div class="hero"><div class="big">9/13<small>日曜 · 到着日</small></div><h1>ミュンヘン旧市街の夜</h1></div>
-  <p class="lead">関西からミュンヘン16:40着。ホテルに荷物を置いて旧市街へ出る夜のルートです。入場料・営業時間・写真の可否をまとめました。</p>
-
+  <p class="lead">関西からミュンヘン 16:40 着。ホテルは中央駅の目の前なので、荷物を置いてそのまま徒歩で旧市街へ出ます。</p>
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>関西 09:30 発 → ミュンヘン 16:40 着（第1ターミナル発）</li><li><b>AWA Hotel</b>（済）：Schillerstraße 10、中央駅南口から徒歩50m。9/13〜16 の3泊、€727.65（¥148,834）。9/12 前日までキャンセル無料、9/10 に自動決済。ノート：空港への無料タクシー送迎あり（要確認）</li><li>新市庁舎の塔 19:20 枠 €7 はオンライン予約が必要</li></ul></div>
   <div class="days">
     <div class="day"><div class="d">流れ</div><ul>
-      <li>16:40 ミュンヘン空港着 → ホテル（Fröttmaning）→ U6 で旧市街へ 18:40</li>
-      <li>アザム教会（19:00閉）→ マリエン広場 → フラウエン教会 → 新市庁舎の塔で夕日</li>
-      <li>州立歌劇場（SPY×FAMILY）→ ホーフガルテン → 夕食 → 21:00 仕掛け時計の夜版 → U6 で帰る</li></ul></div>
+      <li>16:40 空港着 → S8 で中央駅 18:05 → AWA Hotel にチェックイン</li>
+      <li>徒歩でアザム教会（19:00閉）→ マリエン広場 → フラウエン教会 → 新市庁舎の塔で夕日</li>
+      <li>州立歌劇場（SPY×FAMILY）→ ホーフガルテン → 夕食 → 21:00 仕掛け時計の夜版 → 徒歩でホテル</li></ul></div>
     <div class="day"><div class="d">今日の出費</div><ul>
-      <li>新市庁舎の塔 €7（要オンライン予約）</li><li>MVV 1日券（ゾーンM）約€9.20、または D-Ticket</li><li>それ以外は全部無料</li></ul></div>
+      <li>空港 → 中央駅 S-Bahn 片道 約€14（ホテルの無料タクシーが使えるなら不要）</li><li>新市庁舎の塔 €7</li><li>それ以外は全部無料。市内は徒歩のみ</li></ul></div>
   </div>
-  <h2>ホテルから旧市街へ</h2>
-  <p class="lead">ホテルはアリアンツ・アレーナ最寄りの <b>U6 Fröttmaning（フレットマニング）駅</b>周辺。U6 は旧市街の主要駅を全部通るので、この旅で使う駅は下の4つだけ覚えれば足ります。</p>
-  <div class="mapbox">
-    <svg viewBox="0 0 900 300" role="img" aria-label="U6路線図">
-      <line x1="60" y1="150" x2="840" y2="150" stroke="var(--blue)" stroke-width="10" stroke-linecap="round"/>
-      <g font-family="Zen Kaku Gothic New,sans-serif">
-        <!-- Fröttmaning -->
-        <circle cx="80" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
-        <text x="80" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Fröttmaning</text>
-        <text x="80" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">ホテル · アリアンツ・アレーナ</text>
-        <text x="80" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">9/16 10:15 アレーナ見学</text>
-        <!-- dots for skipped stations -->
-        <g fill="var(--panel)" stroke="var(--blue)" stroke-width="3">
-          <circle cx="170" cy="150" r="5"/><circle cx="230" cy="150" r="5"/><circle cx="290" cy="150" r="5"/><circle cx="350" cy="150" r="5"/>
-        </g>
-        <text x="260" y="128" text-anchor="middle" font-size="11.5" fill="var(--ink2)">途中6駅（Kieferngarten〜Giselastraße）</text>
-        <!-- Universität -->
-        <circle cx="450" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
-        <text x="450" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Universität</text>
-        <text x="450" y="92" text-anchor="middle" font-size="12" fill="var(--brick)">LMUの噴水（ハガレン）</text>
-        <text x="450" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約15分</text>
-        <!-- Odeonsplatz -->
-        <circle cx="580" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
-        <text x="580" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Odeonsplatz</text>
-        <text x="580" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">ホーフガルテン · レジデンツ</text>
-        <text x="580" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約17分</text>
-        <!-- Marienplatz -->
-        <circle cx="710" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
-        <text x="710" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Marienplatz</text>
-        <text x="710" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">新市庁舎 · フラウエン教会 · 歌劇場</text>
-        <text x="710" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約19分</text>
-        <text x="710" y="208" text-anchor="middle" font-size="11.5" fill="var(--ink2)">S-Bahn乗換で中央駅へ1駅</text>
-        <!-- Sendlinger Tor -->
-        <circle cx="830" cy="150" r="14" fill="var(--panel)" stroke="var(--blue)" stroke-width="5"/>
-        <text x="830" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Sendlinger Tor</text>
-        <text x="830" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)">アザム教会</text>
-        <text x="830" y="190" text-anchor="middle" font-size="12" fill="var(--ink2)">約21分</text>
-        <text x="60" y="255" font-size="12.5" fill="var(--ink2)">U6 は「Klinikum Großhadern 行き」に乗る（帰りは「Garching-Forschungszentrum 行き」）。10分間隔、夜は20分間隔。1日券（Tageskarte 市内ゾーンM）はホテル〜市内の往復で元が取れる。</text>
-        <text x="60" y="278" font-size="12.5" fill="var(--ink2)">9/15 朝は6:20にホテルを出て U6 → Marienplatz → S-Bahn 1駅で中央駅（07:12 のICEに乗る）。</text>
-      </g>
-    </svg>
-  </div>
-
-  <h2>旧市街 歩く順番</h2>
+  <h2>ホテルの位置</h2>
+  <p class="lead"><b>AWA Hotel</b> は中央駅の南口（Bayerstraße 側）を出て Schillerstraße に入ってすぐ、徒歩50m。この立地なら旧市街は全部徒歩圏で、U-Bahn は 9/15 の午後と 9/16 のアレーナ往復だけ使います。</p>
+<div class="tblwrap"><table class=""><tr class="hd"><th>行き先</th><th>手段</th><th>所要</th><th>メモ</th></tr><tr><td data-label="行き先" data-label="行き先">マリエン広場</td><td data-label="手段" data-label="手段">徒歩</td><td data-label="所要" data-label="所要">15分</td><td data-label="メモ" data-label="メモ">Schillerstraße → Bayerstraße を東へ → カールス広場（Stachus）→ 歩行者天国の Neuhauser Str. をまっすぐ</td></tr><tr><td data-label="行き先" data-label="行き先">アザム教会</td><td data-label="手段" data-label="手段">徒歩</td><td data-label="所要" data-label="所要">12分</td><td data-label="メモ" data-label="メモ">Schillerstraße を南へ → Sonnenstraße を左（東）→ Sendlinger Tor の広場から Sendlinger Straße に入る</td></tr><tr><td data-label="行き先" data-label="行き先">オデオン広場 · レジデンツ</td><td data-label="手段" data-label="手段">U4/U5</td><td data-label="所要" data-label="所要">4分</td><td data-label="メモ" data-label="メモ">中央駅（地下）から Odeonsplatz まで2駅。徒歩なら20分</td></tr><tr><td data-label="行き先" data-label="行き先">大学前の噴水（ハガレン）</td><td data-label="手段" data-label="手段">U-Bahn</td><td data-label="所要" data-label="所要">10分</td><td data-label="メモ" data-label="メモ">U4/U5 で Odeonsplatz → U3/U6 で1駅 Universität。徒歩なら25分</td></tr><tr><td data-label="行き先" data-label="行き先">中央駅のホーム</td><td data-label="手段" data-label="手段">徒歩</td><td data-label="所要" data-label="所要">5分</td><td data-label="メモ" data-label="メモ">9/15 のICEは地上の大ホール20番線。南口からホールへ入って左奥。改修工事中なので余裕を</td></tr><tr><td data-label="行き先" data-label="行き先">空港</td><td data-label="手段" data-label="手段">S8 / S1</td><td data-label="所要" data-label="所要">40〜45分</td><td data-label="メモ" data-label="メモ">中央駅の地下ホームから。S8 は東回り、S1 は西回りで所要はほぼ同じ。10分ごと</td></tr></table></div><h2>旧市街 歩く順番</h2>
   <p class="lead">道は単純化して直角に描いています。縦の通りが U6 の真上（Ludwigstraße → Theatinerstraße → Sendlinger Straße）、横の通りが歩行者天国のカウフィンガー通りとマクシミリアン通りです。</p>
   <div class="mapbox">
     <svg viewBox="0 0 900 620" role="img" aria-label="旧市街の模式地図">
@@ -225,31 +212,31 @@
         <!-- Hbf -->
         <circle cx="200" cy="400" r="9" fill="var(--panel)" stroke="var(--ink2)" stroke-width="3"/>
         <text x="200" y="440" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">中央駅 Hbf</text>
-        <text x="200" y="456" text-anchor="middle" font-size="11.5" fill="var(--ink2)">徒歩15分 / S-Bahn 1駅</text>
-        <text x="200" y="472" text-anchor="middle" font-size="11.5" fill="var(--ink2)">9/15 07:12 発 / 15:05 着</text>
+        <text x="200" y="456" text-anchor="middle" font-size="11.5" fill="var(--brick)">AWA Hotel は駅南口 50m</text>
+        <text x="200" y="472" text-anchor="middle" font-size="11.5" fill="var(--ink2)">マリエン広場まで徒歩15分</text>
         <text x="60" y="40" font-size="12" fill="var(--ink2)">北 ↑ · 徒歩の目安：2→3 3分、2→4 5分、4→5 5分、1→2 5分</text>
       </g>
     </svg>
-    <div class="legend"><span class="l1">9/13 夜：1 → 2 → 3 → 2 → 4 → 5（21:00 に 2 へ戻る）</span><span class="l2">9/15 午後：中央駅 → レジデンツ → ホーフガルテン → Odeonsplatz から U6 で1駅 → 噴水</span></div>
+    <div class="legend"><span class="l1">9/13 夜：1 → 2 → 3 → 2 → 4 → 5（21:00 に 2 へ戻る）</span><span class="l2">9/15 午後：中央駅 → レジデンツ → ホーフガルテン → 噴水</span></div>
   </div>
 
   <div class="tblwrap">
     <table>
-      <tr><th>順</th><th>スポット</th><th>次への移動</th><th>時間帯の縛り</th></tr>
-      <tr><td class="mono">1</td><td>アザム教会</td><td>北へ徒歩5分</td><td>日曜19:00閉。間に合わなければ9/15朝へ</td></tr>
-      <tr><td class="mono">2</td><td>マリエン広場・新市庁舎</td><td>北西へ徒歩3分</td><td>塔は予約枠、最終19:40</td></tr>
-      <tr><td class="mono">3</td><td>フラウエン教会</td><td>広場へ戻り東へ徒歩5分</td><td>20:00閉、ミサ中は不可</td></tr>
-      <tr><td class="mono">4</td><td>州立歌劇場（外観）</td><td>レジデンツ沿いに北へ徒歩5分</td><td>なし</td></tr>
-      <tr><td class="mono">5</td><td>ホーフガルテン</td><td>夕食後、Odeonsplatz から U6 で帰宅 or 広場へ</td><td>なし。21:00 の仕掛け時計は 2 へ</td></tr>
+      <tr class="hd"><th>順</th><th>スポット</th><th>次への移動</th><th>時間帯の縛り</th></tr>
+      <tr><td class="mono" data-label="順">1</td><td data-label="スポット">アザム教会</td><td data-label="次への移動">北へ徒歩5分</td><td data-label="時間帯の縛り">日曜19:00閉。間に合わなければ9/15朝へ</td></tr>
+      <tr><td class="mono" data-label="順">2</td><td data-label="スポット">マリエン広場・新市庁舎</td><td data-label="次への移動">北西へ徒歩3分</td><td data-label="時間帯の縛り">塔は予約枠、最終19:40</td></tr>
+      <tr><td class="mono" data-label="順">3</td><td data-label="スポット">フラウエン教会</td><td data-label="次への移動">広場へ戻り東へ徒歩5分</td><td data-label="時間帯の縛り">20:00閉、ミサ中は不可</td></tr>
+      <tr><td class="mono" data-label="順">4</td><td data-label="スポット">州立歌劇場（外観）</td><td data-label="次への移動">レジデンツ沿いに北へ徒歩5分</td><td data-label="時間帯の縛り">なし</td></tr>
+      <tr><td class="mono" data-label="順">5</td><td data-label="スポット">ホーフガルテン</td><td data-label="次への移動">夕食後、Odeonsplatz から U6 で帰宅 or 広場へ</td><td data-label="時間帯の縛り">なし。21:00 の仕掛け時計は 2 へ</td></tr>
     </table>
   </div>
 
-  <h2>9/13（日）夜のタイムライン</h2>
-  <p class="lead">空港からホテル（Fröttmaning）まではタクシーで約25分。ホテルから U6 で Sendlinger Tor まで約21分です。18:15にホテルを出られればアザム教会に間に合います。無理なら 2 番から始め、アザム教会は9/15朝に。</p>
+  <div class="mobile-map"><b>旧市街 歩く順番（9/13 夜）</b><div class="m">縦の通りが Theatinerstraße → Sendlinger Straße、横がカウフィンガー通り。全部徒歩圏。</div><ol><li><b>AWA Hotel</b>（中央駅南口）→ 徒歩12分 → <b>アザム教会</b>（Sendlinger Str. 32、日曜 9–19時、無料）</li><li>北へ徒歩5分 → <b>マリエン広場・新市庁舎</b>（塔 €7 予約制、最終19:40）</li><li>北西へ徒歩3分 → <b>フラウエン教会</b>（8–20時、無料）</li><li>広場に戻って東へ徒歩5分 → <b>州立歌劇場</b>（SPY×FAMILY 3話、外観）。東隣にホテル・フィア・ヤーレスツァイテン（ハガレン）</li><li>レジデンツ沿いに北へ徒歩5分 → <b>ホーフガルテン</b>（24時間、無料）</li><li>夕食 → 21:00 マリエン広場の仕掛け時計 → 徒歩15分でホテル</li></ol></div><h2>9/13（日）夜のタイムライン</h2>
+  <p class="lead">空港から中央駅まで S8 で約40分、ホテルは駅の目の前。18:30 にホテルを出られればアザム教会（19:00閉）に間に合います。無理なら 2 番から始め、アザム教会は 9/15 に。</p>
   <ul class="timeline">
-    <li><span class="t">16:40</span>ミュンヘン空港着。入国・荷物で約45分。ホテルの無料タクシー送迎を使い、空港→Fröttmaning は高速A9で約25分</li>
-    <li><span class="t">17:50</span>ホテル着、チェックイン。荷物を置いて18:15までに出発。U6「Klinikum Großhadern 行き」</li>
-    <li><span class="t">18:40</span>U-Bahn「Sendlinger Tor」下車。ゼンドリンガー通りを北へ徒歩3分で<b>アザム教会</b>。日曜は19:00閉なので最初に。滞在15分</li>
+    <li><span class="t">16:40</span>ミュンヘン空港着。入国・荷物で約45分。ノートの「無料タクシー送迎」が使えるならそれで中央駅前へ（約35分）。なければ S8「Herrsching 方面」で中央駅へ（40分、10分ごと）</li>
+    <li><span class="t">18:05</span>中央駅着。南口（Bayerstraße 側）を出て徒歩1分で <b>AWA Hotel</b>。チェックイン、荷物を置く</li>
+    <li><span class="t">18:30</span>徒歩で Sendlinger Tor へ（12分）。ゼンドリンガー通りを北へ徒歩3分で<b>アザム教会</b>。日曜は19:00閉なので最初に。滞在15分</li>
     <li><span class="t">18:55</span>そのまま北へ徒歩5分で<b>マリエン広場</b>。新市庁舎の正面を眺める</li>
     <li><span class="t">19:05</span>徒歩3分で<b>フラウエン教会</b>。内部見学は20:00まで。日曜夜はミサの時間帯があり、その間は見学不可なので入口の掲示を確認</li>
     <li><span class="t">19:20</span>マリエン広場に戻り<b>新市庁舎の塔</b>（要オンライン予約、€7、20分枠）。最終エレベーターは19:40。日没19:35前後を上から見られる</li>
@@ -257,7 +244,7 @@
     <li><span class="t">20:10</span>レジデンツの外周を北へ徒歩5分、<b>ホーフガルテン</b>。中央のディアナ神殿は夜も入れる</li>
     <li><span class="t">20:25</span>夕食。オデオン広場〜マリエン広場の間に店が多い。ホーフブロイハウスは徒歩7分</li>
     <li><span class="t">21:00</span>マリエン広場で仕掛け時計の<b>夜の短縮版</b>（ミュンヘン小僧が寝かしつけられる約1分の演出）。無料</li>
-    <li><span class="t">21:10</span>Marienplatz から U6「Garching-Forschungszentrum 行き」で Fröttmaning へ約19分。夜は20分間隔なので発車時刻をアプリで確認</li>
+    <li><span class="t">21:10</span>マリエン広場から徒歩15分でホテル。カウフィンガー通り → カールス広場 → Bayerstraße。夜も人通りが多く安全</li>
   </ul>
 
   <h2>各スポットの実用情報</h2>
@@ -346,18 +333,16 @@
   </div>
 
   
-  
   <h2>乗り換えの詳細</h2>
-  <p class="lead">ミュンヘンの駅は「U-Bahn は地下2階、S-Bahn は地下1階」が基本。同じ駅名でも階が違うので、案内板の <b>U</b>（青）と <b>S</b>（緑）のマークで階を確かめてください。</p>
-<div class="tblwrap"><table><tr><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td>空港 → ホテル</td><td>ホテルの無料タクシー</td><td>約25分</td><td>到着ロビーで運転手と合流（前日までにホテルへ便名を連絡）。公共交通なら S8 → Marienplatz（40分）→ U6 → Fröttmaning（19分）で計1時間10分、空港区間は別料金</td></tr><tr><td>ホテル → Fröttmaning 駅</td><td>徒歩</td><td>5分前後</td><td>ホテルの場所次第。駅は高架、改札はない。紙の切符は乗る前に<b>青い刻印機</b>に通す（アプリ購入なら不要）</td></tr><tr><td>Fröttmaning → Sendlinger Tor</td><td>U6「Klinikum Großhadern 行き」</td><td>21分</td><td>直通。10分間隔。Marienplatz の2つ先。Sendlinger Tor では「Sendlinger Straße」方面の出口へ</td></tr><tr><td>Sendlinger Tor → アザム教会</td><td>徒歩</td><td>3分</td><td>地上に出て Sendlinger Straße を北（マリエン広場方向）へ。左側、間口の狭い教会。番地32</td></tr><tr><td>アザム教会 → マリエン広場</td><td>徒歩</td><td>5分</td><td>そのまま Sendlinger Straße を北へ。Rindermarkt を過ぎると広場</td></tr><tr><td>マリエン広場 → フラウエン教会</td><td>徒歩</td><td>3分</td><td>広場の北西角から Kaufingerstraße に入り、すぐ右手（北）の Frauenplatz へ</td></tr><tr><td>歌劇場 → ホーフガルテン</td><td>徒歩</td><td>5分</td><td>レジデンツの東側（Residenzstraße ではなく Marstallplatz 側）を北へ。Hofgartenstraße から庭園へ入る</td></tr><tr><td>ホーフガルテン → ホテル</td><td>U6「Garching-Forschungszentrum 行き」</td><td>17分</td><td>Odeonsplatz 駅（庭園の西端）から。<b>同じホームに U3「Moosach 行き」も来るので行先表示を確認</b>。U3 に乗ると Münchner Freiheit で分かれてしまう。夜は20分間隔</td></tr><tr><td>マリエン広場 → ホテル</td><td>U6</td><td>19分</td><td>21:00 の仕掛け時計の後ならこちら。地下2階、Fröttmaning/Garching 方面ホーム</td></tr></table></div>
-  <div class="callout"><b>切符</b> MVV の1日券「Tageskarte M（ゾーンM）」は Fröttmaning・旧市街・大学・中央駅を全部含む。券売機か MVV/DB アプリで購入。空港はゾーン外なので、空港との往復だけ別途「Flughafen München」まで買う。D-Ticket を買った場合はミュンヘン市内全部が含まれる。</div>
+<div class="tblwrap"><table class=""><tr class="hd"><th>区間</th><th>乗り物</th><th>所要</th><th>詳細</th></tr><tr><td data-label="区間" data-label="区間">空港 → 中央駅（S-Bahn）</td><td data-label="乗り物" data-label="乗り物">S8 または S1</td><td data-label="所要" data-label="所要">40〜45分</td><td data-label="詳細" data-label="詳細">空港駅は T1 と T2 の間の地下（案内「S」）。どちらの線も中央駅に止まる。券売機で「Hauptbahnhof」まで、またはアプリ。紙の切符は乗る前に青い刻印機へ。中央駅では地下ホームから南口（Bayerstraße）へ上がる</td></tr><tr><td data-label="区間" data-label="区間">空港 → ホテル（タクシー）</td><td data-label="乗り物" data-label="乗り物">ホテル手配</td><td data-label="所要" data-label="所要">約35分</td><td data-label="詳細" data-label="詳細">ノートに「無料タクシー送迎」とある。ホテル公式サイトにはタクシー予約リンクのみなので、無料かどうかは予約確認メールで確認。到着ロビーで名前の紙を持った運転手と合流</td></tr><tr><td data-label="区間" data-label="区間">ホテル → アザム教会</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">12分</td><td data-label="詳細" data-label="詳細">Schillerstraße を南へ3ブロック → Sonnenstraße を東へ → Sendlinger Tor（門）→ Sendlinger Straße に入って北へ、左側 32 番地</td></tr><tr><td data-label="区間" data-label="区間">アザム教会 → マリエン広場</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">5分</td><td data-label="詳細" data-label="詳細">Sendlinger Straße をそのまま北へ</td></tr><tr><td data-label="区間" data-label="区間">マリエン広場 → フラウエン教会</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">3分</td><td data-label="詳細" data-label="詳細">広場の北西角から Kaufingerstraße に入り、すぐ右の Frauenplatz へ</td></tr><tr><td data-label="区間" data-label="区間">歌劇場 → ホーフガルテン</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">5分</td><td data-label="詳細" data-label="詳細">レジデンツの東側（Marstallplatz 側）を北へ。Hofgartenstraße から庭園へ</td></tr><tr><td data-label="区間" data-label="区間">ホーフガルテン → 夕食 → 21:00 マリエン広場</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">10分</td><td data-label="詳細" data-label="詳細">Theatinerstraße を南へ直進すると広場</td></tr><tr><td data-label="区間" data-label="区間">マリエン広場 → ホテル</td><td data-label="乗り物" data-label="乗り物">徒歩</td><td data-label="所要" data-label="所要">15分</td><td data-label="詳細" data-label="詳細">Kaufingerstraße → Neuhauser Straße → カールス広場 → Bayerstraße を西へ → Schillerstraße</td></tr></table></div>
+  <div class="callout"><b>切符</b> 今日は市内が全部徒歩なので、空港〜中央駅の片道だけ買えばよい（約€14）。9/15 午後と 9/16 に U-Bahn を使うので、旅全体では D-Ticket（€63、空港区間も含む）が一番楽。</div>
 
   <div class="callout">
     <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
   </div>
 
   
-  <p class="src">出典：<a href="https://www.residenz-muenchen.de/deutsch/tourist/eintritt.htm">レジデンツ公式</a> · <a href="https://www.muenchner-dom.de/">ミュンヘン大聖堂公式</a> · <a href="https://www.muenchen.de/en/sights/attractions/new-town-hall">muenchen.de 新市庁舎</a> · <a href="https://www.muenchen.travel/pois/stadt-viertel/asamkirche">einfach München アザム教会</a> · <a href="https://www.schloesser.bayern.de/deutsch/garten/objekte/mu_hofg.htm">ホーフガルテン</a> · <a href="https://www.veltra.com/jp/yokka/article/anime-spyfamily-seichi-junrei-spot/">VELTRA SPY×FAMILY</a> · <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14320594539">ハガレン聖地（知恵袋）</a></p>
+  <p class="src">出典：<a href="https://www.awa-hotel.com/location/">AWA Hotel アクセス</a> · <a href="https://www.residenz-muenchen.de/deutsch/tourist/eintritt.htm">レジデンツ公式</a> · <a href="https://www.muenchner-dom.de/">ミュンヘン大聖堂公式</a> · <a href="https://www.muenchen.de/en/sights/attractions/new-town-hall">muenchen.de 新市庁舎</a> · <a href="https://www.muenchen.travel/pois/stadt-viertel/asamkirche">einfach München アザム教会</a> · <a href="https://www.schloesser.bayern.de/deutsch/garten/objekte/mu_hofg.htm">ホーフガルテン</a> · <a href="https://www.veltra.com/jp/yokka/article/anime-spyfamily-seichi-junrei-spot/">VELTRA SPY×FAMILY</a> · <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14320594539">ハガレン聖地（知恵袋）</a></p>
 </div>
 
 </body></html>

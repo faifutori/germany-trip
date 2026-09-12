@@ -84,21 +84,48 @@
   @media (prefers-reduced-motion:no-preference){ .spot{transition:border-color .15s} .spot:hover{border-color:var(--ink2)} }
 </style>
 <style>
-  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px}
-  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:3px 10px;border-radius:999px;background:var(--panel)}
-  .topnav a.cur{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;font-size:12.5px;align-items:center}
+  .topnav a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--panel)}
+  .topnav a.idx{color:var(--brick);border-color:var(--brick);font-weight:700}
+  .topnav .sp{flex:1}
   .hero{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-top:6px}
   .hero .big{font-family:"Shippori Mincho B1",serif;font-size:56px;font-weight:800;line-height:1;color:var(--brick)}
   .hero .big small{display:block;font-size:14px;color:var(--ink2);font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;margin-top:6px}
+  .fixed{background:var(--gold-soft);border:1px solid var(--gold);padding:12px 16px;margin-top:18px}
+  .fixed h3{color:var(--gold);font-size:14px;letter-spacing:.06em;margin-bottom:6px}
+  .fixed ul{margin:0;padding-left:18px}
+  .mobile-map{display:none;background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin-top:16px}
+  .mobile-map ol{margin:6px 0 0;padding-left:20px}
+  .mobile-map li{margin:4px 0}
+  .mobile-map .m{color:var(--ink2);font-size:12.5px}
+  img,svg{max-width:100%}
+  @media (max-width:700px){
+    .wrap{padding:20px 14px 60px}
+    h1{font-size:24px} h2{font-size:19px;margin-top:40px}
+    .hero{gap:12px} .hero .big{font-size:40px}
+    .mapbox{display:none}
+    .mobile-map{display:block}
+    .days{grid-template-columns:1fr}
+    table,tbody,tr,td{display:block;width:100%}
+    table tr.hd{display:none}
+    tr{border-bottom:1px solid var(--line);padding:8px 0}
+    tr:last-child{border-bottom:0}
+    td{border:0;padding:3px 12px}
+    td::before{content:attr(data-label);display:block;font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.06em}
+    td:empty{display:none}
+    .kv{grid-template-columns:1fr;gap:2px 0} .kv dt{margin-top:6px}
+    .timeline li{padding-left:18px}
+    .timeline .t{display:block;margin-bottom:2px}
+    .tblwrap{overflow:visible}
+  }
 </style>
 </head><body>
 <div class="wrap">
-  <div class="topnav"><a href="index.html">目次</a><a href="0913_munich.html">9/13 ミュンヘン夜</a><a href="0915_noerdlingen.html">9/15 ネルトリンゲン</a><a href="0916_arena_berlin.html">9/16 アレーナ→ベルリン</a><a href="0917_berlin.html">9/17 ベルリン</a><a href="0918_dresden.html" class="cur">9/18 ドレスデン</a><a href="0920_schwerin.html">9/20 シュヴェリーン</a></div>
+  <div class="topnav"><a class="idx" href="index.html">目次</a><a href="0917_berlin.html">← 9/17 ベルリン中心部</a><span class="sp"></span><a href="0919_berlin_paul.html">9/19 パウルのお母さんと →</a></div>
   <div class="eyebrow">ドイツ旅行 2026</div>
   <div class="hero"><div class="big">9/18<small>金曜</small></div><h1>ドレスデン日帰り</h1></div>
   <p class="lead">ベルリンから列車で1時間40分。旧市街は徒歩で回れる範囲に集まっているので、朝イチで行けば夕方の便で余裕をもって戻れます。</p>
-
-  <div class="days">
+<div class="fixed"><h3>予約済み・決定済み</h3><ul><li>ドレスデン日帰り（決定）。列車は未購入：07:28 RJ 171 と 17:35 IC 2172 を DB Navigator で</li><li>宿泊：ベルリン</li></ul></div><div class="days">
     <div class="day"><div class="d">流れ</div><ul>
       <li>07:28 RJ でドレスデンへ（09:07着）。旧市街まで徒歩20分 / トラム</li>
       <li>フラウエン教会 → 君主の行列 → レジデンツ宮殿（緑の丸天井）→ ツヴィンガー → ブリュールのテラス</li>
@@ -107,16 +134,16 @@
       <li>列車 €39.99 + €19.99〜（Sparpreis）</li><li>歴史的緑の丸天井 €16（時間指定、要予約）· フラウエン教会ドーム €8 · ツヴィンガー €16</li><li>D-Ticket は使えない（長距離列車のみの区間）</li></ul></div>
   </div>
   <div class="tblwrap"><table>
-    <tr><th>行き</th><th>ベルリン中央駅 発</th><th>乗換</th><th>ドレスデン中央駅 着</th><th>料金</th></tr>
-    <tr><td class="mono"><b>本命</b></td><td class="mono"><b>07:28 RJ 171 · 3番線</b></td><td>直通 1h39</td><td class="mono"><b>09:07</b></td><td>€39.99〜</td></tr>
-    <tr><td class="mono">安い</td><td class="mono">08:22 FEX · 1番線</td><td>BER 08:45着 → 08:55 IC 2173（10分）</td><td class="mono">10:28</td><td>€19.99〜</td></tr>
-    <tr><td class="mono">遅め</td><td class="mono">09:28 RJ 173</td><td>直通</td><td class="mono">11:07</td><td>€53.99〜 · 混雑予想</td></tr>
+    <tr class="hd"><th>行き</th><th>ベルリン中央駅 発</th><th>乗換</th><th>ドレスデン中央駅 着</th><th>料金</th></tr>
+    <tr><td class="mono" data-label="行き"><b>本命</b></td><td class="mono" data-label="ベルリン中央駅 発"><b>07:28 RJ 171 · 3番線</b></td><td data-label="乗換">直通 1h39</td><td class="mono" data-label="ドレスデン中央駅 着"><b>09:07</b></td><td data-label="料金">€39.99〜</td></tr>
+    <tr><td class="mono" data-label="行き">安い</td><td class="mono" data-label="ベルリン中央駅 発">08:22 FEX · 1番線</td><td data-label="乗換">BER 08:45着 → 08:55 IC 2173（10分）</td><td class="mono" data-label="ドレスデン中央駅 着">10:28</td><td data-label="料金">€19.99〜</td></tr>
+    <tr><td class="mono" data-label="行き">遅め</td><td class="mono" data-label="ベルリン中央駅 発">09:28 RJ 173</td><td data-label="乗換">直通</td><td class="mono" data-label="ドレスデン中央駅 着">11:07</td><td data-label="料金">€53.99〜 · 混雑予想</td></tr>
   </table></div>
   <div class="tblwrap"><table>
-    <tr><th>帰り</th><th>ドレスデン中央駅 発</th><th>乗換</th><th>ベルリン中央駅 着</th><th>料金</th></tr>
-    <tr><td class="mono"><b>本命</b></td><td class="mono"><b>17:35 IC 2172</b></td><td>BER で FEX に乗換</td><td class="mono"><b>19:39</b></td><td>€19.99〜</td></tr>
-    <tr><td class="mono">直通</td><td class="mono">18:53 RJ 172</td><td>直通 1h36</td><td class="mono">20:29</td><td>€39.99〜</td></tr>
-    <tr><td class="mono">最安</td><td class="mono">20:33 RJ 250</td><td>直通</td><td class="mono">22:47</td><td>€14.99〜</td></tr>
+    <tr class="hd"><th>帰り</th><th>ドレスデン中央駅 発</th><th>乗換</th><th>ベルリン中央駅 着</th><th>料金</th></tr>
+    <tr><td class="mono" data-label="帰り"><b>本命</b></td><td class="mono" data-label="ドレスデン中央駅 発"><b>17:35 IC 2172</b></td><td data-label="乗換">BER で FEX に乗換</td><td class="mono" data-label="ベルリン中央駅 着"><b>19:39</b></td><td data-label="料金">€19.99〜</td></tr>
+    <tr><td class="mono" data-label="帰り">直通</td><td class="mono" data-label="ドレスデン中央駅 発">18:53 RJ 172</td><td data-label="乗換">直通 1h36</td><td class="mono" data-label="ベルリン中央駅 着">20:29</td><td data-label="料金">€39.99〜</td></tr>
+    <tr><td class="mono" data-label="帰り">最安</td><td class="mono" data-label="ドレスデン中央駅 発">20:33 RJ 250</td><td data-label="乗換">直通</td><td class="mono" data-label="ベルリン中央駅 着">22:47</td><td data-label="料金">€14.99〜</td></tr>
   </table></div>
   <div class="callout">RJ はオーストリア鉄道の Railjet（DB のサイトで買える）。Sparpreis は列車指定なので早めに購入。ドレスデン中央駅は2026年11月末まで1/2・3/4番ホームのエレベーターが工事で停止中（DB 運行情報）。</div>
   <h2>タイムライン</h2>
@@ -144,9 +171,10 @@
   
   <h2>乗り換えの詳細</h2>
   <p class="lead">ベルリン中央駅は<b>地下（Gl. 1–8）と高架（Gl. 11–16）の二層</b>。RJ・FEX・IC は地下から出ます。S-Bahn で来ると高架に着くので、地下まで下りるのに8〜10分見てください。</p>
-<div class="tblwrap"><table><tr><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td>07:10</td><td>Berlin Hbf</td><td>地下 <b>3番線</b> へ。RJ 171 は ÖBB の赤い車両。2等は指定席が多いので、席上の表示が空欄の席か、予約時に座席指定しておく（+€5前後）</td><td>—</td></tr><tr><td>07:28</td><td>Berlin Hbf 3番線</td><td>RJ 171 発。Dresden-Neustadt を経由して Dresden Hbf へ</td><td>1h39</td></tr><tr><td>09:07</td><td>Dresden Hbf <b>1番線</b>着</td><td>駅ビル正面（Wiener Platz）へ。2026年11月末までホーム1/2・3/4 のエレベーターが工事停止中なので階段・エスカレーターで</td><td>5分</td></tr><tr><td>09:15</td><td>Wiener Platz</td><td><b>徒歩</b>：Prager Straße（歩行者天国）を北へ直進 → Altmarkt → ノイマルクト、20分。<b>トラム</b>：停留所「Hauptbahnhof」から 8・9・11 で Postplatz（3駅、6分）、DVB アプリで1回券 €3.30</td><td>20分</td></tr><tr><td>17:05</td><td>ノイマルクト → 中央駅</td><td>来た道を戻る。トラムなら Postplatz か Altmarkt から 8・9・11「Hauptbahnhof 方面」</td><td>20分</td></tr><tr><td>17:35</td><td>Dresden Hbf</td><td>IC 2172 発（番線は当日表示）。BER 空港駅まで直通</td><td>—</td></tr><tr><td>19:1x</td><td>Flughafen BER</td><td>IC を降りて<b>同じ駅内で FEX に乗り換え</b>（番線は電光掲示板。DB の案内では乗換10分程度）。FEX は Hauptbahnhof 行き</td><td>10分</td></tr><tr><td>19:39</td><td>Berlin Hbf 地下</td><td>FEX 着。宿へ</td><td>—</td></tr></table></div>
+<div class="tblwrap"><table><tr class="hd"><th>時刻</th><th>駅</th><th>何をするか</th><th>所要</th></tr><tr><td data-label="時刻">07:10</td><td data-label="駅">Berlin Hbf</td><td data-label="何をするか">地下 <b>3番線</b> へ。RJ 171 は ÖBB の赤い車両。2等は指定席が多いので、席上の表示が空欄の席か、予約時に座席指定しておく（+€5前後）</td><td data-label="所要">—</td></tr><tr><td data-label="時刻">07:28</td><td data-label="駅">Berlin Hbf 3番線</td><td data-label="何をするか">RJ 171 発。Dresden-Neustadt を経由して Dresden Hbf へ</td><td data-label="所要">1h39</td></tr><tr><td data-label="時刻">09:07</td><td data-label="駅">Dresden Hbf <b>1番線</b>着</td><td data-label="何をするか">駅ビル正面（Wiener Platz）へ。2026年11月末までホーム1/2・3/4 のエレベーターが工事停止中なので階段・エスカレーターで</td><td data-label="所要">5分</td></tr><tr><td data-label="時刻">09:15</td><td data-label="駅">Wiener Platz</td><td data-label="何をするか"><b>徒歩</b>：Prager Straße（歩行者天国）を北へ直進 → Altmarkt → ノイマルクト、20分。<b>トラム</b>：停留所「Hauptbahnhof」から 8・9・11 で Postplatz（3駅、6分）、DVB アプリで1回券 €3.30</td><td data-label="所要">20分</td></tr><tr><td data-label="時刻">17:05</td><td data-label="駅">ノイマルクト → 中央駅</td><td data-label="何をするか">来た道を戻る。トラムなら Postplatz か Altmarkt から 8・9・11「Hauptbahnhof 方面」</td><td data-label="所要">20分</td></tr><tr><td data-label="時刻">17:35</td><td data-label="駅">Dresden Hbf</td><td data-label="何をするか">IC 2172 発（番線は当日表示）。BER 空港駅まで直通</td><td data-label="所要">—</td></tr><tr><td data-label="時刻">19:1x</td><td data-label="駅">Flughafen BER</td><td data-label="何をするか">IC を降りて<b>同じ駅内で FEX に乗り換え</b>（番線は電光掲示板。DB の案内では乗換10分程度）。FEX は Hauptbahnhof 行き</td><td data-label="所要">10分</td></tr><tr><td data-label="時刻">19:39</td><td data-label="駅">Berlin Hbf 地下</td><td data-label="何をするか">FEX 着。宿へ</td><td data-label="所要">—</td></tr></table></div>
   <div class="callout warn">帰りに乗り換えを避けたいなら <b>18:53 RJ 172（直通、20:29 着、€39.99〜）</b>。IC+FEX より€20高いが、ドレスデンに1時間余分にいられる。</div>
 
+  
   <div class="callout">
     <b>写真のルール（共通）</b> 教会・レジデンツはいずれも個人利用の撮影可、フラッシュ・三脚・自撮り棒は不可。ミサや礼拝中は撮影も見学も控える。新市庁舎の塔とダニエル塔は撮影自由。
   </div>
